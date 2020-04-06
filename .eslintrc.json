@@ -21,6 +21,6 @@
         "prettier"
     ],
     "rules": {
-        "prettier/prettier": ["error"]
+        "prettier/prettier.singleQuote": ["off"]
     }
 }
