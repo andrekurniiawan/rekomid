@@ -66,7 +66,7 @@
         <div class="row mt-5">
           <div class="col copyright">
             <p class>
-              <small class="text-white-50">© 2019. All Rights Reserved.</small>
+              <small class="text-white-50">Dafunda Media © 2020. All Rights Reserved.</small>
             </p>
           </div>
         </div>

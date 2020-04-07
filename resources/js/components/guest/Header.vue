@@ -1,11 +1,9 @@
 <template>
   <header class="header">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3">
-      <div @click="toggleNav()">
-        <button class="btn btn-dark mr-2">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      </div>
+      <button class="btn btn-dark mr-2" @click="toggleNav()">
+        <span class="navbar-toggler-icon"></span>
+      </button>
       <div class="container">
         <a class="navbar-brand" href="#">
           <img

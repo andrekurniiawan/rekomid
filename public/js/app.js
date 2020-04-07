@@ -2100,8 +2100,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   methods: {
     toggleNav: function toggleNav() {
@@ -38584,7 +38582,7 @@ var staticRenderFns = [
             _c("div", { staticClass: "col copyright" }, [
               _c("p", {}, [
                 _c("small", { staticClass: "text-white-50" }, [
-                  _vm._v("© 2019. All Rights Reserved.")
+                  _vm._v("Dafunda Media © 2020. All Rights Reserved.")
                 ])
               ])
             ])
@@ -38621,31 +38619,24 @@ var render = function() {
       { staticClass: "navbar navbar-expand-lg navbar-dark bg-dark py-3" },
       [
         _c(
-          "div",
+          "button",
           {
+            staticClass: "btn btn-dark mr-2",
             on: {
               click: function($event) {
                 return _vm.toggleNav()
               }
             }
           },
-          [_vm._m(0)]
+          [_c("span", { staticClass: "navbar-toggler-icon" })]
         ),
         _vm._v(" "),
-        _vm._m(1)
+        _vm._m(0)
       ]
     )
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("button", { staticClass: "btn btn-dark mr-2" }, [
-      _c("span", { staticClass: "navbar-toggler-icon" })
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
