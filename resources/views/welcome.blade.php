@@ -12,12 +12,13 @@
   <div id="app">
     <div class="d-flex" id="wrapper">
       <guest-sidebar></guest-sidebar>
-      <!-- Page Content -->
-      <div id="page-content-wrapper">
+      <div id="page-wrapper">
         <guest-header></guest-header>
-      </div><!-- /#page-content-wrapper -->
-    </div>
-  </div>
+        <guest-content></guest-content>
+        <guest-footer></guest-footer>
+      </div><!-- /#page-wrapper -->
+    </div><!-- /#wrapper -->
+  </div><!-- /#app -->
 
   <!-- Scripts -->
   <script src="{{ asset('js/app.js') }}"></script>

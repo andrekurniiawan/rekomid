@@ -26,6 +26,10 @@ Vue.component(
 Vue.component("guest-header", require("./components/guest/Header.vue").default);
 Vue.component("guest-footer", require("./components/guest/Footer.vue").default);
 Vue.component(
+    "guest-content",
+    require("./components/guest/Content.vue").default
+);
+Vue.component(
     "guest-sidebar",
     require("./components/guest/Sidebar.vue").default
 );

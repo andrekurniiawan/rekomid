@@ -72,7 +72,7 @@ body {
   width: 15rem;
 }
 
-#page-content-wrapper {
+#page-wrapper {
   min-width: 100vw;
 }
 
@@ -85,7 +85,7 @@ body {
     margin-left: 0;
   }
 
-  #page-content-wrapper {
+  #page-wrapper {
     min-width: 0;
     width: 100%;
   }
