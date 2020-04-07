@@ -1,6 +1,9 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3">
     <div class="container">
+      <button class="btn btn-dark mr-2" id="menu-toggle">
+        <span class="navbar-toggler-icon"></span>
+      </button>
       <a class="navbar-brand" href="#">
         <img
           src="img/rekomid-logo-512x512.png"
@@ -43,11 +46,9 @@
 </template>
 
 <script>
-    export default {
-        mounted() {
-            console.log('Component mounted.')
-        }
-    }
+export default {
+      
+}
 </script>
 
 <style scoped>

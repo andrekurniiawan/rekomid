@@ -10,11 +10,17 @@
 
 <body>
   <div id="app">
-    <guest-header></guest-header>
+    <div class="d-flex" id="wrapper">
+      <guest-sidebar></guest-sidebar>
+      <!-- Page Content -->
+      <div id="page-content-wrapper">
+        <guest-header></guest-header>
+      </div><!-- /#page-content-wrapper -->
+    </div>
   </div>
 
   <!-- Scripts -->
-  <script src="{{ asset('js/app.js') }}" defer></script>
+  <script src="{{ asset('js/app.js') }}"></script>
 </body>
 
 </html>
