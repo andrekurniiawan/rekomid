@@ -11,14 +11,6 @@
 <body>
   <div id="app">
     <router-view></router-view>
-    {{-- <div class="d-flex" id="wrapper">
-      <guest-sidebar></guest-sidebar>
-      <div id="page-wrapper">
-        <guest-header></guest-header>
-        <guest-content></guest-content>
-        <guest-footer></guest-footer>
-      </div><!-- /#page-wrapper -->
-    </div><!-- /#wrapper --> --}}
   </div><!-- /#app -->
 
   <!-- Scripts -->

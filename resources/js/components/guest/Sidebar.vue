@@ -65,7 +65,6 @@ export default {
 <style scoped>
 #sidebar-wrapper {
   min-height: 100vh;
-  margin-left: -15rem;
   -webkit-transition: margin 0.25s ease-out;
   -moz-transition: margin 0.25s ease-out;
   -o-transition: margin 0.25s ease-out;
