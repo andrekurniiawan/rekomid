@@ -2,7 +2,6 @@
   <!-- Sidebar -->
   <div class="bg-dark-blue" id="sidebar-wrapper">
     <div class="sidebar">
-      <div class="sidebar-backdrop" @click="closeSidebarPanel" v-if="isPanelOpen"></div>
       <transition name="slide">
         <div v-if="isPanelOpen" class="sidebar-panel">
           <div class="list-group list-group-flush py-4">
@@ -55,11 +54,11 @@ export default {
     data: () => ({
             isPanelOpen: true
         }),
-        methods: {
-            closeSidebarPanel() {
-                this.isPanelOpen = false
-            }
+    methods: {
+        closeSidebarPanel() {
+            this.isPanelOpen = false
         }
+    }
 }
 </script>
 
