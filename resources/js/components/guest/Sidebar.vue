@@ -1,45 +1,45 @@
 <template>
   <!-- Sidebar -->
-  <div class="bg-dark-blue" id="sidebar-wrapper">
+  <div class="bg-custom" id="sidebar-wrapper">
     <div class="sidebar">
       <transition name="slide">
         <div v-if="isPanelOpen" class="sidebar-panel">
           <div class="list-group list-group-flush py-4">
             <a
               href="#"
-              class="list-group-item list-group-item-light list-group-item-action bg-dark-blue"
+              class="list-group-item list-group-item-light list-group-item-action bg-custom"
             >Tekno</a>
             <a
               href="#"
-              class="list-group-item list-group-item-light list-group-item-action bg-dark-blue"
+              class="list-group-item list-group-item-light list-group-item-action bg-custom"
             >Kecantikan</a>
             <a
               href="#"
-              class="list-group-item list-group-item-light list-group-item-action bg-dark-blue"
+              class="list-group-item list-group-item-light list-group-item-action bg-custom"
             >Kebugaran</a>
             <a
               href="#"
-              class="list-group-item list-group-item-light list-group-item-action bg-dark-blue"
+              class="list-group-item list-group-item-light list-group-item-action bg-custom"
             >Peralatan</a>
             <a
               href="#"
-              class="list-group-item list-group-item-light list-group-item-action bg-dark-blue"
+              class="list-group-item list-group-item-light list-group-item-action bg-custom"
             >Ibu dan Anak</a>
             <a
               href="#"
-              class="list-group-item list-group-item-light list-group-item-action bg-dark-blue"
+              class="list-group-item list-group-item-light list-group-item-action bg-custom"
             >Pakaian Wanita</a>
             <a
               href="#"
-              class="list-group-item list-group-item-light list-group-item-action bg-dark-blue"
+              class="list-group-item list-group-item-light list-group-item-action bg-custom"
             >Pakaian Anak</a>
             <a
               href="#"
-              class="list-group-item list-group-item-light list-group-item-action bg-dark-blue"
+              class="list-group-item list-group-item-light list-group-item-action bg-custom"
             >Update Virus Corona</a>
             <a
               href="#"
-              class="list-group-item list-group-item-light list-group-item-action bg-dark-blue"
+              class="list-group-item list-group-item-light list-group-item-action bg-custom"
             >Viral</a>
           </div>
         </div>
@@ -62,11 +62,7 @@ export default {
 }
 </script>
 
-<style>
-body {
-  overflow-x: hidden;
-}
-
+<style scoped>
 #sidebar-wrapper {
   min-height: 100vh;
   margin-left: -15rem;
@@ -85,10 +81,6 @@ body {
   width: 15rem;
 }
 
-#page-wrapper {
-  min-width: 100vw;
-}
-
 #wrapper.toggled #sidebar-wrapper {
   margin-left: 0;
 }
@@ -98,19 +90,10 @@ body {
     margin-left: 0;
   }
 
-  #page-wrapper {
-    min-width: 0;
-    width: 100%;
-  }
-
   #wrapper.toggled #sidebar-wrapper {
     margin-left: -15rem;
   }
 }
-</style>
-
-<style scoped>
-@import "~/css/app.css";
 
 .list-group-item {
   border: none;
@@ -119,11 +102,11 @@ body {
 }
 
 .list-group-item:hover {
-  color: white;
-  background-color: #353a40;
+  color: white !important;
+  background-color: #353a40 !important;
 }
 
-.bg-dark-blue {
+.bg-custom {
   background-color: #24272b;
 }
 

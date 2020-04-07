@@ -9,7 +9,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 #page-content-wrapper {
   min-height: calc(100vh - 72px);
 }

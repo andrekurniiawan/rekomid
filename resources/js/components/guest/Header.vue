@@ -59,8 +59,6 @@ export default {
 </script>
 
 <style scoped>
-@import "~/css/app.css";
-
 .btn,
 .btn:focus,
 .btn:active {
