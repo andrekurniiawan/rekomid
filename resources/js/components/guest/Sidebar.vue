@@ -54,11 +54,11 @@ export default {
     data: () => ({
             isPanelOpen: true
         }),
-    methods: {
-        closeSidebarPanel() {
-            this.isPanelOpen = false
-        }
-    }
+    mounted () {
+    this.$parent.$on('toggleNav', () => {
+      this.isPanelOpen = !this.isPanelOpen
+    })
+  }
 }
 </script>
 

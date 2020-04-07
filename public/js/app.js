@@ -2103,14 +2103,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  data: function data() {
-    return {
-      isBurgerActive: false
-    };
-  },
   methods: {
-    toggle: function toggle() {
-      this.isBurgerActive = !this.isBurgerActive;
+    toggleNav: function toggleNav() {
+      this.$parent.$emit('toggleNav');
     }
   }
 });
@@ -2183,10 +2178,12 @@ __webpack_require__.r(__webpack_exports__);
       isPanelOpen: true
     };
   },
-  methods: {
-    closeSidebarPanel: function closeSidebarPanel() {
-      this.isPanelOpen = false;
-    }
+  mounted: function mounted() {
+    var _this = this;
+
+    this.$parent.$on('toggleNav', function () {
+      _this.isPanelOpen = !_this.isPanelOpen;
+    });
   }
 });
 
@@ -38626,12 +38623,9 @@ var render = function() {
         _c(
           "div",
           {
-            class: { active: _vm.isBurgerActive },
-            attrs: { id: "burger" },
             on: {
               click: function($event) {
-                $event.preventDefault()
-                return _vm.toggle($event)
+                return _vm.toggleNav()
               }
             }
           },

@@ -1,7 +1,7 @@
 <template>
   <header class="header">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3">
-      <div id="burger" :class="{ 'active' : isBurgerActive }" @click.prevent="toggle">
+      <div @click="toggleNav()">
         <button class="btn btn-dark mr-2">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -52,12 +52,9 @@
 
 <script>
 export default {
-    data: () => ({
-        isBurgerActive: false
-    }),
     methods: {
-        toggle() {
-            this.isBurgerActive = !this.isBurgerActive
+        toggleNav () {
+            this.$parent.$emit('toggleNav')
         }
     }
 }
