@@ -11,6 +11,6 @@ export default {
 
 <style>
 #page-content-wrapper {
-  min-height: 100vh;
+  min-height: calc(100vh - 72px);
 }
 </style>

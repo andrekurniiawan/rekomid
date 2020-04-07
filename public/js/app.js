@@ -2175,7 +2175,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      isPanelOpen: true
+      isPanelOpen: false
     };
   },
   mounted: function mounted() {
@@ -6751,7 +6751,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n#page-content-wrapper {\r\n  min-height: 100vh;\n}\r\n", ""]);
+exports.push([module.i, "\n#page-content-wrapper {\r\n  min-height: calc(100vh - 72px);\n}\r\n", ""]);
 
 // exports
 
@@ -6770,7 +6770,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 exports.push([module.i, "@import url(/css/app.css);", ""]);
 
 // module
-exports.push([module.i, "\r\n", ""]);
+exports.push([module.i, "\n.btn[data-v-7087ec8f],\r\n.btn[data-v-7087ec8f]:focus,\r\n.btn[data-v-7087ec8f]:active {\r\n  background-color: #343a40;\r\n  border-color: #343a40;\r\n  box-shadow: none;\n}\n.btn[data-v-7087ec8f]:hover {\r\n  background-color: #23272b;\r\n  border-color: #1d2124;\n}\r\n", ""]);
 
 // exports
 
@@ -6808,7 +6808,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 exports.push([module.i, "@import url(/css/app.css);", ""]);
 
 // module
-exports.push([module.i, "\n.list-group-item[data-v-4406074a] {\r\n  border: none;\r\n  font-size: 120%;\r\n  color: white;\n}\n.list-group-item[data-v-4406074a]:hover {\r\n  color: white;\r\n  background-color: #353a40;\n}\n.bg-dark-blue[data-v-4406074a] {\r\n  background-color: #24272b;\n}\r\n", ""]);
+exports.push([module.i, "\n.list-group-item[data-v-4406074a] {\r\n  border: none;\r\n  font-size: 120%;\r\n  color: white;\n}\n.list-group-item[data-v-4406074a]:hover {\r\n  color: white;\r\n  background-color: #353a40;\n}\n.bg-dark-blue[data-v-4406074a] {\r\n  background-color: #24272b;\n}\n.slide-enter-active[data-v-4406074a],\r\n.slide-leave-active[data-v-4406074a] {\r\n  transition: transform 0.2s ease;\n}\n.slide-enter[data-v-4406074a],\r\n.slide-leave-to[data-v-4406074a] {\r\n  transform: translateX(-100%);\r\n  transition: all 150ms ease-in 0s;\n}\r\n", ""]);
 
 // exports
 

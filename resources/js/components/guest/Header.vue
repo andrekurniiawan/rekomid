@@ -62,4 +62,17 @@ export default {
 
 <style scoped>
 @import "~/css/app.css";
+
+.btn,
+.btn:focus,
+.btn:active {
+  background-color: #343a40;
+  border-color: #343a40;
+  box-shadow: none;
+}
+
+.btn:hover {
+  background-color: #23272b;
+  border-color: #1d2124;
+}
 </style>
