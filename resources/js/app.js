@@ -24,6 +24,11 @@ Vue.component(
     require("./components/ExampleComponent.vue").default
 );
 Vue.component("guest-header", require("./components/guest/Header.vue").default);
+Vue.component("guest-footer", require("./components/guest/Footer.vue").default);
+Vue.component(
+    "guest-sidebar",
+    require("./components/guest/Sidebar.vue").default
+);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
