@@ -3,22 +3,44 @@
     <div class="pt-5 pb-5 footer bg-dark">
       <div class="container">
         <div class="row">
-          <div class="col-lg-8 col-xs-12 about-company">
-            <h2>Heading</h2>
+          <div class="col-lg-5 col-xs-12 about-company">
+            <a class="navbar-brand my-2" href="#">
+              <img
+                src="img/rekomid-logo-512x512.png"
+                width="30"
+                height="30"
+                class="d-inline-block align-top mx-2"
+                alt
+              />
+              Rekom.id
+            </a>
             <p
               class="pr-5 text-white-50"
             >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac ante mollis quam tristique convallis</p>
-            <p>
-              <a href="#">
-                <i class="fa fa-facebook-square mr-1"></i>
-              </a>
-              <a href="#">
-                <i class="fa fa-linkedin-square"></i>
-              </a>
-            </p>
           </div>
-          <div class="col-lg-4 col-xs-12 links">
-            <h4 class="mt-lg-0 mt-sm-3">Links</h4>
+          <div class="col-lg-3 col-xs-12 links">
+            <ul class="m-0 p-0">
+              <li>
+                <a href="#">Lorem ipsum</a>
+              </li>
+              <li>
+                <a href="#">Nam mauris velit</a>
+              </li>
+              <li>
+                <a href="#">Etiam vitae mauris</a>
+              </li>
+              <li>
+                <a href="#">Fusce scelerisque</a>
+              </li>
+              <li>
+                <a href="#">Sed faucibus</a>
+              </li>
+              <li>
+                <a href="#">Mauris efficitur nulla</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-xs-12 links">
             <ul class="m-0 p-0">
               <li>
                 <a href="#">Lorem ipsum</a>
@@ -86,14 +108,6 @@ export default {
     a {
       color: white;
       transition: color 0.2s;
-      &:hover {
-        color: #4180cb;
-      }
-    }
-  }
-  .location {
-    i {
-      font-size: 18px;
     }
   }
   .copyright p {

@@ -2015,6 +2015,28 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
@@ -2078,7 +2100,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      isBurgerActive: false
+    };
+  },
+  methods: {
+    toggle: function toggle() {
+      this.isBurgerActive = !this.isBurgerActive;
+    }
+  }
+});
 
 /***/ }),
 
@@ -2136,7 +2171,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      isPanelOpen: true
+    };
+  },
+  methods: {
+    closeSidebarPanel: function closeSidebarPanel() {
+      this.isPanelOpen = false;
+    }
+  }
+});
 
 /***/ }),
 
@@ -6683,7 +6736,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 exports.push([module.i, "@import url(/css/app.css);", ""]);
 
 // module
-exports.push([module.i, ".footer[data-v-4f55889d] {\n  color: white;\n}\n.footer .links ul[data-v-4f55889d] {\n  list-style-type: none;\n}\n.footer .links li a[data-v-4f55889d] {\n  color: white;\n  transition: color 0.2s;\n}\n.footer .links li a[data-v-4f55889d]:hover {\n  text-decoration: none;\n  color: #4180cb;\n}\n.footer .about-company i[data-v-4f55889d] {\n  font-size: 25px;\n}\n.footer .about-company a[data-v-4f55889d] {\n  color: white;\n  transition: color 0.2s;\n}\n.footer .about-company a[data-v-4f55889d]:hover {\n  color: #4180cb;\n}\n.footer .location i[data-v-4f55889d] {\n  font-size: 18px;\n}\n.footer .copyright p[data-v-4f55889d] {\n  border-top: 1px solid rgba(255, 255, 255, 0.1);\n}", ""]);
+exports.push([module.i, ".footer[data-v-4f55889d] {\n  color: white;\n}\n.footer .links ul[data-v-4f55889d] {\n  list-style-type: none;\n}\n.footer .links li a[data-v-4f55889d] {\n  color: white;\n  transition: color 0.2s;\n}\n.footer .links li a[data-v-4f55889d]:hover {\n  text-decoration: none;\n  color: #4180cb;\n}\n.footer .about-company i[data-v-4f55889d] {\n  font-size: 25px;\n}\n.footer .about-company a[data-v-4f55889d] {\n  color: white;\n  transition: color 0.2s;\n}\n.footer .copyright p[data-v-4f55889d] {\n  border-top: 1px solid rgba(255, 255, 255, 0.1);\n}", ""]);
 
 // exports
 
@@ -38433,29 +38486,68 @@ var staticRenderFns = [
       _c("div", { staticClass: "pt-5 pb-5 footer bg-dark" }, [
         _c("div", { staticClass: "container" }, [
           _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-lg-8 col-xs-12 about-company" }, [
-              _c("h2", [_vm._v("Heading")]),
+            _c("div", { staticClass: "col-lg-5 col-xs-12 about-company" }, [
+              _c(
+                "a",
+                { staticClass: "navbar-brand my-2", attrs: { href: "#" } },
+                [
+                  _c("img", {
+                    staticClass: "d-inline-block align-top mx-2",
+                    attrs: {
+                      src: "img/rekomid-logo-512x512.png",
+                      width: "30",
+                      height: "30",
+                      alt: ""
+                    }
+                  }),
+                  _vm._v("\n            Rekom.id\n          ")
+                ]
+              ),
               _vm._v(" "),
               _c("p", { staticClass: "pr-5 text-white-50" }, [
                 _vm._v(
                   "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac ante mollis quam tristique convallis"
                 )
-              ]),
-              _vm._v(" "),
-              _c("p", [
-                _c("a", { attrs: { href: "#" } }, [
-                  _c("i", { staticClass: "fa fa-facebook-square mr-1" })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-lg-3 col-xs-12 links" }, [
+              _c("ul", { staticClass: "m-0 p-0" }, [
+                _c("li", [
+                  _c("a", { attrs: { href: "#" } }, [_vm._v("Lorem ipsum")])
                 ]),
                 _vm._v(" "),
-                _c("a", { attrs: { href: "#" } }, [
-                  _c("i", { staticClass: "fa fa-linkedin-square" })
+                _c("li", [
+                  _c("a", { attrs: { href: "#" } }, [
+                    _vm._v("Nam mauris velit")
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("li", [
+                  _c("a", { attrs: { href: "#" } }, [
+                    _vm._v("Etiam vitae mauris")
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("li", [
+                  _c("a", { attrs: { href: "#" } }, [
+                    _vm._v("Fusce scelerisque")
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("li", [
+                  _c("a", { attrs: { href: "#" } }, [_vm._v("Sed faucibus")])
+                ]),
+                _vm._v(" "),
+                _c("li", [
+                  _c("a", { attrs: { href: "#" } }, [
+                    _vm._v("Mauris efficitur nulla")
+                  ])
                 ])
               ])
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "col-lg-4 col-xs-12 links" }, [
-              _c("h4", { staticClass: "mt-lg-0 mt-sm-3" }, [_vm._v("Links")]),
-              _vm._v(" "),
+            _c("div", { staticClass: "col-lg-3 col-xs-12 links" }, [
               _c("ul", { staticClass: "m-0 p-0" }, [
                 _c("li", [
                   _c("a", { attrs: { href: "#" } }, [_vm._v("Lorem ipsum")])
@@ -38527,91 +38619,102 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("header", { staticClass: "header" }, [
+    _c(
+      "nav",
+      { staticClass: "navbar navbar-expand-lg navbar-dark bg-dark py-3" },
+      [
+        _c(
+          "div",
+          {
+            class: { active: _vm.isBurgerActive },
+            attrs: { id: "burger" },
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                return _vm.toggle($event)
+              }
+            }
+          },
+          [_vm._m(0)]
+        ),
+        _vm._v(" "),
+        _vm._m(1)
+      ]
+    )
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("header", { staticClass: "header" }, [
+    return _c("button", { staticClass: "btn btn-dark mr-2" }, [
+      _c("span", { staticClass: "navbar-toggler-icon" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "container" }, [
+      _c("a", { staticClass: "navbar-brand", attrs: { href: "#" } }, [
+        _c("img", {
+          staticClass: "d-inline-block align-top mr-1",
+          attrs: {
+            src: "img/rekomid-logo-512x512.png",
+            width: "30",
+            height: "30",
+            alt: ""
+          }
+        }),
+        _vm._v("\n        Rekom.id\n      ")
+      ]),
+      _vm._v(" "),
       _c(
-        "nav",
-        { staticClass: "navbar navbar-expand-lg navbar-dark bg-dark py-3" },
+        "button",
+        {
+          staticClass: "navbar-toggler",
+          attrs: {
+            type: "button",
+            "data-toggle": "collapse",
+            "data-target": "#navbarNav",
+            "aria-controls": "navbarNav",
+            "aria-expanded": "false",
+            "aria-label": "Toggle navigation"
+          }
+        },
+        [_c("span", { staticClass: "navbar-toggler-icon" })]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "collapse navbar-collapse", attrs: { id: "navbarNav" } },
         [
-          _c("div", { staticClass: "container" }, [
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-dark mr-2",
-                attrs: { id: "menu-toggle" }
-              },
-              [_c("span", { staticClass: "navbar-toggler-icon" })]
-            ),
-            _vm._v(" "),
-            _c("a", { staticClass: "navbar-brand", attrs: { href: "#" } }, [
-              _c("img", {
-                staticClass: "d-inline-block align-top mr-1",
-                attrs: {
-                  src: "img/rekomid-logo-512x512.png",
-                  width: "30",
-                  height: "30",
-                  alt: ""
-                }
-              }),
-              _vm._v("\n        Rekom.id\n      ")
+          _c("ul", { staticClass: "navbar-nav" }, [
+            _c("li", { staticClass: "nav-item" }, [
+              _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
+                _vm._v("Kecantikan")
+              ])
             ]),
             _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "navbar-toggler",
-                attrs: {
-                  type: "button",
-                  "data-toggle": "collapse",
-                  "data-target": "#navbarNav",
-                  "aria-controls": "navbarNav",
-                  "aria-expanded": "false",
-                  "aria-label": "Toggle navigation"
-                }
-              },
-              [_c("span", { staticClass: "navbar-toggler-icon" })]
-            ),
+            _c("li", { staticClass: "nav-item" }, [
+              _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
+                _vm._v("Tekno")
+              ])
+            ]),
             _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "collapse navbar-collapse",
-                attrs: { id: "navbarNav" }
-              },
-              [
-                _c("ul", { staticClass: "navbar-nav" }, [
-                  _c("li", { staticClass: "nav-item" }, [
-                    _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
-                      _vm._v("Kecantikan")
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("li", { staticClass: "nav-item" }, [
-                    _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
-                      _vm._v("Tekno")
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("li", { staticClass: "nav-item" }, [
-                    _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
-                      _vm._v("Rumah Tangga")
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("li", { staticClass: "nav-item" }, [
-                    _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
-                      _vm._v("Update Virus Corona")
-                    ])
-                  ])
-                ])
-              ]
-            )
+            _c("li", { staticClass: "nav-item" }, [
+              _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
+                _vm._v("Rumah Tangga")
+              ])
+            ]),
+            _vm._v(" "),
+            _c("li", { staticClass: "nav-item" }, [
+              _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
+                _vm._v("Update Virus Corona")
+              ])
+            ])
           ])
         ]
       )
@@ -38639,112 +38742,129 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "div",
+    { staticClass: "bg-dark-blue", attrs: { id: "sidebar-wrapper" } },
+    [
+      _c(
+        "div",
+        { staticClass: "sidebar" },
+        [
+          _vm.isPanelOpen
+            ? _c("div", {
+                staticClass: "sidebar-backdrop",
+                on: { click: _vm.closeSidebarPanel }
+              })
+            : _vm._e(),
+          _vm._v(" "),
+          _c("transition", { attrs: { name: "slide" } }, [
+            _vm.isPanelOpen
+              ? _c("div", { staticClass: "sidebar-panel" }, [
+                  _c(
+                    "div",
+                    { staticClass: "list-group list-group-flush py-4" },
+                    [
+                      _c(
+                        "a",
+                        {
+                          staticClass:
+                            "list-group-item list-group-item-light list-group-item-action bg-dark-blue",
+                          attrs: { href: "#" }
+                        },
+                        [_vm._v("Tekno")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        {
+                          staticClass:
+                            "list-group-item list-group-item-light list-group-item-action bg-dark-blue",
+                          attrs: { href: "#" }
+                        },
+                        [_vm._v("Kecantikan")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        {
+                          staticClass:
+                            "list-group-item list-group-item-light list-group-item-action bg-dark-blue",
+                          attrs: { href: "#" }
+                        },
+                        [_vm._v("Kebugaran")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        {
+                          staticClass:
+                            "list-group-item list-group-item-light list-group-item-action bg-dark-blue",
+                          attrs: { href: "#" }
+                        },
+                        [_vm._v("Peralatan")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        {
+                          staticClass:
+                            "list-group-item list-group-item-light list-group-item-action bg-dark-blue",
+                          attrs: { href: "#" }
+                        },
+                        [_vm._v("Ibu dan Anak")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        {
+                          staticClass:
+                            "list-group-item list-group-item-light list-group-item-action bg-dark-blue",
+                          attrs: { href: "#" }
+                        },
+                        [_vm._v("Pakaian Wanita")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        {
+                          staticClass:
+                            "list-group-item list-group-item-light list-group-item-action bg-dark-blue",
+                          attrs: { href: "#" }
+                        },
+                        [_vm._v("Pakaian Anak")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        {
+                          staticClass:
+                            "list-group-item list-group-item-light list-group-item-action bg-dark-blue",
+                          attrs: { href: "#" }
+                        },
+                        [_vm._v("Update Virus Corona")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        {
+                          staticClass:
+                            "list-group-item list-group-item-light list-group-item-action bg-dark-blue",
+                          attrs: { href: "#" }
+                        },
+                        [_vm._v("Viral")]
+                      )
+                    ]
+                  )
+                ])
+              : _vm._e()
+          ])
+        ],
+        1
+      )
+    ]
+  )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "bg-dark-blue", attrs: { id: "sidebar-wrapper" } },
-      [
-        _c("div", { staticClass: "list-group list-group-flush py-4" }, [
-          _c(
-            "a",
-            {
-              staticClass:
-                "list-group-item list-group-item-light list-group-item-action bg-dark-blue",
-              attrs: { href: "#" }
-            },
-            [_vm._v("Tekno")]
-          ),
-          _vm._v(" "),
-          _c(
-            "a",
-            {
-              staticClass:
-                "list-group-item list-group-item-light list-group-item-action bg-dark-blue",
-              attrs: { href: "#" }
-            },
-            [_vm._v("Kecantikan")]
-          ),
-          _vm._v(" "),
-          _c(
-            "a",
-            {
-              staticClass:
-                "list-group-item list-group-item-light list-group-item-action bg-dark-blue",
-              attrs: { href: "#" }
-            },
-            [_vm._v("Kebugaran")]
-          ),
-          _vm._v(" "),
-          _c(
-            "a",
-            {
-              staticClass:
-                "list-group-item list-group-item-light list-group-item-action bg-dark-blue",
-              attrs: { href: "#" }
-            },
-            [_vm._v("Peralatan")]
-          ),
-          _vm._v(" "),
-          _c(
-            "a",
-            {
-              staticClass:
-                "list-group-item list-group-item-light list-group-item-action bg-dark-blue",
-              attrs: { href: "#" }
-            },
-            [_vm._v("Ibu dan Anak")]
-          ),
-          _vm._v(" "),
-          _c(
-            "a",
-            {
-              staticClass:
-                "list-group-item list-group-item-light list-group-item-action bg-dark-blue",
-              attrs: { href: "#" }
-            },
-            [_vm._v("Pakaian Wanita")]
-          ),
-          _vm._v(" "),
-          _c(
-            "a",
-            {
-              staticClass:
-                "list-group-item list-group-item-light list-group-item-action bg-dark-blue",
-              attrs: { href: "#" }
-            },
-            [_vm._v("Pakaian Anak")]
-          ),
-          _vm._v(" "),
-          _c(
-            "a",
-            {
-              staticClass:
-                "list-group-item list-group-item-light list-group-item-action bg-dark-blue",
-              attrs: { href: "#" }
-            },
-            [_vm._v("Update Virus Corona")]
-          ),
-          _vm._v(" "),
-          _c(
-            "a",
-            {
-              staticClass:
-                "list-group-item list-group-item-light list-group-item-action bg-dark-blue",
-              attrs: { href: "#" }
-            },
-            [_vm._v("Viral")]
-          )
-        ])
-      ]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

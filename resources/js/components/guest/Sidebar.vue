@@ -1,43 +1,50 @@
 <template>
   <!-- Sidebar -->
   <div class="bg-dark-blue" id="sidebar-wrapper">
-    <div class="list-group list-group-flush py-4">
-      <a
-        href="#"
-        class="list-group-item list-group-item-light list-group-item-action bg-dark-blue"
-      >Tekno</a>
-      <a
-        href="#"
-        class="list-group-item list-group-item-light list-group-item-action bg-dark-blue"
-      >Kecantikan</a>
-      <a
-        href="#"
-        class="list-group-item list-group-item-light list-group-item-action bg-dark-blue"
-      >Kebugaran</a>
-      <a
-        href="#"
-        class="list-group-item list-group-item-light list-group-item-action bg-dark-blue"
-      >Peralatan</a>
-      <a
-        href="#"
-        class="list-group-item list-group-item-light list-group-item-action bg-dark-blue"
-      >Ibu dan Anak</a>
-      <a
-        href="#"
-        class="list-group-item list-group-item-light list-group-item-action bg-dark-blue"
-      >Pakaian Wanita</a>
-      <a
-        href="#"
-        class="list-group-item list-group-item-light list-group-item-action bg-dark-blue"
-      >Pakaian Anak</a>
-      <a
-        href="#"
-        class="list-group-item list-group-item-light list-group-item-action bg-dark-blue"
-      >Update Virus Corona</a>
-      <a
-        href="#"
-        class="list-group-item list-group-item-light list-group-item-action bg-dark-blue"
-      >Viral</a>
+    <div class="sidebar">
+      <div class="sidebar-backdrop" @click="closeSidebarPanel" v-if="isPanelOpen"></div>
+      <transition name="slide">
+        <div v-if="isPanelOpen" class="sidebar-panel">
+          <div class="list-group list-group-flush py-4">
+            <a
+              href="#"
+              class="list-group-item list-group-item-light list-group-item-action bg-dark-blue"
+            >Tekno</a>
+            <a
+              href="#"
+              class="list-group-item list-group-item-light list-group-item-action bg-dark-blue"
+            >Kecantikan</a>
+            <a
+              href="#"
+              class="list-group-item list-group-item-light list-group-item-action bg-dark-blue"
+            >Kebugaran</a>
+            <a
+              href="#"
+              class="list-group-item list-group-item-light list-group-item-action bg-dark-blue"
+            >Peralatan</a>
+            <a
+              href="#"
+              class="list-group-item list-group-item-light list-group-item-action bg-dark-blue"
+            >Ibu dan Anak</a>
+            <a
+              href="#"
+              class="list-group-item list-group-item-light list-group-item-action bg-dark-blue"
+            >Pakaian Wanita</a>
+            <a
+              href="#"
+              class="list-group-item list-group-item-light list-group-item-action bg-dark-blue"
+            >Pakaian Anak</a>
+            <a
+              href="#"
+              class="list-group-item list-group-item-light list-group-item-action bg-dark-blue"
+            >Update Virus Corona</a>
+            <a
+              href="#"
+              class="list-group-item list-group-item-light list-group-item-action bg-dark-blue"
+            >Viral</a>
+          </div>
+        </div>
+      </transition>
     </div>
   </div>
   <!-- /#sidebar-wrapper -->
@@ -45,7 +52,14 @@
 
 <script>
 export default {
-
+    data: () => ({
+            isPanelOpen: true
+        }),
+        methods: {
+            closeSidebarPanel() {
+                this.isPanelOpen = false
+            }
+        }
 }
 </script>
 
