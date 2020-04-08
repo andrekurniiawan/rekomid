@@ -65,32 +65,29 @@ export default {
 <style scoped>
 #sidebar-wrapper {
   min-height: 100vh;
+  margin-left: -1rem;
   -webkit-transition: margin 0.25s ease-out;
   -moz-transition: margin 0.25s ease-out;
   -o-transition: margin 0.25s ease-out;
   transition: margin 0.25s ease-out;
 }
 
-#sidebar-wrapper .sidebar-heading {
-  padding: 0.875rem 1.25rem;
-  font-size: 1.2rem;
-}
-
 #sidebar-wrapper .list-group {
-  width: 15rem;
+  width: 16rem;
+  margin-left: 1rem;
 }
 
 #wrapper.toggled #sidebar-wrapper {
-  margin-left: 0;
+  margin-left: -1rem;
 }
 
 @media (min-width: 768px) {
   #sidebar-wrapper {
-    margin-left: 0;
+    margin-left: -1rem;
   }
 
   #wrapper.toggled #sidebar-wrapper {
-    margin-left: -15rem;
+    margin-left: -16rem;
   }
 }
 

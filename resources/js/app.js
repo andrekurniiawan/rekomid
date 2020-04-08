@@ -1,5 +1,6 @@
 import VueRouter from "vue-router";
 import Guest from "./components/Guest.vue";
+import User from "./components/User.vue";
 
 require("./bootstrap");
 require("admin-lte");
@@ -14,6 +15,11 @@ const router = new VueRouter({
             path: "/",
             name: "welcome",
             component: Guest,
+        },
+        {
+            path: "/home",
+            name: "home",
+            component: User,
         },
     ],
 });
