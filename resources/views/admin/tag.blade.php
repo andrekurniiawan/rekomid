@@ -24,6 +24,11 @@
 </form>
 <!-- Read content -->
 <div class="card">
+  @if (count($tags) == 0)
+  <div class="card-body mt-3">
+    <p class="lead">No tags yet.</p>
+  </div>
+  @else
   <div class="card-body accordion" id="accordionEdit">
     <table id="categoryTable" class="table table-bordered table-striped">
       <thead>
@@ -80,6 +85,7 @@
   <div class="mx-auto">
     {{ $tags->links() }}
   </div>
+  @endif
 </div>
 <!-- /.card -->
 @endsection
