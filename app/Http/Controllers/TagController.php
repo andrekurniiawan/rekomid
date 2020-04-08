@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class TagController extends Controller
 {
@@ -14,7 +15,8 @@ class TagController extends Controller
      */
     public function index()
     {
-        //
+        $tags = Tag::paginate(10);
+        return view('admin.tag', compact('tags'));
     }
 
     /**
@@ -24,7 +26,7 @@ class TagController extends Controller
      */
     public function create()
     {
-        //
+        return redirect(route('tag.index'));
     }
 
     /**
@@ -35,7 +37,16 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|unique:tags|max:255',
+        ]);
+
+        $tag = new Tag;
+        $tag->name = $request->name;
+        $tag->slug = Str::slug($request->name, '-');
+        $tag->save();
+
+        return redirect()->back()->with('success', 'New tag created.');
     }
 
     /**
@@ -46,7 +57,7 @@ class TagController extends Controller
      */
     public function show(Tag $tag)
     {
-        //
+        return redirect(route('tag.index'));
     }
 
     /**
@@ -57,7 +68,7 @@ class TagController extends Controller
      */
     public function edit(Tag $tag)
     {
-        //
+        return redirect(route('tag.index'));
     }
 
     /**
@@ -69,7 +80,16 @@ class TagController extends Controller
      */
     public function update(Request $request, Tag $tag)
     {
-        //
+        $tag = Tag::find($tag->id);
+        $this->validate($request, [
+            'name' => 'required|unique:tags|max:255',
+        ]);
+
+        $tag->name = $request->name;
+        $tag->slug = Str::slug($request->name, '-');
+        $tag->save();
+
+        return redirect()->back()->with('success', 'Tag edited.');
     }
 
     /**
@@ -80,6 +100,7 @@ class TagController extends Controller
      */
     public function destroy(Tag $tag)
     {
-        //
+        Tag::where('id', $tag->id)->delete();
+        return redirect()->back()->with('success', 'Tag deleted.');
     }
 }

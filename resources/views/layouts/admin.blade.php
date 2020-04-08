@@ -104,6 +104,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </router-link>
             </li> --}}
             <li class="nav-item">
+              <a href="{{ route('home') }}" class="nav-link">
+                <i class="nav-icon fas fa-home"></i>
+                <p>
+                  Dashboard
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
               <a href="{{ route('post.index') }}" class="nav-link">
                 <i class="nav-icon fas fa-sticky-note"></i>
                 <p>
@@ -116,6 +124,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <i class="nav-icon fas fa-newspaper"></i>
                 <p>
                   Categories
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('tag.index') }}" class="nav-link">
+                <i class="nav-icon fas fa-tags"></i>
+                <p>
+                  Tags
                 </p>
               </a>
             </li>

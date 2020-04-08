@@ -86,9 +86,7 @@ class CategoryController extends Controller
         ]);
 
         $category->name = $request->name;
-        if ($category->id != 1) {
-            $category->slug = Str::slug($request->name, '-');
-        }
+        $category->slug = Str::slug($request->name, '-');
         $category->save();
 
         return redirect()->back()->with('success', 'Category edited.');
