@@ -11,10 +11,10 @@
 </template>
 
 <script>
-import Header from "./guest/Header.vue";
-import Content from "./guest/Content.vue";
-import Sidebar from "./guest/Sidebar.vue";
-import Footer from "./guest/Footer.vue";
+import Header from "./guest-parts/Header.vue";
+import Content from "./guest-parts/Content.vue";
+import Sidebar from "./guest-parts/Sidebar.vue";
+import Footer from "./guest-parts/Footer.vue";
 
 export default {
     name: 'Guest',
