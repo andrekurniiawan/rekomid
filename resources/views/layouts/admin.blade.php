@@ -15,7 +15,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
   <title>{{ config('app.name') }}</title>
 
-  <link rel="stylesheet" href="./css/app.css">
+  <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 
 <body class="hold-transition sidebar-mini sidebar-collapse">
@@ -84,7 +84,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <span class="brand-text font-weight-light">{{ config('app.name') }}</span>
       </router-link> --}}
       <a href="{{ route('home') }}" class="brand-link">
-        <img src="./img/rekomid-logo-512x512.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <img src="{{ asset('img/rekomid-logo-512x512.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light">{{ config('app.name') }}</span>
       </a>
 
@@ -129,7 +129,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <li class="nav-item">
                   <a href="{{ route('post.index') }}" class="nav-link">
                     <i class="nav-icon far fa-circle"></i>
-                    <p>All Posts</p>
+                    <p>Post List</p>
                   </a>
                 </li>
               </ul>
@@ -185,7 +185,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- ./wrapper -->
 
   <!-- REQUIRED SCRIPTS -->
-  <script src="./js/app.js"></script>
+  <script src="{{ asset('js/app.js') }}"></script>
   @yield('script')
 </body>
 
