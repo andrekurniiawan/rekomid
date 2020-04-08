@@ -2,6 +2,10 @@
 
 @section('title', 'Post List')
 
+@section('button')
+<a href="{{ route('post.create') }}" class="btn btn-primary float-right">Create new post</a>
+@endsection
+
 @section('content')
 <!-- Read content -->
 <div class="card">
@@ -26,7 +30,7 @@
             <form action="{{ route('post.destroy', $post->id) }}" method="POST" style="display:inline">
               {{ csrf_field() }}
               {{ method_field('DELETE') }}
-              <input type="submit" class="btn btn-danger btn-sm float-right" onClick="deleteConfirm()" value="Delete">
+              <input type="submit" class="btn btn-danger btn-sm" onClick="deleteConfirm()" value="Delete">
             </form>
           </td>
         </tr>

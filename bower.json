@@ -1,0 +1,19 @@
+{
+  "name": "rekomid",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Andre Kurniawan <andrekurniiawan@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "public/bower_components",
+    "test",
+    "tests",
+    "bower_components"
+  ],
+  "dependencies": {}
+}

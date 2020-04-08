@@ -157,7 +157,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <div class="content-wrapper">
       <div class="content-header">
         <div class="container-fluid">
-          <h1 class="mb-2 text-dark">@yield('title')</h1>
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1 class="m-0 text-dark">@yield('title')</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+              @yield('button')
+            </div><!-- /.col -->
+          </div><!-- /.row -->
         </div><!-- /.container-fluid -->
       </div>
       <!-- /.content-header -->

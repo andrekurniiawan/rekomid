@@ -3,7 +3,7 @@
 @section('title', 'Categories')
 
 @section('content')
-<form role="form" action=" {{ route('category.store')}} " method="POST">
+<form role="form" action="{{ route('category.store')}}" method="POST">
   {{ csrf_field() }}
   @include('layouts.message')
   <!-- Create content -->

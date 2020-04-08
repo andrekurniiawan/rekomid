@@ -3,7 +3,7 @@
 @section('title', 'Tags')
 
 @section('content')
-<form role="form" action=" {{ route('tag.store')}} " method="POST">
+<form role="form" action="{{ route('tag.store')}}" method="POST">
   {{ csrf_field() }}
   @include('layouts.message')
   <!-- Create content -->
