@@ -32,6 +32,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "admin-lte": "^3.0.4",
         "vue-router": "^3.1.6"
     }
 }
