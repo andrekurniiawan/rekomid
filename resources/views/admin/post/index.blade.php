@@ -28,8 +28,8 @@
               Edit
             </a>
             <form action="{{ route('post.destroy', $post->id) }}" method="POST" style="display:inline">
-              {{ csrf_field() }}
-              {{ method_field('DELETE') }}
+              @csrf
+              @method('DELETE')
               <input type="submit" class="btn btn-danger btn-sm" onClick="deleteConfirm()" value="Delete">
             </form>
           </td>

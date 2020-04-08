@@ -4,7 +4,7 @@
 
 @section('content')
 <form role="form" action="{{ route('category.store')}}" method="POST">
-  {{ csrf_field() }}
+  @csrf
   @include('layouts.message')
   <!-- Create content -->
   <div class="card">
@@ -43,8 +43,8 @@
               Edit
             </button>
             <form action="{{ route('category.destroy', $category->id) }}" method="POST" style="display:inline">
-              {{ csrf_field() }}
-              {{ method_field('DELETE') }}
+              @csrf
+              @method('DELETE')
               <input type="submit" class="btn btn-danger btn-sm float-right" onClick="deleteConfirm()" value="Delete">
             </form>
           </td>
@@ -53,8 +53,8 @@
           <td colspan="3" id="editCollapse{{ $category->id }}" class="collapse" aria-labelledby="editButton{{ $category->id }}" data-parent="#accordionEdit">
             <div id="editCollapse{{ $category->id }}" class="collapse" aria-labelledby="editButton{{ $category->id }}" data-parent="#accordionEdit">
               <form role="form" action="{{ route('category.update', $category->id) }}" method="POST">
-                {{ csrf_field() }}
-                {{ method_field('PATCH') }}
+                @csrf
+                @method('PATCH')
                 <!-- form start -->
                 <div class="card-body">
                   <div class="form-group">
