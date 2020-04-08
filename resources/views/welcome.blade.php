@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <title>{{ config('app.name') }}</title>
 </head>
@@ -14,7 +14,7 @@
   </div><!-- /#app -->
 
   <!-- Scripts -->
-  <script src="{{ asset('js/app.js') }}"></script>
+  <script src="./js/app.js"></script>
 </body>
 
 </html>
