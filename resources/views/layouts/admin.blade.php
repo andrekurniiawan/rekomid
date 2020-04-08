@@ -128,10 +128,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
+      <div class="content-header">
+        <div class="container-fluid">
+          <h1 class="mb-2 text-dark">@yield('title')</h1>
+        </div><!-- /.container-fluid -->
+      </div>
+      <!-- /.content-header -->
 
       <!-- Main content -->
       <div class="content">
-        <div class="container-fluid py-4">
+        <div class="container-fluid">
           @yield('content')
         </div><!-- /.container-fluid -->
       </div>

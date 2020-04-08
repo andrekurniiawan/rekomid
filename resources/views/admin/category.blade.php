@@ -1,5 +1,7 @@
 @extends('layouts.admin')
 
+@section('title', 'Categories')
+
 @section('content')
 <form role="form" action=" {{ route('category.store')}} " method="POST">
   {{ csrf_field() }}
