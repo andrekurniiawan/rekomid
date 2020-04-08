@@ -10,20 +10,12 @@
   <div class="card">
     <!-- form start -->
     <div class="card-body">
-      <div class="col-lg-6 float-left">
-        <div class="form-group">
-          <label for="category">Create new category</label>
-          <input type="text" class="form-control" id="name" name="name" placeholder="Category Name">
-        </div>
-      </div>
-      <div class="col-lg-6 float-right">
-        <div class="form-group">
-          <label for="slug">Category slug</label>
-          <input type="text" class="form-control" id="slug" name="slug" placeholder="category-slug">
-        </div>
+      <div class="form-group">
+        <label for="category">Create new category</label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="Category Name">
       </div>
       <div class="float-right">
-        <button type="submit" id="submit" class="btn btn-primary btn-sm mr-3">Submit</button>
+        <button type="submit" id="submit" class="btn btn-primary btn-sm">Submit</button>
       </div>
     </div>
     <!-- /.card-body -->
@@ -42,7 +34,6 @@
         </tr>
       </thead>
       <tbody>
-        <?php $count = 0;?>
         @foreach ($categories as $category)
         <tr>
           <td>{{ $category->name }}</td>
@@ -54,7 +45,7 @@
             <form action="{{ route('category.destroy', $category->id) }}" method="POST" style="display:inline">
               {{ csrf_field() }}
               {{ method_field('DELETE') }}
-              <input type="submit" class="btn btn-danger btn-sm float-right" onClick="deleteConfirm()" value="Delete" @if ($count < 1) disabled @endif>
+              <input type="submit" class="btn btn-danger btn-sm float-right" onClick="deleteConfirm()" value="Delete" @if ($category->id == 1) disabled @endif>
             </form>
           </td>
         </tr>
@@ -66,20 +57,12 @@
                 {{ method_field('PATCH') }}
                 <!-- form start -->
                 <div class="card-body">
-                  <div class="col-lg-6 float-left">
-                    <div class="form-group">
-                      <label for="title"><em>Category name</em></label>
-                      <input type="text" class="form-control" id="categoryName" name="name" placeholder="Insert category name" value="{{ $category->name }}">
-                    </div>
+                  <div class="form-group">
+                    <label for="category">Edit category name</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Category Name" value="{{ $category->name }}">
                   </div>
-                  <div class="col-lg-6 float-right">
-                    <div class="form-group">
-                      <label for="title"><em>Category slug</em></label>
-                      <input type="text" class="form-control" id="categorySlug" name="slug" placeholder="Insert category slug" value="{{ $category->slug }}" @if ($count < 1) disabled @endif>
-                      <div class="float-right mt-3">
-                        <button type="submit" class="btn btn-primary btn-sm">Submit</button>
-                      </div>
-                    </div>
+                  <div class="float-right">
+                    <button type="submit" id="submit" class="btn btn-primary btn-sm">Submit</button>
                   </div>
                 </div>
                 <!-- /.card-body -->
@@ -89,7 +72,6 @@
           <td style="display: none;"></td>
           <td style="display: none;"></td>
         </tr>
-        <?php $count++ ?>
         @endforeach
       </tbody>
     </table>
