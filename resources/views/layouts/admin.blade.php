@@ -111,28 +111,39 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </p>
               </a>
             </li>
-            <li class="nav-item">
-              <a href="{{ route('post.index') }}" class="nav-link">
-                <i class="nav-icon fas fa-sticky-note"></i>
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-file-alt"></i>
                 <p>
                   Posts
+                  <i class="right fas fa-angle-left"></i>
                 </p>
               </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{ route('post.create') }}" class="nav-link">
+                    <i class="nav-icon far fa-circle"></i>
+                    <p>Create New Post</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ route('post.index') }}" class="nav-link">
+                    <i class="nav-icon far fa-circle"></i>
+                    <p>All Posts</p>
+                  </a>
+                </li>
+              </ul>
             </li>
             <li class="nav-item">
               <a href="{{ route('category.index') }}" class="nav-link">
                 <i class="nav-icon fas fa-newspaper"></i>
-                <p>
-                  Categories
-                </p>
+                <p>Categories</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="{{ route('tag.index') }}" class="nav-link">
                 <i class="nav-icon fas fa-tags"></i>
-                <p>
-                  Tags
-                </p>
+                <p>Tags</p>
               </a>
             </li>
           </ul>
