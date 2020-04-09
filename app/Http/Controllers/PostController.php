@@ -19,7 +19,7 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::paginate(10);
-        return view('user.post.index', compact('posts'));
+        return view('dashboard.post.index', compact('posts'));
     }
 
     /**
@@ -31,7 +31,7 @@ class PostController extends Controller
     {
         $categories = Category::all();
         $tags = Tag::all();
-        return view('user.post.create', compact('categories', 'tags'));
+        return view('dashboard.post.create', compact('categories', 'tags'));
     }
 
     /**
@@ -93,7 +93,7 @@ class PostController extends Controller
         $post = Post::with('categories', 'tags')->where('id', $id)->first();
         $categories = Category::all();
         $tags = Tag::all();
-        return view('user.post.create', compact('post', 'categories', 'tags'));
+        return view('dashboard.post.create', compact('post', 'categories', 'tags'));
     }
 
     /**
@@ -144,7 +144,7 @@ class PostController extends Controller
     public function trash()
     {
         $posts = Post::onlyTrashed()->paginate(10);
-        return view('user.post.index', compact('posts'));
+        return view('dashboard.post.index', compact('posts'));
     }
 
     public function restore($id)

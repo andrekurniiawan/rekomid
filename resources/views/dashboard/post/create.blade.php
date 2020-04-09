@@ -1,4 +1,4 @@
-@extends('layouts.user')
+@extends('layouts.dashboard')
 
 @section('style')
 <link rel="stylesheet" href="{{ asset('bower_components/select2/dist/css/select2.min.css') }}">

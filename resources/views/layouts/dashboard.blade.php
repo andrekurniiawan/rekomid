@@ -105,13 +105,28 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </p>
               </router-link>
             </li> --}}
-            <li class="nav-item">
-              <a href="{{ route('home') }}" class="nav-link">
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-home"></i>
                 <p>
-                  Dashboard
+                  Home
+                  <i class="right fas fa-angle-left"></i>
                 </p>
               </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{ route('home') }}" class="nav-link">
+                    <i class="nav-icon far fa-circle"></i>
+                    <p>Dashboard</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ route('welcome') }}" class="nav-link">
+                    <i class="nav-icon far fa-circle"></i>
+                    <p>Visit Website</p>
+                  </a>
+                </li>
+              </ul>
             </li>
             <li class="nav-item has-treeview">
               <a href="#" class="nav-link">
@@ -152,6 +167,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <a href="{{ route('tag.index') }}" class="nav-link">
                 <i class="nav-icon fas fa-tags"></i>
                 <p>Tags</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('user.index') }}" class="nav-link">
+                <i class="nav-icon fas fa-users"></i>
+                <p>Users</p>
               </a>
             </li>
           </ul>

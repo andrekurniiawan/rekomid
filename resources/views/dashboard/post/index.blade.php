@@ -1,4 +1,4 @@
-@extends('layouts.user')
+@extends('layouts.dashboard')
 
 @section('title')
 @if (url()->current() == route('post.trash'))

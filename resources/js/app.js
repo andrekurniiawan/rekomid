@@ -1,8 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Guest from "./components/Guest.vue";
-import Home from "./components/user/Home.vue";
-import Post from "./components/user/Post.vue";
 
 require("./bootstrap");
 require("admin-lte");
@@ -16,16 +14,6 @@ const router = new VueRouter({
             path: "/",
             name: "welcome",
             component: Guest,
-        },
-        {
-            path: "/home",
-            name: "home",
-            component: Home,
-        },
-        {
-            path: "/post",
-            name: "post",
-            component: Post,
         },
     ],
 });

@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 Auth::routes();
 
@@ -27,4 +27,5 @@ Route::group(['middleware' => ['auth']], function () {
     Route::delete('trash/post/{post}/kill', 'PostController@kill')->name('post.kill');
     Route::resource('category', 'CategoryController');
     Route::resource('tag', 'TagController');
+    Route::resource('user', 'UserController');
 });
