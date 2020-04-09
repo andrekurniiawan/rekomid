@@ -15,5 +15,7 @@
     "tests",
     "bower_components"
   ],
-  "dependencies": {}
+  "dependencies": {
+    "select2": "~4.0"
+  }
 }
