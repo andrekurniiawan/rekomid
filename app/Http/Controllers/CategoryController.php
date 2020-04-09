@@ -26,7 +26,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return redirect(route('category.index'));
+        return redirect()->route('category.index');
     }
 
     /**
@@ -57,7 +57,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        return redirect(route('category.index'));
+        return redirect()->route('category.index');
     }
 
     /**
@@ -68,7 +68,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        return redirect(route('category.index'));
+        return redirect()->route('category.index');
     }
 
     /**

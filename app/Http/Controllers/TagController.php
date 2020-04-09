@@ -26,7 +26,7 @@ class TagController extends Controller
      */
     public function create()
     {
-        return redirect(route('tag.index'));
+        return redirect()->route('tag.index');
     }
 
     /**
@@ -57,7 +57,7 @@ class TagController extends Controller
      */
     public function show(Tag $tag)
     {
-        return redirect(route('tag.index'));
+        return redirect()->route('tag.index');
     }
 
     /**
@@ -68,7 +68,7 @@ class TagController extends Controller
      */
     public function edit(Tag $tag)
     {
-        return redirect(route('tag.index'));
+        return redirect()->route('tag.index');
     }
 
     /**
