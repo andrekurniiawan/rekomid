@@ -15,6 +15,8 @@
         <tr>
           <th>Title</th>
           <th>Slug</th>
+          <th width="200">Categories</th>
+          <th width="200">Tags</th>
           <th width="150">Thumbnail</th>
           <th width="124"></th>
         </tr>
@@ -24,6 +26,16 @@
         <tr>
           <td>{{ $post->title }}</td>
           <td>{{ $post->slug }}</td>
+          <td>
+            @foreach ($post->categories as $category)
+            <span class="badge badge-secondary">{{ $category->name }}</span>
+            @endforeach
+          </td>
+          <td>
+            @foreach ($post->tags as $tag)
+            <span class="badge badge-secondary">{{ $tag->name }}</span>
+            @endforeach
+          </td>
           <td><img src="{{ asset('storage/img/' . $post->thumbnail) }}" alt="" class="img-thumbnail img-fluid"></td>
           <td>
             <a href="{{ route('post.edit', $post->id) }}" class="btn btn-success btn-sm">
