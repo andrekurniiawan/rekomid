@@ -18,7 +18,7 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::paginate(10);
-        return view('admin.post.index', compact('posts'));
+        return view('user.post.index', compact('posts'));
     }
 
     /**
@@ -30,7 +30,7 @@ class PostController extends Controller
     {
         $categories = Category::all();
         $tags = Tag::all();
-        return view('admin.post.create', compact('categories', 'tags'));
+        return view('user.post.create', compact('categories', 'tags'));
     }
 
     /**
@@ -91,7 +91,7 @@ class PostController extends Controller
         $post = Post::with('categories', 'tags')->where('id', $id)->first();
         $categories = Category::all();
         $tags = Tag::all();
-        return view('admin.post.create', compact('post', 'categories', 'tags'));
+        return view('user.post.create', compact('post', 'categories', 'tags'));
     }
 
     /**
