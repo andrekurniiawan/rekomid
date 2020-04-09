@@ -1,84 +1,46 @@
 @extends('layouts.dashboard')
 
 @section('title')
-@if (url()->current() == route('post.trash'))
-Trashed Posts
-@else
-Post List
-@endif
+User List
 @endsection
 
 @section('button')
-@if (url()->current() == route('post.trash'))
-<a href="{{ route('post.index') }}" class="btn btn-primary float-right">Post list</a>
-@else
-<a href="{{ route('post.create') }}" class="btn btn-primary float-right">Create new post</a>
-@endif
+<a href="{{ route('register') }}" class="btn btn-primary float-right">Register new user</a>
 @endsection
 
 @section('content')
 <!-- Read content -->
 <div class="card">
-  @if (count($posts) == 0)
+  @if (count($users) == 0)
   <div class="card-body mt-3">
-    <p class="lead">No posts yet.</p>
+    <p class="lead">No users yet.</p>
   </div>
   @else
   <div class="card-body">
     <table id="categoryTable" class="table table-bordered table-striped">
       <thead>
         <tr>
-          <th>Title</th>
-          <th>Slug</th>
-          <th>Author</th>
-          <th width="200">Categories</th>
-          <th width="200">Tags</th>
-          <th width="150">Thumbnail</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Role</th>
           <th width="150"></th>
         </tr>
       </thead>
       <tbody>
-        @foreach ($posts as $post)
+        @foreach ($users as $user)
         <tr>
-          <td>{{ $post->title }}</td>
-          <td>{{ $post->slug }}</td>
-          <td>{{ $post->user->name }}</td>
+          <td>{{ $user->name }}</td>
+          <td>{{ $user->email }}</td>
+          <td></td>
           <td>
-            @foreach ($post->categories as $category)
-            <span class="badge badge-secondary">{{ $category->name }}</span>
-            @endforeach
-          </td>
-          <td>
-            @foreach ($post->tags as $tag)
-            <span class="badge badge-secondary">{{ $tag->name }}</span>
-            @endforeach
-          </td>
-          <td>
-            @if ($post->thumbnail != null)
-            <img src="{{ asset('storage/img/' . $post->thumbnail) }}" alt="" class="img-thumbnail img-fluid">
-            @endif
-          </td>
-          <td>
-            @if (url()->current() == route('post.trash'))
-            <form action="{{ route('post.restore', $post->id) }}" method="POST" style="display:inline">
-              @csrf
-              <input type="submit" class="btn btn-success btn-sm" value="Restore">
-            </form>
-            <form action="{{ route('post.kill', $post->id) }}" method="POST" style="display:inline">
-              @csrf
-              @method('DELETE')
-              <input type="submit" class="btn btn-danger btn-sm" onClick="deleteConfirm()" value="Delete">
-            </form>
-            @else
-            <a href="{{ route('post.edit', $post->id) }}" class="btn btn-success btn-sm">
+            <a href="{{ route('user.edit', $user->id) }}" class="btn btn-success btn-sm">
               Edit
             </a>
-            <form action="{{ route('post.destroy', $post->id) }}" method="POST" style="display:inline">
+            <form action="{{ route('user.destroy', $user->id) }}" method="POST" style="display:inline">
               @csrf
               @method('DELETE')
               <input type="submit" class="btn btn-danger btn-sm" onClick="deleteConfirm()" value="Remove">
             </form>
-            @endif
           </td>
         </tr>
         @endforeach
@@ -87,7 +49,7 @@ Post List
   </div>
   <!-- /.card-body -->
   <div class="mx-auto">
-    {{ $posts->links() }}
+    {{ $users->links() }}
   </div>
   @endif
 </div>
@@ -98,7 +60,7 @@ Post List
 <!-- page script -->
 <script>
 function deleteConfirm() {
-  if (confirm('Are you sure you want to delete this post?')) {
+  if (confirm('Are you sure you want to delete this user?')) {
     //
   } else {
     event.preventDefault();
