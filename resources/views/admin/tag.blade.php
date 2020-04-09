@@ -5,7 +5,6 @@
 @section('content')
 <form role="form" action="{{ route('tag.store')}}" method="POST">
   @csrf
-  @include('layouts.message')
   <!-- Create content -->
   <div class="card">
     <!-- form start -->

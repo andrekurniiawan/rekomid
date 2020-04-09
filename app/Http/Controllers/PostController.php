@@ -58,7 +58,7 @@ class PostController extends Controller
 
             $thumbnail = $post->slug . '.' . $request->thumbnail->getClientOriginalExtension();
             $request->thumbnail->storeAs('public/img/', $thumbnail);
-            $post->thumbnail = 'public/img/'.$thumbnail;
+            $post->thumbnail = $thumbnail;
         }
 
         $post->save();
@@ -83,9 +83,12 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post)
+    public function edit($id)
     {
-        //
+        $post = Post::with('categories', 'tags')->where('id', $id)->first();
+        $categories = Category::all();
+        $tags = Tag::all();
+        return view('admin.post.create', compact('post', 'categories', 'tags'));
     }
 
     /**
@@ -95,9 +98,31 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required',
+        ]);
+
+        $post = Post::find($id);
+        
+        $post->title = $request->title;
+        $post->slug = Str::slug($request->title, '-');
+        $post->body = $request->body;
+
+        if ($request->hasFile('thumbnail')) {
+            // $thumbnailName = pathinfo($request->thumbnail->getClientOriginalName(), PATHINFO_FILENAME);
+            // $thumbnailExtension = $request->thumbnail->getClientOriginalExtension();
+            // $thumbnail = time() . '_' . Str::slug($thumbnailName, '-') . '.' . $thumbnailExtension;
+
+            $thumbnail = $post->slug . '.' . $request->thumbnail->getClientOriginalExtension();
+            $request->thumbnail->storeAs('public/img/', $thumbnail);
+            $post->thumbnail = $thumbnail;
+        }
+
+        $post->save();
+
+        return redirect(route('post.index'))->with('success', 'Post edited.');
     }
 
     /**
@@ -106,10 +131,9 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy($id)
     {
-        return $post->all();
-        Post::where('id', $post->id)->delete();
+        Post::where('id', $id)->delete();
         return redirect(route('post.index'))->with('success', 'Post deleted.');
     }
 }

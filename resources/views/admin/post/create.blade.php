@@ -1,14 +1,22 @@
 @extends('layouts.admin')
 
-@section('title', 'Create New Post')
+@section('title')
+@isset($post)
+Edit Post
+@else
+Create New Post
+@endisset
+@endsection
 
 @section('content')
-<form action="{{ route('post.store') }}" enctype="multipart/form-data" method="POST">
+<form action="@isset($post){{ route('post.update', $post->id) }}@else{{ route('post.store') }}@endisset" enctype="multipart/form-data" method="POST">
   @csrf
-  @include('layouts.message')
+  @isset($post)
+  @method('PATCH')
+  @endisset
   <div class="form-group">
     <label for="title">Title</label>
-    <input type="text" class="form-control" name="title" id="title">
+    <input type="text" class="form-control" name="title" id="title" value="@isset($post){{ $post->title }}@endisset">
   </div>
   <div class="form-group">
     <label for="category_id">Category</label>
@@ -21,11 +29,11 @@
   </div>
   <div class="form-group">
     <label for="body">Post body</label>
-    <textarea class="form-control" name="body" id="body"></textarea>
+    <textarea class="form-control" name="body" id="body">@isset($post){{ $post->body }}@endisset</textarea>
   </div>
   <div class="form-group">
     <label for="thumbnail">Featured Image</label>
-    <input type="file" class="form-control-file" name="thumbnail" id="thumbnail">
+    <input type="file" class="form-control-file" name="thumbnail" id="thumbnail" value="@isset($post){{ $post->thumbnail }}@endisset">
   </div>
   <div class="form-group">
     <button class="btn btn-primary btn-block">Submit</button>

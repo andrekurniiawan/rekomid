@@ -13,8 +13,9 @@
     <table id="categoryTable" class="table table-bordered table-striped">
       <thead>
         <tr>
-          <th>Post title</th>
-          <th>Post slug</th>
+          <th>Title</th>
+          <th>Slug</th>
+          <th>Thumbnail</th>
           <th width="130"></th>
         </tr>
       </thead>
@@ -23,6 +24,7 @@
         <tr>
           <td>{{ $post->title }}</td>
           <td>{{ $post->slug }}</td>
+          <td><img src="{{ asset('storage/img/' . $post->thumbnail) }}" alt=""></td>
           <td>
             <a href="{{ route('post.edit', $post->id) }}" class="btn btn-success btn-sm">
               Edit
