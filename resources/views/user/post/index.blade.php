@@ -30,6 +30,7 @@ Post List
         <tr>
           <th>Title</th>
           <th>Slug</th>
+          <th>Author</th>
           <th width="200">Categories</th>
           <th width="200">Tags</th>
           <th width="150">Thumbnail</th>
@@ -41,6 +42,7 @@ Post List
         <tr>
           <td>{{ $post->title }}</td>
           <td>{{ $post->slug }}</td>
+          <td>{{ $post->user->name }}</td>
           <td>
             @foreach ($post->categories as $category)
             <span class="badge badge-secondary">{{ $category->name }}</span>
@@ -51,7 +53,11 @@ Post List
             <span class="badge badge-secondary">{{ $tag->name }}</span>
             @endforeach
           </td>
-          <td><img src="{{ asset('storage/img/' . $post->thumbnail) }}" alt="" class="img-thumbnail img-fluid"></td>
+          <td>
+            @if ($post->thumbnail != null)
+            <img src="{{ asset('storage/img/' . $post->thumbnail) }}" alt="" class="img-thumbnail img-fluid">
+            @endif
+          </td>
           <td>
             @if (url()->current() == route('post.trash'))
             <form action="{{ route('post.restore', $post->id) }}" method="POST" style="display:inline">

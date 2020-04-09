@@ -19,6 +19,11 @@ class Post extends Model
         return $this->belongsToMany('App\Category', 'category_post')->withTimestamps();
     }
 
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+
     public function getRouteKeyName()
     {
         return 'post';
