@@ -46,7 +46,7 @@ class PostController extends Controller
         ]);
 
         $post = new Post;
-        
+
         $post->title = $request->title;
         $post->slug = Str::slug($request->title, '-');
         $post->body = $request->body;
@@ -54,7 +54,7 @@ class PostController extends Controller
         if ($request->hasFile('thumbnail')) {
             // $thumbnailName = pathinfo($request->thumbnail->getClientOriginalName(), PATHINFO_FILENAME);
             // $thumbnailExtension = $request->thumbnail->getClientOriginalExtension();
-            // $thumbnail = time() . '_' . Str::slug($thumbnailName, '-') . '.' . $thumbnailExtension;
+            // $thumbnail = Str::slug($thumbnailName, '-') . '_' . time() . '.' . $thumbnailExtension;
 
             $thumbnail = $post->slug . '.' . $request->thumbnail->getClientOriginalExtension();
             $request->thumbnail->storeAs('public/img/', $thumbnail);
@@ -62,7 +62,7 @@ class PostController extends Controller
         }
 
         $post->save();
-        
+
         $post->categories()->sync($request->categories);
         $post->tags()->sync($request->tags);
 
@@ -108,17 +108,13 @@ class PostController extends Controller
         ]);
 
         $post = Post::find($id);
-        
+
         $post->title = $request->title;
         $post->slug = Str::slug($request->title, '-');
         $post->body = $request->body;
 
         if ($request->hasFile('thumbnail')) {
-            // $thumbnailName = pathinfo($request->thumbnail->getClientOriginalName(), PATHINFO_FILENAME);
-            // $thumbnailExtension = $request->thumbnail->getClientOriginalExtension();
-            // $thumbnail = time() . '_' . Str::slug($thumbnailName, '-') . '.' . $thumbnailExtension;
-
-            $thumbnail = $post->slug . '.' . $request->thumbnail->getClientOriginalExtension();
+            $thumbnail = $post->slug . '_' . time() . '.' . $request->thumbnail->getClientOriginalExtension();
             $request->thumbnail->storeAs('public/img/', $thumbnail);
             $post->thumbnail = $thumbnail;
         }
@@ -140,6 +136,26 @@ class PostController extends Controller
     public function destroy($id)
     {
         Post::where('id', $id)->delete();
-        return redirect()->route('post.index')->with('success', 'Post deleted.');
+        return redirect()->back()->with('success', 'Post moved to trash.');
+    }
+
+    public function trash()
+    {
+        $posts = Post::onlyTrashed()->paginate(10);
+        return view('user.post.index', compact('posts'));
+    }
+
+    public function restore($id)
+    {
+        $post = Post::withTrashed()->where('id', $id)->first();
+        $post->restore();
+        return redirect()->back()->with('success', 'Post restored.');
+    }
+
+    public function kill($id)
+    {
+        $post = Post::withTrashed()->where('id', $id)->first();
+        $post->forceDelete();
+        return redirect()->back()->with('success', 'Post permanently deleted.');
     }
 }

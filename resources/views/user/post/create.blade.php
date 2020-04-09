@@ -5,27 +5,27 @@
 @endsection
 
 @section('title')
-@isset($post)
+@if (url()->current() == route('post.edit', $post->id))
 Edit Post
 @else
 Create New Post
-@endisset
+@endif
 @endsection
 
 @section('content')
-<form action="@isset($post){{ route('post.update', $post->id) }}@else{{ route('post.store') }}@endisset" enctype="multipart/form-data" method="POST">
+<form action="@if (url()->current() == route('post.edit', $post->id)){{ route('post.update', $post->id) }}@else{{ route('post.store') }}@endif" enctype="multipart/form-data" method="POST">
   @csrf
-  @isset($post)
+  @if (url()->current() == route('post.edit', $post->id))
   @method('PATCH')
-  @endisset
+  @endif
   <div class="form-group">
     <label for="title">Title</label>
-    <input type="text" class="form-control" name="title" id="title" value="@isset($post){{ $post->title }}@endisset">
+    <input type="text" class="form-control" name="title" id="title" value="@if (url()->current() == route('post.edit', $post->id)){{ $post->title }}@endif">
   </div>
   <div class="form-group">
     <label for="categories">Categories</label>
     <select class="select2 form-control" multiple="multiple" data-placeholder="Choose categories" style="width: 100%;" id="categories" name="categories[]">
-      @isset($post)
+      @if (url()->current() == route('post.edit', $post->id))
       @foreach ($categories as $category)
       <option value="{{ $category->id }}" @foreach ($post->categories as $postCategory)
         @if ($postCategory->id == $category->id)
@@ -37,13 +37,13 @@ Create New Post
       @foreach ($categories as $category)
       <option value="{{ $category->id }}">{{ $category->name }}</option>
       @endforeach
-      @endisset
+      @endif
     </select>
   </div>
   <div class="form-group">
     <label for="tags">Tags</label>
     <select class="select2 form-control" multiple="multiple" data-placeholder="Choose tags" style="width: 100%;" id="tags" name="tags[]">
-      @isset($post)
+      @if (url()->current() == route('post.edit', $post->id))
       @foreach ($tags as $tag)
       <option value="{{ $tag->id }}" @foreach ($post->tags as $postTag)
         @if ($postTag->id == $tag->id)
@@ -55,16 +55,16 @@ Create New Post
       @foreach ($tags as $tag)
       <option value="{{ $tag->id }}">{{ $tag->name }}</option>
       @endforeach
-      @endisset
+      @endif
     </select>
   </div>
   <div class="form-group">
     <label for="body">Post body</label>
-    <textarea class="form-control" name="body" id="body">@isset($post){{ $post->body }}@endisset</textarea>
+    <textarea class="form-control" name="body" id="body">@if (url()->current() == route('post.edit', $post->id)){{ $post->body }}@endif</textarea>
   </div>
   <div class="form-group">
     <label for="thumbnail">Featured Image</label>
-    <input type="file" class="form-control-file" name="thumbnail" id="thumbnail" value="@isset($post){{ $post->thumbnail }}@endisset">
+    <input type="file" class="form-control-file" name="thumbnail" id="thumbnail" value="@if (url()->current() == route('post.edit', $post->id)){{ $post->thumbnail }}@endif">
   </div>
   <div class="form-group">
     <button class="btn btn-primary btn-block">Submit</button>
