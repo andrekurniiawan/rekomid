@@ -24,19 +24,38 @@ Create New Post
   </div>
   <div class="form-group">
     <label for="categories">Categories</label>
-    {{-- <select class="form-control custom-select" name="category_id" id="category_id"> --}}
     <select class="select2 form-control" multiple="multiple" data-placeholder="Choose categories" style="width: 100%;" id="categories" name="categories[]">
+      @isset($post)
+      @foreach ($categories as $category)
+      <option value="{{ $category->id }}" @foreach ($post->categories as $postCategory)
+        @if ($postCategory->id == $category->id)
+        selected
+        @endif
+        @endforeach>{{ $category->name }}</option>
+      @endforeach
+      @else
       @foreach ($categories as $category)
       <option value="{{ $category->id }}">{{ $category->name }}</option>
       @endforeach
+      @endisset
     </select>
   </div>
   <div class="form-group">
     <label for="tags">Tags</label>
     <select class="select2 form-control" multiple="multiple" data-placeholder="Choose tags" style="width: 100%;" id="tags" name="tags[]">
+      @isset($post)
+      @foreach ($tags as $tag)
+      <option value="{{ $tag->id }}" @foreach ($post->tags as $postTag)
+        @if ($postTag->id == $tag->id)
+        selected
+        @endif
+        @endforeach>{{ $tag->name }}</option>
+      @endforeach
+      @else
       @foreach ($tags as $tag)
       <option value="{{ $tag->id }}">{{ $tag->name }}</option>
       @endforeach
+      @endisset
     </select>
   </div>
   <div class="form-group">

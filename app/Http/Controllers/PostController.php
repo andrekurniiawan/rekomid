@@ -62,6 +62,9 @@ class PostController extends Controller
         }
 
         $post->save();
+        
+        $post->categories()->sync($request->categories);
+        $post->tags()->sync($request->tags);
 
         return redirect(route('post.index'))->with('success', 'New post created.');
     }
@@ -121,6 +124,9 @@ class PostController extends Controller
         }
 
         $post->save();
+
+        $post->categories()->sync($request->categories);
+        $post->tags()->sync($request->tags);
 
         return redirect(route('post.index'))->with('success', 'Post edited.');
     }
