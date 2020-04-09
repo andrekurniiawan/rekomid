@@ -15,8 +15,8 @@
         <tr>
           <th>Title</th>
           <th>Slug</th>
-          <th>Thumbnail</th>
-          <th width="130"></th>
+          <th width="150">Thumbnail</th>
+          <th width="124"></th>
         </tr>
       </thead>
       <tbody>
@@ -24,7 +24,7 @@
         <tr>
           <td>{{ $post->title }}</td>
           <td>{{ $post->slug }}</td>
-          <td><img src="{{ asset('storage/img/' . $post->thumbnail) }}" alt=""></td>
+          <td><img src="{{ asset('storage/img/' . $post->thumbnail) }}" alt="" class="img-thumbnail img-fluid"></td>
           <td>
             <a href="{{ route('post.edit', $post->id) }}" class="btn btn-success btn-sm">
               Edit
