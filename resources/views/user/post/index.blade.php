@@ -19,6 +19,11 @@ Post List
 @section('content')
 <!-- Read content -->
 <div class="card">
+  @if (count($posts) == 0)
+  <div class="card-body mt-3">
+    <p class="lead">No posts yet.</p>
+  </div>
+  @else
   <div class="card-body">
     <table id="categoryTable" class="table table-bordered table-striped">
       <thead>
@@ -78,6 +83,7 @@ Post List
   <div class="mx-auto">
     {{ $posts->links() }}
   </div>
+  @endif
 </div>
 <!-- /.card -->
 @endsection

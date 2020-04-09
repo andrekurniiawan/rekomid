@@ -56,7 +56,7 @@ class PostController extends Controller
             // $thumbnailExtension = $request->thumbnail->getClientOriginalExtension();
             // $thumbnail = Str::slug($thumbnailName, '-') . '_' . time() . '.' . $thumbnailExtension;
 
-            $thumbnail = $post->slug . '.' . $request->thumbnail->getClientOriginalExtension();
+            $thumbnail = $post->slug . '_' . time() . '.' . $request->thumbnail->getClientOriginalExtension();
             $request->thumbnail->storeAs('public/img/', $thumbnail);
             $post->thumbnail = $thumbnail;
         }
