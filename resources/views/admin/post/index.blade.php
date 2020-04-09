@@ -24,7 +24,7 @@
           <td>{{ $post->title }}</td>
           <td>{{ $post->slug }}</td>
           <td>
-            <a href="{{ route('post.edit', $post) }}" class="btn btn-success btn-sm">
+            <a href="{{ route('post.edit', $post->id) }}" class="btn btn-success btn-sm">
               Edit
             </a>
             <form action="{{ route('post.destroy', $post->id) }}" method="POST" style="display:inline">

@@ -6,6 +6,7 @@ use App\Category;
 use App\Post;
 use App\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
@@ -40,7 +41,29 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required',
+        ]);
+
+        $post = new Post;
+        
+        $post->title = $request->title;
+        $post->slug = Str::slug($request->title, '-');
+        $post->body = $request->body;
+
+        if ($request->hasFile('thumbnail')) {
+            // $thumbnailName = pathinfo($request->thumbnail->getClientOriginalName(), PATHINFO_FILENAME);
+            // $thumbnailExtension = $request->thumbnail->getClientOriginalExtension();
+            // $thumbnail = time() . '_' . Str::slug($thumbnailName, '-') . '.' . $thumbnailExtension;
+
+            $thumbnail = $post->slug . '.' . $request->thumbnail->getClientOriginalExtension();
+            $request->thumbnail->storeAs('public/img/', $thumbnail);
+            $post->thumbnail = 'public/img/'.$thumbnail;
+        }
+
+        $post->save();
+
+        return redirect(route('post.index'))->with('success', 'New post created.');
     }
 
     /**
@@ -85,6 +108,8 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        return $post->all();
+        Post::where('id', $post->id)->delete();
+        return redirect(route('post.index'))->with('success', 'Post deleted.');
     }
 }
