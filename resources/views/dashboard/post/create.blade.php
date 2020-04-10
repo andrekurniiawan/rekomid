@@ -60,7 +60,9 @@ Create New Post
   </div>
   <div class="form-group">
     <label for="body">Post body</label>
-    <textarea class="form-control" name="body" id="body">@isset($post){{ $post->body }}@endisset</textarea>
+    <div name="body" id="body">
+    </div>
+    <input type="hidden" id="bodyvalue" name="body" value="">
   </div>
   <div class="form-group">
     <label for="thumbnail">Featured Image</label>
@@ -80,6 +82,26 @@ $(function() {
   //Initialize Select2 Elements
   $('.select2').select2()
 })
+
+</script>
+
+<!-- CK Editor -->
+<script>
+import BalloonEditor from "@ckeditor/ckeditor5-build-balloon-block";
+BalloonEditor
+  .create(document.querySelector('#body'), {
+    // toolbar: [ 'heading', '|', 'bold', 'italic', 'link' ]
+    placeholder: 'Insert post body here...',
+  })
+  .then(editor => {
+    window.body = editor;
+  })
+  .catch(err => {
+    console.error(err.stack);
+  });
+document.getElementById('submit').onclick = () => {
+  document.getElementById('bodyvalue').value = window.body.getData();
+};
 
 </script>
 @endsection

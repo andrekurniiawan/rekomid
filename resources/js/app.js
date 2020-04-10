@@ -4,6 +4,7 @@ import Guest from "./components/Guest.vue";
 
 require("./bootstrap");
 require("admin-lte");
+require("@ckeditor/ckeditor5-build-balloon-block");
 
 Vue.use(VueRouter);
 

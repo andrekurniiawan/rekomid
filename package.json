@@ -10,6 +10,10 @@
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
     },
     "devDependencies": {
+        "@fortawesome/fontawesome-free": "^5.13.0",
+        "@typescript-eslint/eslint-plugin": "^2.27.0",
+        "@typescript-eslint/parser": "^2.27.0",
+        "admin-lte": "^3.0.4",
         "axios": "^0.19",
         "bootstrap": "^4.4.1",
         "cross-env": "^7.0",
@@ -27,14 +31,14 @@
         "resolve-url-loader": "^3.1.1",
         "sass": "^1.26.3",
         "sass-loader": "^8.0.2",
+        "ts-loader": "^6.2.2",
+        "typescript": "^3.8.3",
+        "vue": "^2.6.11",
+        "vue-router": "^3.1.6",
         "vue-template-compiler": "^2.6.11"
     },
     "dependencies": {
         "@ckeditor/ckeditor5-build-balloon-block": "^18.0.0",
-        "@ckeditor/ckeditor5-vue": "^1.0.1",
-        "@fortawesome/fontawesome-free": "^5.13.0",
-        "admin-lte": "^3.0.4",
-        "vue": "^2.6.11",
-        "vue-router": "^3.1.6"
+        "@ckeditor/ckeditor5-vue": "^1.0.1"
     }
 }
