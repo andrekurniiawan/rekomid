@@ -227,6 +227,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
     </div>
     <!-- /.content-wrapper -->
 
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark elevation-2">
+      <!-- Control sidebar content goes here -->
+      <div class="p-3">
+        <a data-widget="control-sidebar" data-slide="true" href="#" role="button" class=" btn btn-secondary btn-sm float-right">X</a>
+        <h5>Title</h5>
+        <p>Sidebar content</p>
+      </div>
+    </aside>
+    <!-- /.control-sidebar -->
+
     <!-- Main Footer -->
     <footer class="main-footer">
       <!-- To the right -->

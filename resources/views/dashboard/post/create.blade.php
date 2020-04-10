@@ -12,6 +12,10 @@ Create New Post
 @endisset
 @endsection
 
+@section('button')
+<a data-widget="control-sidebar" data-slide="true" href="#" role="button" class="btn btn-primary float-right">Next</a>
+@endsection
+
 @section('content')
 <form action="@isset($post){{ route('post.update', $post->id) }}@else{{ route('post.store') }}@endisset" enctype="multipart/form-data" method="POST">
   @csrf
