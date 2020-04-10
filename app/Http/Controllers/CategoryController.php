@@ -38,7 +38,7 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|unique:categories|max:32',
+            'name' => 'required|max:32',
         ]);
 
         $category = new Category;
@@ -82,7 +82,7 @@ class CategoryController extends Controller
     {
         $category = Category::find($category->id);
         $this->validate($request, [
-            'name' => 'required|unique:categories|max:32',
+            'name' => 'required|max:32',
         ]);
 
         $category->name = $request->name;
