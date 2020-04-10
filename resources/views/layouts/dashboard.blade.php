@@ -190,7 +190,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
       <div class="content-header">
-        <div class="container-fluid">
+        <div class="
+        @if (url()->current() == route('home'))
+        container-fluid
+        @else
+        container
+        @endif
+        ">
           <div class="row mb-2">
             <div class="col-sm-6">
               <h1 class="m-0 text-dark">@yield('title')</h1>
@@ -205,8 +211,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
       <!-- Main content -->
       <div class="content">
-        <div class="container-fluid">
+        <div class="
+        @if (url()->current() == route('home'))
+        container-fluid
+        @else
+        container
+        @endif
+        ">
           @include('layouts.message')
+
           @yield('content')
         </div><!-- /.container-fluid -->
       </div>

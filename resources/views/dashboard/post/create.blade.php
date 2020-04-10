@@ -19,10 +19,6 @@ Create New Post
   @method('PATCH')
   @endisset
   <div class="form-group">
-    <label for="title">Title</label>
-    <input type="text" class="form-control" name="title" id="title" value="@isset($post){{ $post->title }}@endisset">
-  </div>
-  <div class="form-group">
     <label for="categories">Categories</label>
     <select class="select2 form-control" multiple="multiple" data-placeholder="Choose categories" style="width: 100%;" id="categories" name="categories[]">
       @isset($post)
@@ -59,17 +55,24 @@ Create New Post
     </select>
   </div>
   <div class="form-group">
-    <label for="body">Post body</label>
-    <div name="body" id="body">
+    <label for="title">Title</label>
+    <input type="text" class="form-control" name="title" id="title" style="font-size:30px;" placeholder="Insert post title" value="@isset($post){{ $post->title }}@endisset">
+  </div>
+  <div class="form-group">
+    <label for="body">Post Body</label>
+    <div class="bg-white p-4 rounded border">
+      <div class="ml-4" name="body" id="body">
+        @isset($post){!! $post->body !!}@endisset
+      </div>
     </div>
-    <input type="hidden" id="bodyvalue" name="body" value="">
+    <input type="hidden" id="bodyValue" name="body" value="">
   </div>
   <div class="form-group">
     <label for="thumbnail">Featured Image</label>
     <input type="file" class="form-control-file" name="thumbnail" id="thumbnail" value="@isset($post){{ $post->thumbnail }}@endisset">
   </div>
   <div class="form-group">
-    <button class="btn btn-primary btn-block">Submit</button>
+    <button class="btn btn-primary btn-block" name="submit" id="submit">Submit</button>
   </div>
 </form>
 @endsection
@@ -86,6 +89,7 @@ $(function() {
 </script>
 
 <!-- CK Editor -->
+<script src="{{ asset('plugins/ckeditor5-build-balloon-block/ckeditor.js') }}"></script>
 <script>
 BalloonEditor
   .create(document.querySelector('#body'), {
@@ -98,9 +102,9 @@ BalloonEditor
   .catch(err => {
     console.error(err.stack);
   });
-document.getElementById('submit').onclick = () => {
-  document.getElementById('bodyvalue').value = window.body.getData();
-};
+$(document).on('click', '#submit', function() {
+  document.getElementById('bodyValue').value = window.body.getData();
+});
 
 </script>
 @endsection
