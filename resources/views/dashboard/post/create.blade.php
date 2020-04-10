@@ -87,7 +87,6 @@ $(function() {
 
 <!-- CK Editor -->
 <script>
-import BalloonEditor from "@ckeditor/ckeditor5-build-balloon-block";
 BalloonEditor
   .create(document.querySelector('#body'), {
     // toolbar: [ 'heading', '|', 'bold', 'italic', 'link' ]
