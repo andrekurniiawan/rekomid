@@ -43,7 +43,7 @@ Create New Post
 
   @section('right-sidebar')
   <!-- Control Sidebar -->
-  <aside class="control-sidebar form-control-sidebar control-sidebar-dark elevation-2">
+  <aside class="control-sidebar form-control-sidebar control-sidebar-dark elevation-2 overflow-auto">
     <!-- Control sidebar content goes here -->
     <div class="p-3">
       <div class="d-flex justify-content-end">
