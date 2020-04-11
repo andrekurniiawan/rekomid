@@ -46,7 +46,7 @@ class TagController extends Controller
         $tag->slug = Str::slug($request->name, '-');
         $tag->save();
 
-        return redirect()->back()->with('success', 'New tag created.');
+        return redirect()->back()->with('success', 'Tag created.');
     }
 
     /**
@@ -101,7 +101,7 @@ class TagController extends Controller
     public function destroy(Tag $tag)
     {
         Tag::where('id', $tag->id)->delete();
-        return redirect()->back()->with('success', 'Tag deleted.');
+        return redirect()->back()->with('success', 'Tag removed.');
     }
 
     public function trash()

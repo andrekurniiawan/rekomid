@@ -12,7 +12,7 @@ Category List
 @if (url()->current() == route('category.trash'))
 <a href="{{ route('category.index') }}" class="btn btn-primary float-right">Category list</a>
 @else
-<a data-widget="control-sidebar" data-slide="true" href="#" role="button" class="btn btn-primary float-right">Create category</a>
+<a data-widget="control-sidebar" data-slide="true" href="#" role="button" class="btn btn-primary float-right">Create Category</a>
 @endif
 @endsection
 
@@ -28,16 +28,16 @@ Category List
     <table id="categoryTable" class="table table-bordered table-striped">
       <thead>
         <tr>
-          <th>Category name</th>
-          <th>Category slug</th>
+          <th>Category Name</th>
+          <th>Category Slug</th>
           <th width="1%"></th>
         </tr>
       </thead>
       <tbody>
         @foreach ($categories as $category)
         <tr>
-          <td data-label="Category name">{{ $category->name }}</td>
-          <td data-label="Category slug">{{ $category->slug }}</td>
+          <td data-label="Category Name">{{ $category->name }}</td>
+          <td data-label="Category Slug">{{ $category->slug }}</td>
           <td>
             <div class="d-flex flex-row">
               @if (url()->current() == route('category.trash'))
@@ -111,7 +111,7 @@ Category List
     <form role="form" id="createForm" action="{{ route('category.store')}}" method="POST">
       @csrf
       <div class="form-group">
-        <label for="category">Create new category</label>
+        <label for="category">Create Category</label>
         <input type="text" class="form-control" id="name" name="name" placeholder="Category Name">
       </div>
       <div class="float-right">

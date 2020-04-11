@@ -8,7 +8,7 @@
 @isset($post)
 Edit Post
 @else
-Create New Post
+Create Post
 @endisset
 @endsection
 

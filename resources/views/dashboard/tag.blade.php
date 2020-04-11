@@ -12,7 +12,7 @@ Tag List
 @if (url()->current() == route('tag.trash'))
 <a href="{{ route('tag.index') }}" class="btn btn-primary float-right">Tag list</a>
 @else
-<a data-widget="control-sidebar" data-slide="true" href="#" role="button" class="btn btn-primary float-right">Create tag</a>
+<a data-widget="control-sidebar" data-slide="true" href="#" role="button" class="btn btn-primary float-right">Create Tag</a>
 @endif
 @endsection
 
@@ -28,16 +28,16 @@ Tag List
     <table id="categoryTable" class="table table-bordered table-striped">
       <thead>
         <tr>
-          <th>Tag name</th>
-          <th>Tag slug</th>
+          <th>Tag Name</th>
+          <th>Tag Slug</th>
           <th width="1%"></th>
         </tr>
       </thead>
       <tbody>
         @foreach ($tags as $tag)
         <tr>
-          <td data-label="Tag name">{{ $tag->name }}</td>
-          <td data-label="Tag slug">{{ $tag->slug }}</td>
+          <td data-label="Tag Name">{{ $tag->name }}</td>
+          <td data-label="Tag Slug">{{ $tag->slug }}</td>
           <td>
             <div class="d-flex flex-row">
               @if (url()->current() == route('tag.trash'))
@@ -111,7 +111,7 @@ Tag List
     <form role="form" id="createForm" action="{{ route('tag.store')}}" method="POST">
       @csrf
       <div class="form-group">
-        <label for="tag">Create new tag</label>
+        <label for="tag">Create Tag</label>
         <input type="text" class="form-control" id="name" name="name" placeholder="Tag Name">
       </div>
       <div class="float-right">

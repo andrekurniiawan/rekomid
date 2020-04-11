@@ -10,9 +10,9 @@ Post List
 
 @section('button')
 @if (url()->current() == route('post.trash'))
-<a href="{{ route('post.index') }}" class="btn btn-primary float-right">Post list</a>
+<a href="{{ route('post.index') }}" class="btn btn-primary float-right">Post List</a>
 @else
-<a href="{{ route('post.create') }}" class="btn btn-primary float-right">Create new post</a>
+<a href="{{ route('post.create') }}" class="btn btn-primary float-right">Create Post</a>
 @endif
 @endsection
 

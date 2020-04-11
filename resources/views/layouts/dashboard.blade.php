@@ -128,7 +128,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <li class="nav-item">
                   <a href="{{ route('post.create') }}" class="nav-link">
                     <i class="nav-icon far fa-circle"></i>
-                    <p>Create New Post</p>
+                    <p>Create Post</p>
                   </a>
                 </li>
                 <li class="nav-item">
@@ -192,7 +192,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <li class="nav-item">
                   <a href="{{ route('register') }}" class="nav-link">
                     <i class="nav-icon far fa-circle"></i>
-                    <p>Register New User</p>
+                    <p>Register User</p>
                   </a>
                 </li>
                 <li class="nav-item">

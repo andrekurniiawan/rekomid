@@ -68,7 +68,7 @@ class PostController extends Controller
         $post->categories()->sync($request->categories);
         $post->tags()->sync($request->tags);
 
-        return redirect()->route('post.index')->with('success', 'New post created.');
+        return redirect()->route('post.index')->with('success', 'Post created.');
     }
 
     /**
@@ -138,7 +138,7 @@ class PostController extends Controller
     public function destroy($id)
     {
         Post::where('id', $id)->delete();
-        return redirect()->back()->with('success', 'Post moved to trash.');
+        return redirect()->back()->with('success', 'Post removed.');
     }
 
     public function trash()
