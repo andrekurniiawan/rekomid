@@ -14,7 +14,11 @@
 @import "~@fortawesome/fontawesome-free/scss/solid";
 
 // Select2
-@import "../bower_components/select2/dist/css/select2.min.css";
+@import "../bower_components/select2/dist/css/select2.css";
+
+// DataTables
+@import "../bower_components/datatables.net-dt/css/jquery.dataTables.css";
+@import "../bower_components/datatables.net-responsive-dt/css/responsive.dataTables.css";
 
 // Custom Table Style
 // @import "tables";
