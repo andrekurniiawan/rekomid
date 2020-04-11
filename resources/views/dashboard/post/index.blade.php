@@ -88,8 +88,8 @@ Post List
                 @method('DELETE')
                 <input type="submit" class="btn btn-danger btn-sm mx-1" onClick="deleteConfirm()" value="Remove">
               </form>
+              @endif
             </div>
-            @endif
           </td>
         </tr>
         @endforeach

@@ -173,7 +173,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{ route('tag.index') }}" class="nav-link">
+                  <a href="{{ route('tag.trash') }}" class="nav-link">
                     <i class="nav-icon far fa-circle"></i>
                     <p>Tags</p>
                   </a>

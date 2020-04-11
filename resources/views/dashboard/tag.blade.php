@@ -1,26 +1,22 @@
 @extends('layouts.dashboard')
 
-@section('title', 'Tags')
+@section('title')
+@if (url()->current() == route('tag.trash'))
+Trashed Tags
+@else
+Tag List
+@endif
+@endsection
+
+@section('button')
+@if (url()->current() == route('tag.trash'))
+<a href="{{ route('tag.index') }}" class="btn btn-primary float-right">Tag list</a>
+@else
+<a data-widget="control-sidebar" data-slide="true" href="#" role="button" class="btn btn-primary float-right">Create tag</a>
+@endif
+@endsection
 
 @section('content')
-<form role="form" action="{{ route('tag.store')}}" method="POST">
-  @csrf
-  <!-- Create content -->
-  <div class="card">
-    <!-- form start -->
-    <div class="card-body">
-      <div class="form-group">
-        <label for="tag">Create new tag</label>
-        <input type="text" class="form-control" id="name" name="name" placeholder="Tag Name">
-      </div>
-      <div class="float-right">
-        <button type="submit" id="submit" class="btn btn-primary btn-sm">Submit</button>
-      </div>
-    </div>
-    <!-- /.card-body -->
-  </div>
-  <!-- /.content -->
-</form>
 <!-- Read content -->
 <div class="card">
   @if (count($tags) == 0)
@@ -44,6 +40,17 @@
           <td data-label="Tag slug">{{ $tag->slug }}</td>
           <td>
             <div class="d-flex flex-row">
+              @if (url()->current() == route('tag.trash'))
+              <form action="{{ route('tag.restore', $tag->id) }}" method="POST">
+                @csrf
+                <input type="submit" class="btn btn-success btn-sm mx-1" value="Restore">
+              </form>
+              <form action="{{ route('tag.kill', $tag->id) }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <input type="submit" class="btn btn-danger btn-sm mx-1" onClick="deleteConfirm()" value="Delete">
+              </form>
+              @else
               <button class="btn btn-success btn-sm mx-1" type="button" data-toggle="collapse" id="editButton{{ $tag->id }}" data-target="#editCollapse{{ $tag->id }}" aria-expanded="true" aria-controls="editCollapse{{ $tag->id }}">
                 Edit
               </button>
@@ -52,6 +59,7 @@
                 @method('DELETE')
                 <input type="submit" class="btn btn-danger btn-sm mx-1" onClick="deleteConfirm()" value="Delete">
               </form>
+              @endif
             </div>
           </td>
         </tr>
@@ -91,6 +99,30 @@
 <!-- /.card -->
 @endsection
 
+@section('right-sidebar')
+<!-- Control Sidebar -->
+<aside class="control-sidebar form-control-sidebar control-sidebar-dark elevation-2 overflow-auto">
+  <!-- Control sidebar content goes here -->
+  <div class="p-3">
+    <div class="d-flex flex-row justify-content-end">
+      <a data-widget="control-sidebar" data-slide="true" href="#" role="button"><i class="fas fa-times-circle"></i></a>
+    </div>
+    <!-- form start -->
+    <form role="form" id="createForm" action="{{ route('tag.store')}}" method="POST">
+      @csrf
+      <div class="form-group">
+        <label for="tag">Create new tag</label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="Tag Name">
+      </div>
+      <div class="float-right">
+        <button type="submit" id="createSubmit" class="btn btn-primary btn-sm">Submit</button>
+      </div>
+    </form>
+  </div>
+</aside>
+<!-- /.control-sidebar -->
+@endsection
+
 @section('script')
 <!-- page script -->
 <script>
@@ -101,6 +133,9 @@ function deleteConfirm() {
     event.preventDefault();
   }
 }
+$(document).on('click', '#createSubmit', function() {
+  $("#createForm").submit();
+});
 
 </script>
 @endsection
