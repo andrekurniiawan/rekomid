@@ -55,7 +55,7 @@ Post List
           </td>
           <td>
             @if ($post->thumbnail != null)
-            <img src="{{ asset('storage/img/' . $post->thumbnail) }}" alt="" class="img-thumbnail img-fluid">
+            <img src="{{ asset('storage/img/' . $post->thumbnail) }}" alt="{{ $post->thumbnail }}" class="img-thumbnail img-fluid">
             @endif
           </td>
           <td>
