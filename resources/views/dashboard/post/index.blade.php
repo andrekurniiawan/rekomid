@@ -1,5 +1,10 @@
 @extends('layouts.dashboard')
 
+@section('style')
+<link rel="stylesheet" href="bower_components/datatables.net-dt/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="bower_components/datatables.net-responsive-dt/css/responsive.dataTables.min.css">
+@endsection
+
 @section('title')
 @if (url()->current() == route('post.trash'))
 Trashed Posts
@@ -97,15 +102,34 @@ Post List
     </table>
   </div>
   <!-- /.card-body -->
-  <div class="mx-auto">
+  {{-- <div class="mx-auto">
     {{ $posts->links() }}
-  </div>
-  @endif
+</div> --}}
+@endif
 </div>
 <!-- /.card -->
 @endsection
 
 @section('script')
+<!-- DataTables -->
+<script src="{{ asset('bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('bower_components/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
+<script src="{{ asset('bower_components/datatables.net-responsive-dt/js/responsive.dataTables.min.js') }}"></script>
+<script>
+$(function() {
+  $('.dataTable').DataTable({
+    "paging": true,
+    "lengthChange": true,
+    "searching": true,
+    "ordering": true,
+    "info": false,
+    "autoWidth": false,
+    "responsive": true
+  });
+});
+
+</script>
+
 <!-- page script -->
 <script>
 function deleteConfirm() {
