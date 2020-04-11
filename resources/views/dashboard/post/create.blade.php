@@ -1,9 +1,5 @@
 @extends('layouts.dashboard')
 
-@section('style')
-<link rel="stylesheet" href="{{ asset('bower_components/select2/dist/css/select2.min.css') }}">
-@endsection
-
 @section('title')
 @isset($post)
 Edit Post
@@ -104,19 +100,14 @@ Create Post
   @endsection
 
   @section('script')
-  <!-- Select2 -->
-  <script src="{{ asset('bower_components/select2/dist/js/select2.full.min.js') }}"></script>
   <script>
+  // Select2
   $(function() {
     //Initialize Select2 Elements
     $('.select2').select2()
   })
 
-  </script>
-
-  <!-- CK Editor -->
-  <script src="{{ asset('plugins/ckeditor5-build-balloon-block/ckeditor.js') }}"></script>
-  <script>
+  // CK Editor
   BalloonEditor
     .create(document.querySelector('#body'), {
       // toolbar: [ 'heading', '|', 'bold', 'italic', 'link' ]
