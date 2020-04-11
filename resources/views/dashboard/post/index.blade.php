@@ -30,9 +30,9 @@ Post List
         <tr>
           <th>Title</th>
           <th>Slug</th>
-          <th>Author</th>
-          <th width="200">Categories</th>
-          <th width="200">Tags</th>
+          <th width="1%">Author</th>
+          <th width="1%">Categories</th>
+          <th width="1%">Tags</th>
           <th width="150">Thumbnail</th>
           <th width="1%"></th>
         </tr>
@@ -40,20 +40,29 @@ Post List
       <tbody>
         @foreach ($posts as $post)
         <tr>
-          <td>{{ $post->title }}</td>
-          <td>{{ $post->slug }}</td>
-          <td>{{ $post->user->name }}</td>
-          <td>
+          <td data-label="Title">{{ $post->title }}</td>
+          <td data-label="Slug">{{ $post->slug }}</td>
+          <td data-label="Author">{{ $post->user->name }}</td>
+          <td data-label="Categories">
+            @if(count($post->categories) == 0)
+            <span class="badge badge-danger">none</span>
+            @endif
             @foreach ($post->categories as $category)
             <span class="badge badge-secondary">{{ $category->name }}</span>
             @endforeach
           </td>
-          <td>
+          <td data-label="Tags">
+            @if(count($post->tags) == 0)
+            <span class="badge badge-danger">none</span>
+            @endif
             @foreach ($post->tags as $tag)
             <span class="badge badge-secondary">{{ $tag->name }}</span>
             @endforeach
           </td>
-          <td>
+          <td data-label="Thumbnail">
+            @empty($post->thumbnail)
+            <span class="badge badge-danger">none</span>
+            @endempty
             @if ($post->thumbnail != null)
             <img src="{{ asset('storage/img/' . $post->thumbnail) }}" alt="{{ $post->thumbnail }}" class="img-thumbnail img-fluid">
             @endif

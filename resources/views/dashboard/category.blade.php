@@ -40,8 +40,8 @@
       <tbody>
         @foreach ($categories as $category)
         <tr>
-          <td>{{ $category->name }}</td>
-          <td>{{ $category->slug }}</td>
+          <td data-label="Category name">{{ $category->name }}</td>
+          <td data-label="Category slug">{{ $category->slug }}</td>
           <td>
             <div class="d-flex flex-row">
               <button class="btn btn-success btn-sm mx-1" type="button" data-toggle="collapse" id="editButton{{ $category->id }}" data-target="#editCollapse{{ $category->id }}" aria-expanded="true" aria-controls="editCollapse{{ $category->id }}">

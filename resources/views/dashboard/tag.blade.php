@@ -2,45 +2,6 @@
 
 @section('title', 'Tags')
 
-@section('style')
-<style>
-@media screen and (max-width: 600px) {
-  table thead {
-    border: none;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
-  }
-
-  table tr {
-    display: block;
-    margin-bottom: .625em;
-  }
-
-  table td {
-    display: block;
-    font-size: .8em;
-    text-align: right;
-  }
-
-  table td::before {
-    /*
-  * aria-label has no advantage, it won't be read inside a table
-  content: attr(aria-label);
-  */
-    content: attr(data-label);
-    font-weight: bold;
-    float: left;
-  }
-}
-
-</style>
-@endsection
-
 @section('content')
 <form role="form" action="{{ route('tag.store')}}" method="POST">
   @csrf
