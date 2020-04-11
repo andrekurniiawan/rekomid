@@ -64,7 +64,7 @@ Post List
             <span class="badge badge-danger">none</span>
             @endempty
             @if ($post->thumbnail != null)
-            <img src="{{ asset('storage/img/' . $post->thumbnail) }}" alt="{{ $post->thumbnail }}" class="img-thumbnail img-fluid">
+            <img src="{{ asset('storage/img/' . $post->thumbnail) }}" alt="{{ $post->thumbnail }}" class="img-thumbnail img-fluid" style="max-width:150px;">
             @endif
           </td>
           <td>
@@ -114,8 +114,8 @@ $(function() {
     "lengthChange": true,
     "searching": true,
     "ordering": true,
-    "info": false,
-    "autoWidth": false,
+    "info": true,
+    "autoWidth": true,
     "responsive": true
   });
 });

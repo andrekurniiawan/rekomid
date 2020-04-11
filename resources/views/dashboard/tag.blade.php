@@ -73,10 +73,10 @@ Tag List
                 <div class="card-body">
                   <div class="form-group">
                     <label for="tag">Edit Tag Name</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Add tag name..." value="{{ $tag->name }}">
+                    <input type="text" class="form-control" name="name" placeholder="Add tag name..." value="{{ $tag->name }}">
                   </div>
                   <div class="float-right">
-                    <button type="submit" id="submit" class="btn btn-primary btn-sm">Submit</button>
+                    <button type="submit" class="btn btn-primary btn-sm">Submit</button>
                   </div>
                 </div>
                 <!-- /.card-body -->
@@ -124,8 +124,20 @@ Tag List
 @endsection
 
 @section('script')
-<!-- page script -->
 <script>
+// DataTables
+$(function() {
+  $('.dataTable').DataTable({
+    "paging": true,
+    "lengthChange": true,
+    "searching": true,
+    "ordering": false,
+    "info": false,
+    "autoWidth": true,
+    "responsive": false
+  });
+});
+
 function deleteConfirm() {
   if (confirm('Are you sure you want to delete this tag?')) {
     //

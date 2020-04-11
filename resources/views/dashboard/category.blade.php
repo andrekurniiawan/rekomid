@@ -73,10 +73,10 @@ Category List
                 <div class="card-body">
                   <div class="form-group">
                     <label for="category">Edit Category Name</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Add category name..." value="{{ $category->name }}">
+                    <input type="text" class="form-control" name="name" placeholder="Add category name..." value="{{ $category->name }}">
                   </div>
                   <div class="float-right">
-                    <button type="submit" id="submit" class="btn btn-primary btn-sm">Submit</button>
+                    <button type="submit" class="btn btn-primary btn-sm">Submit</button>
                   </div>
                 </div>
                 <!-- /.card-body -->
@@ -91,10 +91,10 @@ Category List
     </table>
   </div>
   <!-- /.card-body -->
-  <div class="mx-auto">
+  {{-- <div class="mx-auto">
     {{ $categories->links() }}
-  </div>
-  @endif
+</div> --}}
+@endif
 </div>
 <!-- /.card -->
 @endsection
@@ -124,8 +124,20 @@ Category List
 @endsection
 
 @section('script')
-<!-- page script -->
 <script>
+// DataTables
+$(function() {
+  $('.dataTable').DataTable({
+    "paging": true,
+    "lengthChange": true,
+    "searching": true,
+    "ordering": false,
+    "info": false,
+    "autoWidth": true,
+    "responsive": false
+  });
+});
+
 function deleteConfirm() {
   if (confirm('Are you sure you want to delete this category?')) {
     //
