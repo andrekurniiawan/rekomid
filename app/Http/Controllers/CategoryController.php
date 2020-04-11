@@ -103,4 +103,24 @@ class CategoryController extends Controller
         Category::where('id', $category->id)->delete();
         return redirect()->back()->with('success', 'Category deleted.');
     }
+
+    public function trash()
+    {
+        $categories = Category::onlyTrashed()->paginate(10);
+        return view('dashboard.category', compact('categories'));
+    }
+
+    public function restore($id)
+    {
+        $category = Category::withTrashed()->where('id', $id)->first();
+        $category->restore();
+        return redirect()->back()->with('success', 'Category restored.');
+    }
+
+    public function kill($id)
+    {
+        $category = Category::withTrashed()->where('id', $id)->first();
+        $category->forceDelete();
+        return redirect()->back()->with('success', 'Category permanently deleted.');
+    }
 }

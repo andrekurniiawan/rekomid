@@ -103,4 +103,24 @@ class TagController extends Controller
         Tag::where('id', $tag->id)->delete();
         return redirect()->back()->with('success', 'Tag deleted.');
     }
+
+    public function trash()
+    {
+        $tags = Tag::onlyTrashed()->paginate(10);
+        return view('dashboard.tag', compact('tags'));
+    }
+
+    public function restore($id)
+    {
+        $tag = Tag::withTrashed()->where('id', $id)->first();
+        $tag->restore();
+        return redirect()->back()->with('success', 'Tag restored.');
+    }
+
+    public function kill($id)
+    {
+        $tag = Tag::withTrashed()->where('id', $id)->first();
+        $tag->forceDelete();
+        return redirect()->back()->with('success', 'Tag permanently deleted.');
+    }
 }
