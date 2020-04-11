@@ -48068,7 +48068,7 @@ table {
     max-height: 100px;
   }
 
-  table td::before {
+  table td ::before {
     /*
      * aria-label has no advantage, it won't be read inside a table
      * content: attr(aria-label);
