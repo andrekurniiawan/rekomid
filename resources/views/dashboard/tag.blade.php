@@ -25,7 +25,7 @@ Tag List
   </div>
   @else
   <div class="card-body accordion" id="accordionEdit">
-    <table id="categoryTable" class="table table-bordered table-striped">
+    <table class="table table-bordered table-striped dataTable">
       <thead>
         <tr>
           <th>Tag Name</th>
