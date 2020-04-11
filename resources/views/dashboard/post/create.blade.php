@@ -46,7 +46,7 @@ Create New Post
   <aside class="control-sidebar form-control-sidebar control-sidebar-dark elevation-2 overflow-auto">
     <!-- Control sidebar content goes here -->
     <div class="p-3">
-      <div class="d-flex justify-content-end">
+      <div class="d-flex flex-row justify-content-end">
         <a data-widget="control-sidebar" data-slide="true" href="#" role="button"><i class="fas fa-times-circle"></i></a>
       </div>
       <div class="form-group">

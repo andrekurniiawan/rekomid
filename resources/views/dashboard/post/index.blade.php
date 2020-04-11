@@ -34,7 +34,7 @@ Post List
           <th width="200">Categories</th>
           <th width="200">Tags</th>
           <th width="150">Thumbnail</th>
-          <th width="150"></th>
+          <th width="1%"></th>
         </tr>
       </thead>
       <tbody>
@@ -59,25 +59,27 @@ Post List
             @endif
           </td>
           <td>
-            @if (url()->current() == route('post.trash'))
-            <form action="{{ route('post.restore', $post->id) }}" method="POST" style="display:inline">
-              @csrf
-              <input type="submit" class="btn btn-success btn-sm" value="Restore">
-            </form>
-            <form action="{{ route('post.kill', $post->id) }}" method="POST" style="display:inline">
-              @csrf
-              @method('DELETE')
-              <input type="submit" class="btn btn-danger btn-sm" onClick="deleteConfirm()" value="Delete">
-            </form>
-            @else
-            <a href="{{ route('post.edit', $post->id) }}" class="btn btn-success btn-sm">
-              Edit
-            </a>
-            <form action="{{ route('post.destroy', $post->id) }}" method="POST" style="display:inline">
-              @csrf
-              @method('DELETE')
-              <input type="submit" class="btn btn-danger btn-sm" onClick="deleteConfirm()" value="Remove">
-            </form>
+            <div class="d-flex flex-row">
+              @if (url()->current() == route('post.trash'))
+              <form action="{{ route('post.restore', $post->id) }}" method="POST">
+                @csrf
+                <input type="submit" class="btn btn-success btn-sm mx-1" value="Restore">
+              </form>
+              <form action="{{ route('post.kill', $post->id) }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <input type="submit" class="btn btn-danger btn-sm mx-1" onClick="deleteConfirm()" value="Delete">
+              </form>
+              @else
+              <a href="{{ route('post.edit', $post->id) }}" class="btn btn-success btn-sm mx-1">
+                Edit
+              </a>
+              <form action="{{ route('post.destroy', $post->id) }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <input type="submit" class="btn btn-danger btn-sm mx-1" onClick="deleteConfirm()" value="Remove">
+              </form>
+            </div>
             @endif
           </td>
         </tr>

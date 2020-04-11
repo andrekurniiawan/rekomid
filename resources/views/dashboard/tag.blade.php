@@ -2,6 +2,45 @@
 
 @section('title', 'Tags')
 
+@section('style')
+<style>
+@media screen and (max-width: 600px) {
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+  table tr {
+    display: block;
+    margin-bottom: .625em;
+  }
+
+  table td {
+    display: block;
+    font-size: .8em;
+    text-align: right;
+  }
+
+  table td::before {
+    /*
+  * aria-label has no advantage, it won't be read inside a table
+  content: attr(aria-label);
+  */
+    content: attr(data-label);
+    font-weight: bold;
+    float: left;
+  }
+}
+
+</style>
+@endsection
+
 @section('content')
 <form role="form" action="{{ route('tag.store')}}" method="POST">
   @csrf
@@ -34,23 +73,25 @@
         <tr>
           <th>Tag name</th>
           <th>Tag slug</th>
-          <th width="130"></th>
+          <th width="1%"></th>
         </tr>
       </thead>
       <tbody>
         @foreach ($tags as $tag)
         <tr>
-          <td>{{ $tag->name }}</td>
-          <td>{{ $tag->slug }}</td>
+          <td data-label="Tag name">{{ $tag->name }}</td>
+          <td data-label="Tag slug">{{ $tag->slug }}</td>
           <td>
-            <button class="btn btn-success btn-sm" type="button" data-toggle="collapse" id="editButton{{ $tag->id }}" data-target="#editCollapse{{ $tag->id }}" aria-expanded="true" aria-controls="editCollapse{{ $tag->id }}">
-              Edit
-            </button>
-            <form action="{{ route('tag.destroy', $tag->id) }}" method="POST" style="display:inline">
-              @csrf
-              @method('DELETE')
-              <input type="submit" class="btn btn-danger btn-sm float-right" onClick="deleteConfirm()" value="Delete">
-            </form>
+            <div class="d-flex flex-row">
+              <button class="btn btn-success btn-sm mx-1" type="button" data-toggle="collapse" id="editButton{{ $tag->id }}" data-target="#editCollapse{{ $tag->id }}" aria-expanded="true" aria-controls="editCollapse{{ $tag->id }}">
+                Edit
+              </button>
+              <form action="{{ route('tag.destroy', $tag->id) }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <input type="submit" class="btn btn-danger btn-sm mx-1" onClick="deleteConfirm()" value="Delete">
+              </form>
+            </div>
           </td>
         </tr>
         <tr>

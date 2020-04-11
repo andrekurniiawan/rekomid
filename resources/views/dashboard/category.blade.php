@@ -34,7 +34,7 @@
         <tr>
           <th>Category name</th>
           <th>Category slug</th>
-          <th width="130"></th>
+          <th width="1%"></th>
         </tr>
       </thead>
       <tbody>
@@ -43,14 +43,16 @@
           <td>{{ $category->name }}</td>
           <td>{{ $category->slug }}</td>
           <td>
-            <button class="btn btn-success btn-sm" type="button" data-toggle="collapse" id="editButton{{ $category->id }}" data-target="#editCollapse{{ $category->id }}" aria-expanded="true" aria-controls="editCollapse{{ $category->id }}">
-              Edit
-            </button>
-            <form action="{{ route('category.destroy', $category->id) }}" method="POST" style="display:inline">
-              @csrf
-              @method('DELETE')
-              <input type="submit" class="btn btn-danger btn-sm float-right" onClick="deleteConfirm()" value="Delete">
-            </form>
+            <div class="d-flex flex-row">
+              <button class="btn btn-success btn-sm mx-1" type="button" data-toggle="collapse" id="editButton{{ $category->id }}" data-target="#editCollapse{{ $category->id }}" aria-expanded="true" aria-controls="editCollapse{{ $category->id }}">
+                Edit
+              </button>
+              <form action="{{ route('category.destroy', $category->id) }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <input type="submit" class="btn btn-danger btn-sm mx-1" onClick="deleteConfirm()" value="Delete">
+              </form>
+            </div>
           </td>
         </tr>
         <tr>
