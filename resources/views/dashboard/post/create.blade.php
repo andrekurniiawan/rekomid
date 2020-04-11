@@ -27,11 +27,9 @@ Create Post
   @section('content')
 
   <div class="form-group">
-    <label for="title">Title</label>
-    <input type="text" class="form-control" name="title" id="title" style="font-size:30px;" placeholder="Insert post title" value="@isset($post){{ $post->title }}@endisset">
+    <input type="text" class="form-control" name="title" id="title" style="font-size:30px;" placeholder="Add title..." value="@isset($post){{ $post->title }}@endisset">
   </div>
   <div class="form-group">
-    <label for="body">Post Body</label>
     <div class="bg-white p-4 rounded border">
       <div class="ml-4" name="body" id="body">
         @isset($post){!! $post->body !!}@endisset
@@ -122,7 +120,7 @@ Create Post
   BalloonEditor
     .create(document.querySelector('#body'), {
       // toolbar: [ 'heading', '|', 'bold', 'italic', 'link' ]
-      placeholder: 'Insert post body here...',
+      placeholder: 'Post body goes here...',
     })
     .then(editor => {
       window.body = editor;

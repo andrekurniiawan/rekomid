@@ -72,8 +72,8 @@ Category List
                 <!-- form start -->
                 <div class="card-body">
                   <div class="form-group">
-                    <label for="category">Edit category name</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Category Name" value="{{ $category->name }}">
+                    <label for="category">Edit Category Name</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Add category name..." value="{{ $category->name }}">
                   </div>
                   <div class="float-right">
                     <button type="submit" id="submit" class="btn btn-primary btn-sm">Submit</button>
@@ -112,7 +112,7 @@ Category List
       @csrf
       <div class="form-group">
         <label for="category">Create Category</label>
-        <input type="text" class="form-control" id="name" name="name" placeholder="Category Name">
+        <input type="text" class="form-control" id="name" name="name" placeholder="Add category name...">
       </div>
       <div class="float-right">
         <button type="submit" id="createSubmit" class="btn btn-primary btn-sm">Submit</button>

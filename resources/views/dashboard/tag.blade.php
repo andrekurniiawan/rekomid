@@ -72,8 +72,8 @@ Tag List
                 <!-- form start -->
                 <div class="card-body">
                   <div class="form-group">
-                    <label for="tag">Edit tag name</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Tag Name" value="{{ $tag->name }}">
+                    <label for="tag">Edit Tag Name</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Add tag name..." value="{{ $tag->name }}">
                   </div>
                   <div class="float-right">
                     <button type="submit" id="submit" class="btn btn-primary btn-sm">Submit</button>
@@ -112,7 +112,7 @@ Tag List
       @csrf
       <div class="form-group">
         <label for="tag">Create Tag</label>
-        <input type="text" class="form-control" id="name" name="name" placeholder="Tag Name">
+        <input type="text" class="form-control" id="name" name="name" placeholder="Add tag name...">
       </div>
       <div class="float-right">
         <button type="submit" id="createSubmit" class="btn btn-primary btn-sm">Submit</button>
