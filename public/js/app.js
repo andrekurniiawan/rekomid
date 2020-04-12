@@ -92915,11 +92915,11 @@ __webpack_require__(/*! admin-lte */ "./node_modules/admin-lte/dist/js/adminlte.
 
 __webpack_require__(/*! ../bower_components/select2/dist/js/select2 */ "./resources/bower_components/select2/dist/js/select2.js");
 
-__webpack_require__(/*! ../plugins/ckeditor5-build-balloon-block/ckeditor */ "./resources/plugins/ckeditor5-build-balloon-block/ckeditor.js");
-
 __webpack_require__(/*! ../bower_components/datatables.net/js/jquery.dataTables */ "./resources/bower_components/datatables.net/js/jquery.dataTables.js");
 
 __webpack_require__(/*! ../bower_components/datatables.net-responsive/js/dataTables.responsive */ "./resources/bower_components/datatables.net-responsive/js/dataTables.responsive.js");
+
+__webpack_require__(/*! ../plugins/ckeditor5-build-balloon-block/ckeditor */ "./resources/plugins/ckeditor5-build-balloon-block/ckeditor.js");
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
