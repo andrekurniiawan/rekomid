@@ -130,5 +130,4 @@ function deleteConfirm() {
 }
 
 </script>
-
 @endsection

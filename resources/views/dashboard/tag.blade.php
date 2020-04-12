@@ -91,10 +91,10 @@ Tag List
     </table>
   </div>
   <!-- /.card-body -->
-  <div class="mx-auto">
+  {{-- <div class="mx-auto">
     {{ $tags->links() }}
-  </div>
-  @endif
+</div> --}}
+@endif
 </div>
 <!-- /.card -->
 @endsection

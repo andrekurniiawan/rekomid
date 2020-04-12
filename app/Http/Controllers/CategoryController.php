@@ -15,7 +15,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::paginate(10);
+        $categories = Category::all();
         return view('dashboard.category', compact('categories'));
     }
 
@@ -106,7 +106,7 @@ class CategoryController extends Controller
 
     public function trash()
     {
-        $categories = Category::onlyTrashed()->paginate(10);
+        $categories = Category::onlyTrashed()->get();
         return view('dashboard.category', compact('categories'));
     }
 

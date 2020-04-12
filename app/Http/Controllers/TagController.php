@@ -15,7 +15,7 @@ class TagController extends Controller
      */
     public function index()
     {
-        $tags = Tag::paginate(10);
+        $tags = Tag::all();
         return view('dashboard.tag', compact('tags'));
     }
 
@@ -106,7 +106,7 @@ class TagController extends Controller
 
     public function trash()
     {
-        $tags = Tag::onlyTrashed()->paginate(10);
+        $tags = Tag::onlyTrashed()->get();
         return view('dashboard.tag', compact('tags'));
     }
 

@@ -18,7 +18,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::paginate(10);
+        $posts = Post::all();
         return view('dashboard.post.index', compact('posts'));
     }
 
@@ -143,7 +143,7 @@ class PostController extends Controller
 
     public function trash()
     {
-        $posts = Post::onlyTrashed()->paginate(10);
+        $posts = Post::onlyTrashed()->get();
         return view('dashboard.post.index', compact('posts'));
     }
 

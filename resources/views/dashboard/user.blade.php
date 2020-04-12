@@ -48,17 +48,29 @@ User List
     </table>
   </div>
   <!-- /.card-body -->
-  <div class="mx-auto">
+  {{-- <div class="mx-auto">
     {{ $users->links() }}
-  </div>
-  @endif
+</div> --}}
+@endif
 </div>
 <!-- /.card -->
 @endsection
 
 @section('script')
-<!-- page script -->
 <script>
+// DataTables
+$(function() {
+  $('.dataTable').DataTable({
+    "paging": true,
+    "lengthChange": true,
+    "searching": true,
+    "ordering": false,
+    "info": false,
+    "autoWidth": true,
+    "responsive": false
+  });
+});
+
 function deleteConfirm() {
   if (confirm('Are you sure you want to delete this user?')) {
     //
@@ -68,5 +80,4 @@ function deleteConfirm() {
 }
 
 </script>
-
 @endsection
