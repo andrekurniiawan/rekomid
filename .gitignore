@@ -2,6 +2,7 @@
 /bower_components
 /node_modules
 /public/hot
+/public/js/ckfinder
 /public/storage
 /storage/*.key
 /vendor

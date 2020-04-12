@@ -112,6 +112,11 @@ Create Post
     .create(document.querySelector('#body'), {
       // toolbar: [ 'heading', '|', 'bold', 'italic', 'link' ]
       placeholder: 'Post body goes here...',
+      ckfinder: {
+        // Upload the images to the server using the CKFinder QuickUpload command.
+        connectorPath: '/ckfinder/connector',
+        uploadUrl: "{{ route('image.store', ['_token' => csrf_token() ]) }}"
+      }
     })
     .then(editor => {
       window.body = editor;
