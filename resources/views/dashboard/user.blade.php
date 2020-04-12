@@ -23,7 +23,7 @@ User List
           <th>Name</th>
           <th>Email</th>
           <th>Role</th>
-          <th width="150"></th>
+          <th width="1%"></th>
         </tr>
       </thead>
       <tbody>
@@ -33,14 +33,16 @@ User List
           <td>{{ $user->email }}</td>
           <td></td>
           <td>
-            <a href="{{ route('user.edit', $user->id) }}" class="btn btn-success btn-sm">
-              Edit
-            </a>
-            <form action="{{ route('user.destroy', $user->id) }}" method="POST" style="display:inline">
-              @csrf
-              @method('DELETE')
-              <input type="submit" class="btn btn-danger btn-sm" onClick="deleteConfirm()" value="Remove">
-            </form>
+            <div class="d-flex flex-row">
+              <a href="{{ route('user.edit', $user->id) }}" class="btn btn-success btn-sm mx-1">
+                Edit
+              </a>
+              <form action="{{ route('user.destroy', $user->id) }}" method="POST" style="display:inline">
+                @csrf
+                @method('DELETE')
+                <input type="submit" class="btn btn-danger btn-sm mx-1" onClick="deleteConfirm()" value="Remove">
+              </form>
+            </div>
           </td>
         </tr>
         @endforeach
