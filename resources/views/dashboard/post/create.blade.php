@@ -21,7 +21,6 @@ Create Post
   @endsection
 
   @section('content')
-
   <div class="form-group">
     <input type="text" class="form-control" name="title" id="title" style="font-size:30px;" placeholder="Add title..." value="@isset($post){{ $post->title }}@endisset">
   </div>
