@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Image;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ImageController extends Controller
 {
@@ -43,13 +44,13 @@ class ImageController extends Controller
 
             $request->file('upload')->storeAs('public/img/', $imageName);
 
-            // $CKEditorFuncNum = $request->input('CKEditorFuncNum');
-            // $url = asset('storage/img/' . $imageName);
-            // $msg = 'Image uploaded successfully';
-            // $response = "<script>window.parent.CKEDITOR.tools.callFunction($CKEditorFuncNum, '$url', '$msg')</script>";
+            $CKEditorFuncNum = $request->input('CKEditorFuncNum');
+            $url = asset('storage/img/' . $imageName);
+            $msg = 'Image uploaded successfully';
+            $response = "<script>window.parent.CKEDITOR.tools.callFunction($CKEditorFuncNum, '$url', '$msg')</script>";
 
-            // @header('Content-type: text/html; charset=utf-8');
-            // echo $response;
+            @header('Content-type: text/html; charset=utf-8');
+            echo $response;
         }
     }
 

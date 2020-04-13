@@ -9,8 +9,6 @@ require("../bower_components/select2/dist/js/select2");
 require("../bower_components/datatables.net/js/jquery.dataTables");
 require("../bower_components/datatables.net-responsive/js/dataTables.responsive");
 
-require("../plugins/ckeditor5-build-balloon-block/ckeditor");
-
 Vue.use(VueRouter);
 
 const router = new VueRouter({

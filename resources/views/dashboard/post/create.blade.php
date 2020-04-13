@@ -26,12 +26,9 @@ Create Post
     <input type="text" class="form-control" name="title" id="title" style="font-size:30px;" placeholder="Add title..." value="@isset($post){{ $post->title }}@endisset">
   </div>
   <div class="form-group">
-    <div class="bg-white p-4 rounded border">
-      <div class="ml-4" name="body" id="body">
-        @isset($post){!! $post->body !!}@endisset
-      </div>
-    </div>
-    <input type="hidden" id="bodyValue" name="body" value="">
+    <textarea class="ml-4" name="body" id="body">
+      @isset($post){!! $post->body !!}@endisset
+    </textarea>
   </div>
   @endsection
 
@@ -100,6 +97,7 @@ Create Post
   @endsection
 
   @section('script')
+  <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
   <script>
   // Select2
   $(function() {
@@ -108,17 +106,11 @@ Create Post
   })
 
   // CK Editor
-  BalloonEditor
-    .create(document.querySelector('#body'), {
-      // toolbar: [ 'heading', '|', 'bold', 'italic', 'link' ]
-      placeholder: 'Post body goes here...',
-    })
-    .then(editor => {
-      window.body = editor;
-    })
-    .catch(err => {
-      console.error(err.stack);
-    });
+  CKEDITOR.replace('body', {
+    filebrowserUploadUrl: "{{ route('image.store', ['_token' => csrf_token() ]) }}",
+    filebrowserUploadMethod: 'form'
+  });
+
   $(document).on('click', '#submit', function() {
     document.getElementById('bodyValue').value = window.body.getData();
     $("#form").submit();
