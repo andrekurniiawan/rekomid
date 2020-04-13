@@ -26,7 +26,7 @@ Create Post
     <input type="text" class="form-control" name="title" id="title" style="font-size:30px;" placeholder="Add title..." value="@isset($post){{ $post->title }}@endisset">
   </div>
   <div class="form-group">
-    <textarea class="ml-4" name="body" id="body">
+    <textarea name="body" id="body" rows="10" style="min-width:500px;max-width:100%;min-height:50px;height:100%;width:100%;">
       @isset($post){!! $post->body !!}@endisset
     </textarea>
   </div>
@@ -108,7 +108,8 @@ Create Post
   // CK Editor
   CKEDITOR.replace('body', {
     filebrowserUploadUrl: "{{ route('image.store', ['_token' => csrf_token() ]) }}",
-    filebrowserUploadMethod: 'form'
+    filebrowserUploadMethod: 'form',
+    height: ['100vh']
   });
 
   $(document).on('click', '#submit', function() {
