@@ -112,7 +112,6 @@ Create Post
   });
 
   $(document).on('click', '#submit', function() {
-    document.getElementById('bodyValue').value = window.body.getData();
     $("#form").submit();
   });
 
