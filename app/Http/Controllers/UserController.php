@@ -81,6 +81,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
+        $this->middleware('password.confirm');
         User::where('id', $id)->delete();
         return redirect()->back()->with('success', 'User deleted.');
     }

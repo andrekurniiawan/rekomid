@@ -74,7 +74,13 @@ class RegisterController extends Controller
         ]);
     }
 
-    protected function register(Request $request)
+    public function showRegistrationForm()
+    {
+        $this->middleware('password.confirm');
+        return view('auth.register');
+    }
+
+    public function register(Request $request)
     {
         $this->validator($request->all())->validate();
 
