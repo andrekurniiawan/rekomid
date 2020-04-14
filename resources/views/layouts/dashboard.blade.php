@@ -126,30 +126,30 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="{{ route('post.create') }}" class="nav-link">
+                  <a href="{{ route('post.index') }}" class="nav-link">
                     <i class="nav-icon far fa-circle"></i>
-                    <p>Create Post</p>
+                    <p>All Posts</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{ route('post.index') }}" class="nav-link">
+                  <a href="{{ route('post.create') }}" class="nav-link">
                     <i class="nav-icon far fa-circle"></i>
-                    <p>Post List</p>
+                    <p>Add New</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ route('category.index') }}" class="nav-link">
+                    <i class="nav-icon far fa-circle"></i>
+                    <p>Categories</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ route('tag.index') }}" class="nav-link">
+                    <i class="nav-icon far fa-circle"></i>
+                    <p>Tags</p>
                   </a>
                 </li>
               </ul>
-            </li>
-            <li class="nav-item">
-              <a href="{{ route('category.index') }}" class="nav-link">
-                <i class="nav-icon fas fa-newspaper"></i>
-                <p>Categories</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="{{ route('tag.index') }}" class="nav-link">
-                <i class="nav-icon fas fa-tags"></i>
-                <p>Tags</p>
-              </a>
             </li>
             <li class="nav-item has-treeview">
               <a href="#" class="nav-link">
@@ -190,15 +190,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="{{ route('user.create') }}" class="nav-link">
+                  <a href="{{ route('user.index') }}" class="nav-link">
                     <i class="nav-icon far fa-circle"></i>
-                    <p>Register User</p>
+                    <p>All Users</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{ route('user.index') }}" class="nav-link">
+                  <a href="{{ route('user.create') }}" class="nav-link">
                     <i class="nav-icon far fa-circle"></i>
-                    <p>User List</p>
+                    <p>Add New</p>
                   </a>
                 </li>
               </ul>
