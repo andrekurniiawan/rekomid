@@ -115,7 +115,7 @@ Category List
         <input type="text" class="form-control" id="name" name="name" placeholder="Add category name...">
       </div>
       <div class="float-right">
-        <button type="submit" id="createSubmit" class="btn btn-primary btn-sm">Submit</button>
+        <button type="submit" id="submit" class="btn btn-primary btn-sm">Submit</button>
       </div>
     </form>
   </div>
@@ -136,17 +136,6 @@ $(function() {
     "autoWidth": true,
     "responsive": false
   });
-});
-
-function deleteConfirm() {
-  if (confirm('Are you sure you want to delete this category?')) {
-    //
-  } else {
-    event.preventDefault();
-  }
-}
-$(document).on('click', '#createSubmit', function() {
-  $("#createForm").submit();
 });
 
 </script>

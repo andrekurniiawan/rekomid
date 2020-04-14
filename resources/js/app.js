@@ -26,3 +26,11 @@ const app = new Vue({
     el: "#app",
     router,
 });
+
+window.deleteConfirm = function (event) {
+    if (confirm("Are you sure you want to delete?")) {
+        //
+    } else {
+        event.preventDefault();
+    }
+};

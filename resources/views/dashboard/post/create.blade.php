@@ -111,9 +111,5 @@ Create Post
     height: ['100vh']
   });
 
-  $(document).on('click', '#submit', function() {
-    $("#form").submit();
-  });
-
   </script>
   @endsection

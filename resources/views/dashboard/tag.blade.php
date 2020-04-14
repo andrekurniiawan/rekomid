@@ -138,16 +138,5 @@ $(function() {
   });
 });
 
-function deleteConfirm() {
-  if (confirm('Are you sure you want to delete this tag?')) {
-    //
-  } else {
-    event.preventDefault();
-  }
-}
-$(document).on('click', '#createSubmit', function() {
-  $("#createForm").submit();
-});
-
 </script>
 @endsection

@@ -120,14 +120,5 @@ $(function() {
   });
 });
 
-// page script
-function deleteConfirm() {
-  if (confirm('Are you sure you want to delete this post?')) {
-    //
-  } else {
-    event.preventDefault();
-  }
-}
-
 </script>
 @endsection

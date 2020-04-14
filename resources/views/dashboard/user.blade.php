@@ -73,13 +73,5 @@ $(function() {
   });
 });
 
-function deleteConfirm() {
-  if (confirm('Are you sure you want to delete this user?')) {
-    //
-  } else {
-    event.preventDefault();
-  }
-}
-
 </script>
 @endsection

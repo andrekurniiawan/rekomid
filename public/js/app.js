@@ -92132,6 +92132,13 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   router: router
 });
 
+window.deleteConfirm = function (event) {
+  if (confirm("Are you sure you want to delete?")) {//
+  } else {
+    event.preventDefault();
+  }
+};
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
