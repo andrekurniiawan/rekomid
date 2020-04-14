@@ -190,7 +190,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="{{ route('register') }}" class="nav-link">
+                  <a href="{{ route('user.create') }}" class="nav-link">
                     <i class="nav-icon far fa-circle"></i>
                     <p>Register User</p>
                   </a>

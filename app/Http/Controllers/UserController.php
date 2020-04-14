@@ -25,7 +25,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return redirect()->route('register');
     }
 
     /**
@@ -81,6 +81,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        User::where('id', $id)->delete();
+        return redirect()->back()->with('success', 'User deleted.');
     }
 }
