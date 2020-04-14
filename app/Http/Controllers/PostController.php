@@ -54,10 +54,6 @@ class PostController extends Controller
         $post->user_id = Auth::id();
 
         if ($request->hasFile('thumbnail')) {
-            // $thumbnailName = pathinfo($request->thumbnail->getClientOriginalName(), PATHINFO_FILENAME);
-            // $thumbnailExtension = $request->thumbnail->getClientOriginalExtension();
-            // $thumbnail = Str::slug($thumbnailName, '-') . '_' . time() . '.' . $thumbnailExtension;
-
             $thumbnail = $post->slug . '_' . time() . '.' . $request->thumbnail->getClientOriginalExtension();
             $request->thumbnail->storeAs('public/img/', $thumbnail);
             $post->thumbnail = $thumbnail;
