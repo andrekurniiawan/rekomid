@@ -41,6 +41,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('trash/tag/{tag}/restore', 'TagController@restore')->name('tag.restore');
     Route::delete('trash/tag/{tag}/kill', 'TagController@kill')->name('tag.kill');
 
+    // ImageController
     Route::resource('image', 'ImageController');
 
     // UserController
