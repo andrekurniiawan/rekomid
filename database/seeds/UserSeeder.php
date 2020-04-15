@@ -15,7 +15,7 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
             'name' => 'Administrator',
             'email' => 'admin@dafunda.com',
-            'role_id' => 1,
+            'role' => 'Administrator',
             'password' => Hash::make('rotartsinimda'),
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),

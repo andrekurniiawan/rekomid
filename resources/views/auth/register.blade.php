@@ -43,10 +43,10 @@
               <label for="role" class="col-md-4 col-form-label text-md-right">Role</label>
 
               <div class="col-md-6">
-                <select id="role" class="custom-select form-control @error('role_id') is-invalid @enderror" name="role_id" required>
+                <select id="role" class="custom-select form-control @error('role') is-invalid @enderror" name="role" required>
                   <option value="" selected disabled>Choose role</option>
                   @foreach ($roles as $role)
-                  <option value="{{ $role->id }}">{{ $role->name }}</option>
+                  <option value="{{ $role }}">{{ $role }}</option>
                   @endforeach
                 </select>
                 {{-- <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email"> --}}

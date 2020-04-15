@@ -31,7 +31,7 @@ User List
         <tr>
           <td>{{ $user->name }}</td>
           <td>{{ $user->email }}</td>
-          <td>{{ $user->role->name }}</td>
+          <td>{{ $user->role}}</td>
           <td>
             <div class="d-flex flex-row">
               <a href="{{ route('user.edit', $user->id) }}" class="btn btn-success btn-sm mx-1">
