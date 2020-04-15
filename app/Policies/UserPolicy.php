@@ -17,7 +17,15 @@ class UserPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        switch ($user->role) {
+            case 'Contributor':
+                return false;
+                break;
+
+            default:
+                return true;
+                break;
+        }
     }
 
     /**
@@ -29,7 +37,7 @@ class UserPolicy
      */
     public function view(User $user, User $model)
     {
-        //
+        return true;
     }
 
     /**
@@ -40,7 +48,18 @@ class UserPolicy
      */
     public function create(User $user)
     {
-        //
+        switch ($user->role) {
+            case 'Subscriber':
+            case 'Contributor':
+            case 'Author':
+            case 'Editor':
+                return false;
+                break;
+
+            default:
+                return true;
+                break;
+        }
     }
 
     /**
@@ -52,7 +71,18 @@ class UserPolicy
      */
     public function update(User $user, User $model)
     {
-        //
+        switch ($user->role) {
+            case 'Subscriber':
+            case 'Contributor':
+            case 'Author':
+            case 'Editor':
+                return false;
+                break;
+
+            default:
+                return true;
+                break;
+        }
     }
 
     /**
@@ -64,7 +94,18 @@ class UserPolicy
      */
     public function delete(User $user, User $model)
     {
-        //
+        switch ($user->role) {
+            case 'Subscriber':
+            case 'Contributor':
+            case 'Author':
+            case 'Editor':
+                return false;
+                break;
+
+            default:
+                return true;
+                break;
+        }
     }
 
     /**
@@ -76,7 +117,18 @@ class UserPolicy
      */
     public function restore(User $user, User $model)
     {
-        //
+        switch ($user->role) {
+            case 'Subscriber':
+            case 'Contributor':
+            case 'Author':
+            case 'Editor':
+                return false;
+                break;
+
+            default:
+                return true;
+                break;
+        }
     }
 
     /**
@@ -88,6 +140,17 @@ class UserPolicy
      */
     public function forceDelete(User $user, User $model)
     {
-        //
+        switch ($user->role) {
+            case 'Subscriber':
+            case 'Contributor':
+            case 'Author':
+            case 'Editor':
+                return false;
+                break;
+
+            default:
+                return true;
+                break;
+        }
     }
 }
