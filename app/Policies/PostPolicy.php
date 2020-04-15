@@ -18,7 +18,7 @@ class PostPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return true;
     }
 
     /**
@@ -30,7 +30,7 @@ class PostPolicy
      */
     public function view(User $user, Post $post)
     {
-        //
+        return true;
     }
 
     /**
@@ -41,20 +41,15 @@ class PostPolicy
      */
     public function create(User $user)
     {
-        $users = User::all();
-        foreach ($users->roles as $role) {
-            switch ($role) {
-                case 'Administrator':
-                    return true;
-                    break;
+        switch ($user->role) {
+            case 'Subscriber':
+                return false;
+                break;
 
-                default:
-                    return false;
-                    break;
-            }
+            default:
+                return true;
+                break;
         }
-
-        return false;
     }
 
     /**
@@ -66,7 +61,21 @@ class PostPolicy
      */
     public function update(User $user, Post $post)
     {
-        //
+        if ($post->user_id == $user->id) {
+            return true;
+        } else {
+            switch ($user->role) {
+                case 'Subscriber':
+                case 'Contributor':
+                case 'Author':
+                    return false;
+                    break;
+
+                default:
+                    return true;
+                    break;
+            }
+        }
     }
 
     /**
@@ -78,7 +87,21 @@ class PostPolicy
      */
     public function delete(User $user, Post $post)
     {
-        //
+        if ($post->user_id == $user->id) {
+            return true;
+        } else {
+            switch ($user->role) {
+                case 'Subscriber':
+                case 'Contributor':
+                case 'Author':
+                    return false;
+                    break;
+
+                default:
+                    return true;
+                    break;
+            }
+        }
     }
 
     /**
@@ -90,7 +113,17 @@ class PostPolicy
      */
     public function restore(User $user, Post $post)
     {
-        //
+        switch ($user->role) {
+            case 'Subscriber':
+            case 'Contributor':
+            case 'Author':
+                return false;
+                break;
+
+            default:
+                return true;
+                break;
+        }
     }
 
     /**
@@ -102,6 +135,16 @@ class PostPolicy
      */
     public function forceDelete(User $user, Post $post)
     {
-        //
+        switch ($user->role) {
+            case 'Subscriber':
+            case 'Contributor':
+            case 'Author':
+                return false;
+                break;
+
+            default:
+                return true;
+                break;
+        }
     }
 }

@@ -18,7 +18,7 @@ class TagPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return true;
     }
 
     /**
@@ -30,7 +30,7 @@ class TagPolicy
      */
     public function view(User $user, Tag $tag)
     {
-        //
+        return true;
     }
 
     /**
@@ -41,7 +41,15 @@ class TagPolicy
      */
     public function create(User $user)
     {
-        //
+        switch ($user->role) {
+            case 'Subscriber':
+                return false;
+                break;
+
+            default:
+                return true;
+                break;
+        }
     }
 
     /**
@@ -53,7 +61,17 @@ class TagPolicy
      */
     public function update(User $user, Tag $tag)
     {
-        //
+        switch ($user->role) {
+            case 'Subscriber':
+            case 'Contributor':
+            case 'Author':
+                return false;
+                break;
+
+            default:
+                return true;
+                break;
+        }
     }
 
     /**
@@ -65,7 +83,17 @@ class TagPolicy
      */
     public function delete(User $user, Tag $tag)
     {
-        //
+        switch ($user->role) {
+            case 'Subscriber':
+            case 'Contributor':
+            case 'Author':
+                return false;
+                break;
+
+            default:
+                return true;
+                break;
+        }
     }
 
     /**
@@ -77,7 +105,17 @@ class TagPolicy
      */
     public function restore(User $user, Tag $tag)
     {
-        //
+        switch ($user->role) {
+            case 'Subscriber':
+            case 'Contributor':
+            case 'Author':
+                return false;
+                break;
+
+            default:
+                return true;
+                break;
+        }
     }
 
     /**
@@ -89,6 +127,16 @@ class TagPolicy
      */
     public function forceDelete(User $user, Tag $tag)
     {
-        //
+        switch ($user->role) {
+            case 'Subscriber':
+            case 'Contributor':
+            case 'Author':
+                return false;
+                break;
+
+            default:
+                return true;
+                break;
+        }
     }
 }
