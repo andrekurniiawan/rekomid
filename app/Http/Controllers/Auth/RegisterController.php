@@ -83,7 +83,7 @@ class RegisterController extends Controller
      */
     public function showRegistrationForm()
     {
-        $roles = ['Administrator', 'Editor', 'Author', 'Contributor', 'Subscriber'];
+        $roles = User::$roles;
         return view('auth.register', compact('roles'));
     }
 
