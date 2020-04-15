@@ -44,7 +44,7 @@
 
               <div class="col-md-6">
                 <select id="role" class="custom-select form-control @error('role_id') is-invalid @enderror" name="role_id" required>
-                  <option value="">Choose role</option>
+                  <option value="" selected disabled>Choose role</option>
                   @foreach ($roles as $role)
                   <option value="{{ $role->id }}">{{ $role->name }}</option>
                   @endforeach

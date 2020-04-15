@@ -5,7 +5,7 @@ User List
 @endsection
 
 @section('button')
-<a href="{{ route('register') }}" class="btn btn-primary float-right">Register User</a>
+<a href="{{ route('user.create') }}" class="btn btn-primary float-right">Register User</a>
 @endsection
 
 @section('content')
