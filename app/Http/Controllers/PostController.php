@@ -11,11 +11,6 @@ use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
-    public function __construct()
-    {
-        $this->authorizeResource(Post::class, 'post');
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -23,6 +18,7 @@ class PostController extends Controller
      */
     public function index()
     {
+        $this->authorize('viewAny', Post::class);
         $posts = Post::all();
         return view('dashboard.post.index', compact('posts'));
     }
@@ -34,6 +30,7 @@ class PostController extends Controller
      */
     public function create()
     {
+        $this->authorize('create', Post::class);
         $categories = Category::all();
         $tags = Tag::all();
         return view('dashboard.post.create', compact('categories', 'tags'));
@@ -47,6 +44,8 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('create', Post::class);
+
         $this->validate($request, [
             'title' => 'required',
         ]);
@@ -80,7 +79,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        $this->authorize('view', Post::class);
     }
 
     /**
@@ -91,7 +90,8 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        $post = Post::with('categories', 'tags')->where('id', $id)->first();
+        $post = Post::with('categories', 'tags')->findOrFail($id);
+        $this->authorize('update', $post);
         $categories = Category::all();
         $tags = Tag::all();
         return view('dashboard.post.create', compact('post', 'categories', 'tags'));
@@ -106,11 +106,13 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $post = Post::findOrFail($id);
+
+        $this->authorize('update', $post);
+
         $this->validate($request, [
             'title' => 'required',
         ]);
-
-        $post = Post::find($id);
 
         $post->title = $request->title;
         $post->slug = Str::slug($request->title, '-');
@@ -138,26 +140,31 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        Post::where('id', $id)->delete();
+        $post = Post::findOrFail($id);
+        $this->authorize('delete', $post);
+        $post->delete();
         return redirect()->back()->with('success', 'Post removed.');
     }
 
     public function trash()
     {
+        $this->authorize('viewAny', Post::class);
         $posts = Post::onlyTrashed()->get();
         return view('dashboard.post.index', compact('posts'));
     }
 
     public function restore($id)
     {
-        $post = Post::withTrashed()->where('id', $id)->first();
+        $post = Post::withTrashed()->findOrFail($id);
+        $this->authorize('restore', $post);
         $post->restore();
         return redirect()->back()->with('success', 'Post restored.');
     }
 
     public function kill($id)
     {
-        $post = Post::withTrashed()->where('id', $id)->first();
+        $post = Post::withTrashed()->findOrFail($id);
+        $this->authorize('forceDelete', $post);
         $post->forceDelete();
         return redirect()->back()->with('success', 'Post permanently deleted.');
     }
