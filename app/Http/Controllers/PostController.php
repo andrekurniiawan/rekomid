@@ -79,7 +79,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        $this->authorize('view', Post::class);
+        $this->authorize('view', $post);
     }
 
     /**

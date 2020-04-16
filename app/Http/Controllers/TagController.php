@@ -8,11 +8,6 @@ use Illuminate\Support\Str;
 
 class TagController extends Controller
 {
-    public function __construct()
-    {
-        $this->authorizeResource(Tag::class, 'tag');
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -20,6 +15,7 @@ class TagController extends Controller
      */
     public function index()
     {
+        $this->authorize('viewAny', Tag::class);
         $tags = Tag::all();
         return view('dashboard.tag', compact('tags'));
     }
@@ -31,6 +27,7 @@ class TagController extends Controller
      */
     public function create()
     {
+        // $this->authorize('create', Tag::class);
         return redirect()->route('tag.index');
     }
 
@@ -42,6 +39,8 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('create', Tag::class);
+        
         $this->validate($request, [
             'name' => 'required|max:32',
         ]);
@@ -62,6 +61,7 @@ class TagController extends Controller
      */
     public function show(Tag $tag)
     {
+        // $this->authorize('view', Tag::class);
         return redirect()->route('tag.index');
     }
 
@@ -73,6 +73,7 @@ class TagController extends Controller
      */
     public function edit(Tag $tag)
     {
+        // $this->authorize('update', $tag);
         return redirect()->route('tag.index');
     }
 
@@ -85,7 +86,8 @@ class TagController extends Controller
      */
     public function update(Request $request, Tag $tag)
     {
-        $tag = Tag::find($tag->id);
+        $this->authorize('update', $tag);
+
         $this->validate($request, [
             'name' => 'required|max:32',
         ]);
@@ -105,26 +107,30 @@ class TagController extends Controller
      */
     public function destroy(Tag $tag)
     {
-        Tag::where('id', $tag->id)->delete();
+        $this->authorize('delete', $tag);
+        $tag->delete();
         return redirect()->back()->with('success', 'Tag removed.');
     }
 
     public function trash()
     {
+        $this->authorize('viewAny', Tag::class);
         $tags = Tag::onlyTrashed()->get();
         return view('dashboard.tag', compact('tags'));
     }
 
     public function restore($id)
     {
-        $tag = Tag::withTrashed()->where('id', $id)->first();
+        $tag = Tag::withTrashed()->findOrFail($id);
+        $this->authorize('restore', $tag);
         $tag->restore();
         return redirect()->back()->with('success', 'Tag restored.');
     }
 
     public function kill($id)
     {
-        $tag = Tag::withTrashed()->where('id', $id)->first();
+        $tag = Tag::withTrashed()->findOrFail($id);
+        $this->authorize('forceDelete', $tag);
         $tag->forceDelete();
         return redirect()->back()->with('success', 'Tag permanently deleted.');
     }

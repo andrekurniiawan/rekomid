@@ -8,11 +8,6 @@ use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
-    public function __construct()
-    {
-        $this->authorizeResource(Category::class, 'category');
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -20,6 +15,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
+        $this->authorize('viewAny', Category::class);
         $categories = Category::all();
         return view('dashboard.category', compact('categories'));
     }
@@ -31,6 +27,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
+        // $this->authorize('create', Category::class);
         return redirect()->route('category.index');
     }
 
@@ -42,6 +39,8 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('create', Category::class);
+
         $this->validate($request, [
             'name' => 'required|max:32',
         ]);
@@ -62,6 +61,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
+        // $this->authorize('view', Category::class);
         return redirect()->route('category.index');
     }
 
@@ -73,6 +73,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
+        // $this->authorize('update', $category);
         return redirect()->route('category.index');
     }
 
@@ -85,7 +86,8 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        $category = Category::find($category->id);
+        $this->authorize('update', $category);
+
         $this->validate($request, [
             'name' => 'required|max:32',
         ]);
@@ -105,26 +107,30 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        Category::where('id', $category->id)->delete();
-        return redirect()->back()->with('success', 'Category deleted.');
+        $this->authorize('delete', $category);
+        $category->delete();
+        return redirect()->back()->with('success', 'Category removed.');
     }
 
     public function trash()
     {
+        $this->authorize('viewAny', Category::class);
         $categories = Category::onlyTrashed()->get();
         return view('dashboard.category', compact('categories'));
     }
 
     public function restore($id)
     {
-        $category = Category::withTrashed()->where('id', $id)->first();
+        $category = Category::withTrashed()->findOrFail($id);
+        $this->authorize('restore', $category);
         $category->restore();
         return redirect()->back()->with('success', 'Category restored.');
     }
 
     public function kill($id)
     {
-        $category = Category::withTrashed()->where('id', $id)->first();
+        $category = Category::withTrashed()->findOrFail($id);
+        $this->authorize('forceDelete', $category);
         $category->forceDelete();
         return redirect()->back()->with('success', 'Category permanently deleted.');
     }

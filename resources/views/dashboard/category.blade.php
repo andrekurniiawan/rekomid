@@ -57,7 +57,7 @@ Category List
               <form action="{{ route('category.destroy', $category->id) }}" method="POST">
                 @csrf
                 @method('DELETE')
-                <input type="submit" class="btn btn-danger btn-sm mx-1" onClick="deleteConfirm()" value="Delete">
+                <input type="submit" class="btn btn-danger btn-sm mx-1" onClick="deleteConfirm()" value="Remove">
               </form>
               @endif
             </div>

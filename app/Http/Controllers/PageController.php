@@ -10,11 +10,6 @@ use Illuminate\Support\Str;
 
 class PageController extends Controller
 {
-    public function __construct()
-    {
-        $this->authorizeResource(Page::class, 'page');
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -22,6 +17,7 @@ class PageController extends Controller
      */
     public function index()
     {
+        $this->authorize('viewAny', Page::class);
         $pages = Page::all();
         return view('dashboard.page.index', compact('pages'));
     }
@@ -33,6 +29,7 @@ class PageController extends Controller
      */
     public function create()
     {
+        $this->authorize('create', Page::class);
         return view('dashboard.page.create');
     }
 
@@ -44,6 +41,8 @@ class PageController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('create', Page::class);
+
         $this->validate($request, [
             'title' => 'required',
         ]);
@@ -74,7 +73,7 @@ class PageController extends Controller
      */
     public function show(Page $page)
     {
-        //
+        $this->authorize('view', $page);
     }
 
     /**
@@ -85,7 +84,8 @@ class PageController extends Controller
      */
     public function edit($id)
     {
-        $page = Page::where('id', $id)->first();
+        $page = Page::with('categories', 'tags')->findOrFail($id);
+        $this->authorize('update', $page);
         return view('dashboard.page.create', compact('page'));
     }
 
@@ -98,11 +98,13 @@ class PageController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $page = Page::findOrFail($id);
+
+        $this->authorize('update', $page);
+
         $this->validate($request, [
             'title' => 'required',
         ]);
-
-        $page = Page::find($id);
 
         $page->title = $request->title;
         $page->slug = Str::slug($request->title, '-');
@@ -127,26 +129,31 @@ class PageController extends Controller
      */
     public function destroy($id)
     {
-        Page::where('id', $id)->delete();
+        $page = Page::findOrFail($id);
+        $this->authorize('delete', $page);
+        $page->delete();
         return redirect()->back()->with('success', 'Page removed.');
     }
 
     public function trash()
     {
+        $this->authorize('viewAny', Page::class);
         $pages = Page::onlyTrashed()->get();
         return view('dashboard.page.index', compact('pages'));
     }
 
     public function restore($id)
     {
-        $page = Page::withTrashed()->where('id', $id)->first();
+        $page = Page::withTrashed()->findOrFail($id);
+        $this->authorize('restore', $page);
         $page->restore();
         return redirect()->back()->with('success', 'Page restored.');
     }
 
     public function kill($id)
     {
-        $page = Page::withTrashed()->where('id', $id)->first();
+        $page = Page::withTrashed()->findOrFail($id);
+        $this->authorize('forceDelete', $page);
         $page->forceDelete();
         return redirect()->back()->with('success', 'Page permanently deleted.');
     }
