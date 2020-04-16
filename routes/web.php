@@ -29,6 +29,12 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('trash/post/{post}/restore', 'PostController@restore')->name('post.restore');
     Route::delete('trash/post/{post}/kill', 'PostController@kill')->name('post.kill');
 
+    // PageController
+    Route::resource('page', 'PageController');
+    Route::get('trash/page', 'PageController@trash')->name('page.trash');
+    Route::post('trash/page/{page}/restore', 'PageController@restore')->name('page.restore');
+    Route::delete('trash/page/{page}/kill', 'PageController@kill')->name('page.kill');
+
     // CategoryController
     Route::resource('category', 'CategoryController');
     Route::get('trash/category', 'CategoryController@trash')->name('category.trash');

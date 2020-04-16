@@ -152,6 +152,29 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </li>
             <li class="nav-item has-treeview">
               <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-newspaper"></i>
+                <p>
+                  Pages
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{ route('page.index') }}" class="nav-link">
+                    <i class="nav-icon far fa-circle"></i>
+                    <p>All Pages</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ route('page.create') }}" class="nav-link">
+                    <i class="nav-icon far fa-circle"></i>
+                    <p>Add New</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-trash"></i>
                 <p>
                   Trash
