@@ -14,6 +14,7 @@ class UserController extends Controller
      */
     public function index()
     {
+        $this->authorize('viewAny', User::class);
         $users = User::all();
         return view('dashboard.user', compact('users'));
     }
@@ -25,6 +26,7 @@ class UserController extends Controller
      */
     public function create()
     {
+        $this->authorize('create', User::class);
         return redirect()->route('register');
     }
 
@@ -36,7 +38,8 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->authorize('create', User::class);
+        return redirect()->route('register');
     }
 
     /**
@@ -47,7 +50,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::findOrFail($id);
+        $this->authorize('view', $user);
     }
 
     /**
@@ -58,7 +62,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::findOrFail($id);
+        $this->authorize('update', $user);
     }
 
     /**
@@ -70,7 +75,8 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::findOrFail($id);
+        $this->authorize('update', $user);
     }
 
     /**
@@ -81,7 +87,9 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        User::where('id', $id)->delete();
+        $user = User::findOrFail($id);
+        $this->authorize('delete', $user);
+        $user->delete();
         return redirect()->back()->with('success', 'User deleted.');
     }
 }
