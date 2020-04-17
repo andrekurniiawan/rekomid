@@ -83,12 +83,17 @@ class RegisterController extends Controller
      */
     public function showRegistrationForm()
     {
+        // $user = Auth::user();
+        $this->authorize('create', User::class);
+
         $roles = User::$roles;
         return view('auth.register', compact('roles'));
     }
 
     public function register(Request $request)
     {
+        $this->authorize('create', User::class);
+
         $this->validator($request->all())->validate();
 
         event(new Registered($user = $this->create($request->all())));
