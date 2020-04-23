@@ -52,7 +52,7 @@ class PageController extends Controller
         $page->title = $request->title;
         $page->slug = Str::slug($request->title, '-');
         $page->body = $request->body;
-        $page->user_id = Auth::id();
+        $page->user->id = Auth::id();
 
         if ($request->hasFile('thumbnail')) {
             $thumbnail = $page->slug . '_' . time() . '.' . $request->thumbnail->getClientOriginalExtension();
