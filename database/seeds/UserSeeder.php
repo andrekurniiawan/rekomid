@@ -14,7 +14,7 @@ class UserSeeder extends Seeder
     {
         DB::table('users')->insert([
             'name' => 'Administrator',
-            'email' => 'admin@dafunda.com',
+            'email' => 'admin@mail.com',
             'role' => 'Administrator',
             'password' => Hash::make('rotartsinimda'),
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
