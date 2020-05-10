@@ -34,16 +34,32 @@ Post List
           <th>Slug</th>
           <th width="1%">Author</th>
           <th width="1%">Categories</th>
-          <th width="1%">Tags</th>
-          <th width="150">Thumbnail</th>
+          {{-- <th width="1%">Tags</th> --}}
+          <th width="1%">Date</th>
+          {{-- <th width="150">Thumbnail</th> --}}
           <th width="1%"></th>
         </tr>
       </thead>
       <tbody>
         @foreach ($posts as $post)
         <tr>
-          <td data-label="Title">{{ $post->title }}</td>
-          <td data-label="Slug">{{ $post->slug }}</td>
+          <td data-label="Title">
+            @if($post->title == null)
+            <span class="badge badge-danger">no title</span>
+            @else
+            {{ $post->title }}
+            @endif
+            @if ($post->publish == null)
+            <span class="badge badge-secondary">draft</span>
+            @endif
+          </td>
+          <td data-label="Slug">
+            @if($post->slug == null)
+            <span class="badge badge-danger">no slug</span>
+            @else
+            {{ $post->slug }}
+            @endif
+          </td>
           <td data-label="Author">{{ $post->user->name }}</td>
           <td data-label="Categories">
             @if(count($post->categories) == 0)
@@ -53,22 +69,23 @@ Post List
             <span class="badge badge-secondary">{{ $category->name }}</span>
             @endforeach
           </td>
-          <td data-label="Tags">
+          {{-- <td data-label="Tags">
             @if(count($post->tags) == 0)
             <span class="badge badge-danger">none</span>
             @endif
             @foreach ($post->tags as $tag)
             <span class="badge badge-secondary">{{ $tag->name }}</span>
-            @endforeach
-          </td>
-          <td data-label="Thumbnail">
+          @endforeach
+          </td> --}}
+          <td data-label="Date">{{ $post->created_at->format('Y/m/d') }}</td>
+          {{-- <td data-label="Thumbnail">
             @empty($post->thumbnail)
             <span class="badge badge-danger">none</span>
             @endempty
             @if ($post->thumbnail != null)
             <img src="{{ asset('storage/img/' . $post->thumbnail) }}" alt="{{ $post->thumbnail }}" class="img-thumbnail img-fluid" style="max-width:150px;max-height:150px;">
-            @endif
-          </td>
+          @endif
+          </td> --}}
           <td>
             <div class="d-flex flex-row">
               @if (url()->current() == route('post.trash'))

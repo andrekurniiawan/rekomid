@@ -92,6 +92,10 @@ Create Post
         <input type="file" class="form-control-file" name="thumbnail" id="thumbnail" value="@isset($post){{ $post->thumbnail }}@endisset">
       </div>
       <div class="form-group">
+        <input type="checkbox" name="publish" id="publish">
+        <label for="publish">Publish</label>
+      </div>
+      <div class="form-group">
         <button class="btn btn-primary btn-block" name="submit" id="submit">Submit</button>
       </div>
     </div>
@@ -114,6 +118,15 @@ Create Post
     filebrowserUploadMethod: 'form',
     height: ['100vh']
   });
+
+  // Disable Enter Key
+  $(document).keypress(
+    function(event) {
+      if (event.which == '13') {
+        event.preventDefault();
+      }
+    }
+  );
 
   </script>
   @endsection

@@ -46,10 +46,6 @@ class PostController extends Controller
     {
         $this->authorize('create', Post::class);
 
-        $this->validate($request, [
-            'title' => 'required',
-        ]);
-
         $post = new Post;
 
         $post->title = $request->title;
@@ -78,6 +74,8 @@ class PostController extends Controller
             $request->thumbnail->storeAs('public/img/', $thumbnail);
             $post->thumbnail = $thumbnail;
         }
+
+        $post->publish = $request->publish;
 
         $post->save();
 
