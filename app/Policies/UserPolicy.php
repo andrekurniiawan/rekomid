@@ -35,7 +35,7 @@ class UserPolicy
      * @param  \App\User  $model
      * @return mixed
      */
-    public function view(User $user, User $model)
+    public function view(User $user)
     {
         return true;
     }
@@ -69,7 +69,7 @@ class UserPolicy
      * @param  \App\User  $model
      * @return mixed
      */
-    public function update(User $user, User $model)
+    public function update(User $user)
     {
         switch ($user->role) {
             case 'Subscriber':
@@ -92,7 +92,7 @@ class UserPolicy
      * @param  \App\User  $model
      * @return mixed
      */
-    public function delete(User $user, User $model)
+    public function delete(User $user)
     {
         switch ($user->role) {
             case 'Subscriber':
@@ -115,7 +115,7 @@ class UserPolicy
      * @param  \App\User  $model
      * @return mixed
      */
-    public function restore(User $user, User $model)
+    public function restore(User $user)
     {
         switch ($user->role) {
             case 'Subscriber':
@@ -138,7 +138,7 @@ class UserPolicy
      * @param  \App\User  $model
      * @return mixed
      */
-    public function forceDelete(User $user, User $model)
+    public function forceDelete(User $user)
     {
         switch ($user->role) {
             case 'Subscriber':

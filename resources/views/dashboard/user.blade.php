@@ -5,7 +5,9 @@ User List
 @endsection
 
 @section('button')
+@can('create', App\User::class)
 <a href="{{ route('user.create') }}" class="btn btn-primary float-right">Register User</a>
+@endcan
 @endsection
 
 @section('content')
@@ -34,14 +36,18 @@ User List
           <td>{{ $user->role}}</td>
           <td>
             <div class="d-flex flex-row">
+              @can('update', App\User::class)
               <a href="{{ route('user.edit', $user->id) }}" class="btn btn-success btn-sm mx-1">
                 Edit
               </a>
+              @endcan
+              @can('delete', App\User::class)
               <form action="{{ route('user.destroy', $user->id) }}" method="POST" style="display:inline">
                 @csrf
                 @method('DELETE')
                 <input type="submit" class="btn btn-danger btn-sm mx-1" onClick="deleteConfirm()" value="Remove">
               </form>
+              @endcan
             </div>
           </td>
         </tr>

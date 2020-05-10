@@ -12,7 +12,9 @@ Post List
 @if (url()->current() == route('post.trash'))
 <a href="{{ route('post.index') }}" class="btn btn-primary float-right">Post List</a>
 @else
+@can('create', App\Post::class)
 <a href="{{ route('post.create') }}" class="btn btn-primary float-right">Create Post</a>
+@endcan
 @endif
 @endsection
 
@@ -70,24 +72,32 @@ Post List
           <td>
             <div class="d-flex flex-row">
               @if (url()->current() == route('post.trash'))
+              @can('restore', $post)
               <form action="{{ route('post.restore', $post->id) }}" method="POST">
                 @csrf
                 <input type="submit" class="btn btn-success btn-sm mx-1" value="Restore">
               </form>
+              @endcan
+              @can('forceDelete', $post)
               <form action="{{ route('post.kill', $post->id) }}" method="POST">
                 @csrf
                 @method('DELETE')
                 <input type="submit" class="btn btn-danger btn-sm mx-1" onClick="deleteConfirm()" value="Delete">
               </form>
+              @endcan
               @else
+              @can('update', $post)
               <a href="{{ route('post.edit', $post->id) }}" class="btn btn-success btn-sm mx-1">
                 Edit
               </a>
+              @endcan
+              @can('delete', $post)
               <form action="{{ route('post.destroy', $post->id) }}" method="POST">
                 @csrf
                 @method('DELETE')
                 <input type="submit" class="btn btn-danger btn-sm mx-1" onClick="deleteConfirm()" value="Remove">
               </form>
+              @endcan
               @endif
             </div>
           </td>

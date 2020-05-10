@@ -130,12 +130,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <p>All Posts</p>
                   </a>
                 </li>
+                @can('create', App\Post::class)
                 <li class="nav-item">
                   <a href="{{ route('post.create') }}" class="nav-link">
                     <i class="nav-icon far fa-circle"></i>
                     <p>Add New</p>
                   </a>
                 </li>
+                @endcan
                 <li class="nav-item">
                   <a href="{{ route('category.index') }}" class="nav-link">
                     <i class="nav-icon far fa-circle"></i>
@@ -165,12 +167,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <p>All Pages</p>
                   </a>
                 </li>
+                @can('create', App\Page::class)
                 <li class="nav-item">
                   <a href="{{ route('page.create') }}" class="nav-link">
                     <i class="nav-icon far fa-circle"></i>
                     <p>Add New</p>
                   </a>
                 </li>
+                @endcan
               </ul>
             </li>
             <li class="nav-item has-treeview">
@@ -202,6 +206,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </li>
               </ul>
             </li>
+            @canany(['viewAny', 'create'], App\User::class)
             <li class="nav-item has-treeview">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-users"></i>
@@ -211,20 +216,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </p>
               </a>
               <ul class="nav nav-treeview">
+                @can('viewAny', App\User::class)
                 <li class="nav-item">
                   <a href="{{ route('user.index') }}" class="nav-link">
                     <i class="nav-icon far fa-circle"></i>
                     <p>All Users</p>
                   </a>
                 </li>
+                @endcan
+                @can('create', App\User::class)
                 <li class="nav-item">
                   <a href="{{ route('user.create') }}" class="nav-link">
                     <i class="nav-icon far fa-circle"></i>
                     <p>Add New</p>
                   </a>
                 </li>
+                @endcan
               </ul>
             </li>
+            @endcanany
           </ul>
         </nav>
         <!-- /.sidebar-menu -->

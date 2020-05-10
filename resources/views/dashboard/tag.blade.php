@@ -12,7 +12,9 @@ Tag List
 @if (url()->current() == route('tag.trash'))
 <a href="{{ route('tag.index') }}" class="btn btn-primary float-right">Tag list</a>
 @else
+@can('create', App\Tag::class)
 <a data-widget="control-sidebar" data-slide="true" href="#" role="button" class="btn btn-primary float-right">Create Tag</a>
+@endcan
 @endif
 @endsection
 
@@ -41,24 +43,32 @@ Tag List
           <td>
             <div class="d-flex flex-row">
               @if (url()->current() == route('tag.trash'))
+              @can('restore', $tag)
               <form action="{{ route('tag.restore', $tag->id) }}" method="POST">
                 @csrf
                 <input type="submit" class="btn btn-success btn-sm mx-1" value="Restore">
               </form>
+              @endcan
+              @can('forceDelete', $tag)
               <form action="{{ route('tag.kill', $tag->id) }}" method="POST">
                 @csrf
                 @method('DELETE')
                 <input type="submit" class="btn btn-danger btn-sm mx-1" onClick="deleteConfirm()" value="Delete">
               </form>
+              @endcan
               @else
+              @can('update', $tag)
               <button class="btn btn-success btn-sm mx-1" type="button" data-toggle="collapse" id="editButton{{ $tag->id }}" data-target="#editCollapse{{ $tag->id }}" aria-expanded="true" aria-controls="editCollapse{{ $tag->id }}">
                 Edit
               </button>
+              @endcan
+              @can('delete', $tag)
               <form action="{{ route('tag.destroy', $tag->id) }}" method="POST">
                 @csrf
                 @method('DELETE')
                 <input type="submit" class="btn btn-danger btn-sm mx-1" onClick="deleteConfirm()" value="Remove">
               </form>
+              @endcan
               @endif
             </div>
           </td>

@@ -12,7 +12,9 @@ Page List
 @if (url()->current() == route('page.trash'))
 <a href="{{ route('page.index') }}" class="btn btn-primary float-right">Page List</a>
 @else
+@can('create', App\Page::class)
 <a href="{{ route('page.create') }}" class="btn btn-primary float-right">Create Page</a>
+@endcan
 @endif
 @endsection
 
@@ -52,24 +54,32 @@ Page List
           <td>
             <div class="d-flex flex-row">
               @if (url()->current() == route('page.trash'))
+              @can('restore', $page)
               <form action="{{ route('page.restore', $page->id) }}" method="POST">
                 @csrf
                 <input type="submit" class="btn btn-success btn-sm mx-1" value="Restore">
               </form>
+              @endcan
+              @can('forceDelete', $page)
               <form action="{{ route('page.kill', $page->id) }}" method="POST">
                 @csrf
                 @method('DELETE')
                 <input type="submit" class="btn btn-danger btn-sm mx-1" onClick="deleteConfirm()" value="Delete">
               </form>
+              @endcan
               @else
+              @can('update', $page)
               <a href="{{ route('page.edit', $page->id) }}" class="btn btn-success btn-sm mx-1">
                 Edit
               </a>
+              @endcan
+              @can('delete', $page)
               <form action="{{ route('page.destroy', $page->id) }}" method="POST">
                 @csrf
                 @method('DELETE')
                 <input type="submit" class="btn btn-danger btn-sm mx-1" onClick="deleteConfirm()" value="Remove">
               </form>
+              @endcan
               @endif
             </div>
           </td>

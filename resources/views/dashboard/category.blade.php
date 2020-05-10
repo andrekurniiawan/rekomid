@@ -12,7 +12,9 @@ Category List
 @if (url()->current() == route('category.trash'))
 <a href="{{ route('category.index') }}" class="btn btn-primary float-right">Category list</a>
 @else
+@can('create', App\Category::class)
 <a data-widget="control-sidebar" data-slide="true" href="#" role="button" class="btn btn-primary float-right">Create Category</a>
+@endcan
 @endif
 @endsection
 
@@ -41,24 +43,32 @@ Category List
           <td>
             <div class="d-flex flex-row">
               @if (url()->current() == route('category.trash'))
+              @can('restore', $category)
               <form action="{{ route('category.restore', $category->id) }}" method="POST">
                 @csrf
                 <input type="submit" class="btn btn-success btn-sm mx-1" value="Restore">
               </form>
+              @endcan
+              @can('forceDelete', $category)
               <form action="{{ route('category.kill', $category->id) }}" method="POST">
                 @csrf
                 @method('DELETE')
                 <input type="submit" class="btn btn-danger btn-sm mx-1" onClick="deleteConfirm()" value="Delete">
               </form>
+              @endcan
               @else
+              @can('update', $category)
               <button class="btn btn-success btn-sm mx-1" type="button" data-toggle="collapse" id="editButton{{ $category->id }}" data-target="#editCollapse{{ $category->id }}" aria-expanded="true" aria-controls="editCollapse{{ $category->id }}">
                 Edit
               </button>
+              @endcan
+              @can('delete', $category)
               <form action="{{ route('category.destroy', $category->id) }}" method="POST">
                 @csrf
                 @method('DELETE')
                 <input type="submit" class="btn btn-danger btn-sm mx-1" onClick="deleteConfirm()" value="Remove">
               </form>
+              @endcan
               @endif
             </div>
           </td>
