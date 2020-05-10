@@ -40,7 +40,7 @@ class ImageController extends Controller
             $originName = $request->file('upload')->getClientOriginalName();
             $imageName = Str::slug(pathinfo($originName, PATHINFO_FILENAME), '-');
             $extension = $request->file('upload')->getClientOriginalExtension();
-            $imageName = $imageName . '_' . time() . '.' . $extension;
+            $imageName = $imageName . '-' . dechex(time()) . '.' . $extension;
 
             $request->file('upload')->storeAs('public/img/', $imageName);
 

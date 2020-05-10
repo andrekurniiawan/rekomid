@@ -76,6 +76,10 @@ Create Post
         </select>
       </div>
       <div class="form-group">
+        <label for="slug">Slug</label>
+        <input type="text" class="form-control" name="slug" id="slug" placeholder="same-as-title" value="@isset($post){{ $post->slug }}@endisset">
+      </div>
+      <div class="form-group">
         <label for="thumbnail">Featured Image</label>
         @isset($post)
         @if ($post->thumbnail != null)

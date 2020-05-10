@@ -53,12 +53,28 @@ class PostController extends Controller
         $post = new Post;
 
         $post->title = $request->title;
-        $post->slug = Str::slug($request->title, '-');
+
+        if (is_null($request->slug)) {
+            $requestTitle = Str::slug($request->title, '-');
+            if (Post::whereSlug($requestTitle)->exists()) {
+                $post->slug = $requestTitle . '-' . dechex(time());
+            } else {
+                $post->slug = $requestTitle;
+            }
+        } else {
+            $requestSlug = Str::slug($request->slug, '-');
+            if (Post::whereSlug($requestSlug)->exists()) {
+                $post->slug = $requestSlug . '-' . dechex(time());
+            } else {
+                $post->slug = $requestSlug;
+            }
+        }
+
         $post->body = $request->body;
         $post->user_id = Auth::id();
 
         if ($request->hasFile('thumbnail')) {
-            $thumbnail = $post->slug . '_' . time() . '.' . $request->thumbnail->getClientOriginalExtension();
+            $thumbnail = $post->slug . '-' . dechex(time()) . '.' . $request->thumbnail->getClientOriginalExtension();
             $request->thumbnail->storeAs('public/img/', $thumbnail);
             $post->thumbnail = $thumbnail;
         }
@@ -115,11 +131,20 @@ class PostController extends Controller
         ]);
 
         $post->title = $request->title;
-        $post->slug = Str::slug($request->title, '-');
+
+        if ($post->slug != $request->slug) {
+            $requestSlug = Str::slug($request->slug, '-');
+            if (Post::whereSlug($requestSlug)->exists()) {
+                $post->slug = $requestSlug . '-' . dechex(time());
+            } else {
+                $post->slug = $requestSlug;
+            }
+        }
+
         $post->body = $request->body;
 
         if ($request->hasFile('thumbnail')) {
-            $thumbnail = $post->slug . '_' . time() . '.' . $request->thumbnail->getClientOriginalExtension();
+            $thumbnail = $post->slug . '-' . dechex(time()) . '.' . $request->thumbnail->getClientOriginalExtension();
             $request->thumbnail->storeAs('public/img/', $thumbnail);
             $post->thumbnail = $thumbnail;
         }
