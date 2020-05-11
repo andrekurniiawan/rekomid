@@ -147,6 +147,8 @@ class PostController extends Controller
             $post->thumbnail = $thumbnail;
         }
 
+        $post->publish = $request->publish;
+
         $post->save();
 
         $post->categories()->sync($request->categories);

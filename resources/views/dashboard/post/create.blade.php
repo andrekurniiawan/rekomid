@@ -92,7 +92,7 @@ Create Post
         <input type="file" class="form-control-file" name="thumbnail" id="thumbnail" value="@isset($post){{ $post->thumbnail }}@endisset">
       </div>
       <div class="form-group">
-        <input type="checkbox" name="publish" id="publish">
+        <input type="checkbox" name="publish" id="publish" value="1" @isset($post) @if ($post->publish == 1) checked @endif @endisset>
         <label for="publish">Publish</label>
       </div>
       <div class="form-group">
