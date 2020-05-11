@@ -10,11 +10,21 @@ Category List
 
 @section('button')
 @if (url()->current() == route('category.trash'))
-<a href="{{ route('category.index') }}" class="btn btn-primary float-right">Category list</a>
+<a href="{{ route('category.index') }}" class="btn btn-primary float-right ml-1">
+  <i class="fas fa-list mr-1"></i>
+  Category List
+</a>
 @else
 @can('create', App\Category::class)
-<a data-widget="control-sidebar" data-slide="true" href="#" role="button" class="btn btn-primary float-right">Create Category</a>
+<a data-widget="control-sidebar" data-slide="true" href="#" role="button" class="btn btn-primary float-right ml-1">
+  <i class="nav-icon fas fa-edit mr-1"></i>
+  Create Category
+</a>
 @endcan
+<a href="{{ route('category.trash') }}" class="btn btn-danger float-right ml-1">
+  <i class="nav-icon fas fa-trash mr-1"></i>
+  Trashed
+</a>
 @endif
 @endsection
 

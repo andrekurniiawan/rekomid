@@ -10,11 +10,21 @@ Page List
 
 @section('button')
 @if (url()->current() == route('page.trash'))
-<a href="{{ route('page.index') }}" class="btn btn-primary float-right">Page List</a>
+<a href="{{ route('page.index') }}" class="btn btn-primary float-right ml-1">
+  <i class="fas fa-list mr-1"></i>
+  Page List
+</a>
 @else
 @can('create', App\Page::class)
-<a href="{{ route('page.create') }}" class="btn btn-primary float-right">Create Page</a>
+<a href="{{ route('page.create') }}" class="btn btn-primary float-right ml-1">
+  <i class="nav-icon fas fa-edit mr-1"></i>
+  Create Page
+</a>
 @endcan
+<a href="{{ route('page.trash') }}" class="btn btn-danger float-right ml-1">
+  <i class="nav-icon fas fa-trash mr-1"></i>
+  Trashed
+</a>
 @endif
 @endsection
 

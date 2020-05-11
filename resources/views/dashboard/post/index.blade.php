@@ -10,11 +10,21 @@ Post List
 
 @section('button')
 @if (url()->current() == route('post.trash'))
-<a href="{{ route('post.index') }}" class="btn btn-primary float-right">Post List</a>
+<a href="{{ route('post.index') }}" class="btn btn-primary float-right ml-1">
+  <i class="fas fa-list mr-1"></i>
+  Post List
+</a>
 @else
 @can('create', App\Post::class)
-<a href="{{ route('post.create') }}" class="btn btn-primary float-right">Create Post</a>
+<a href="{{ route('post.create') }}" class="btn btn-primary float-right ml-1">
+  <i class="nav-icon fas fa-edit mr-1"></i>
+  Create Post
+</a>
 @endcan
+<a href="{{ route('post.trash') }}" class="btn btn-danger float-right ml-1">
+  <i class="nav-icon fas fa-trash mr-1"></i>
+  Trashed
+</a>
 @endif
 @endsection
 

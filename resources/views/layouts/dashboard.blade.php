@@ -177,41 +177,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 @endcan
               </ul>
             </li>
-            <li class="nav-item has-treeview">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-trash"></i>
-                <p>
-                  Trash
-                  <i class="right fas fa-angle-left"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="{{ route('post.trash') }}" class="nav-link">
-                    <i class="nav-icon far fa-circle"></i>
-                    <p>Posts</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="{{ route('category.trash') }}" class="nav-link">
-                    <i class="nav-icon far fa-circle"></i>
-                    <p>Categories</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="{{ route('tag.trash') }}" class="nav-link">
-                    <i class="nav-icon far fa-circle"></i>
-                    <p>Tags</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="{{ route('page.trash') }}" class="nav-link">
-                    <i class="nav-icon far fa-circle"></i>
-                    <p>Pages</p>
-                  </a>
-                </li>
-              </ul>
-            </li>
             @canany(['viewAny', 'create'], App\User::class)
             <li class="nav-item has-treeview">
               <a href="#" class="nav-link">

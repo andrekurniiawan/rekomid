@@ -10,11 +10,21 @@ Tag List
 
 @section('button')
 @if (url()->current() == route('tag.trash'))
-<a href="{{ route('tag.index') }}" class="btn btn-primary float-right">Tag list</a>
+<a href="{{ route('tag.index') }}" class="btn btn-primary float-right ml-1">
+  <i class="fas fa-list mr-1"></i>
+  Tag List
+</a>
 @else
 @can('create', App\Tag::class)
-<a data-widget="control-sidebar" data-slide="true" href="#" role="button" class="btn btn-primary float-right">Create Tag</a>
+<a data-widget="control-sidebar" data-slide="true" href="#" role="button" class="btn btn-primary float-right ml-1">
+  <i class="nav-icon fas fa-edit mr-1"></i>
+  Create Tag
+</a>
 @endcan
+<a href="{{ route('tag.trash') }}" class="btn btn-danger float-right ml-1">
+  <i class="nav-icon fas fa-trash mr-1"></i>
+  Trashed
+</a>
 @endif
 @endsection
 
