@@ -50,7 +50,7 @@ class PostController extends Controller
 
         $post->title = $request->title;
 
-        if (is_null($request->slug)) {
+        if (is_null($request->slug) || $request->slug == '') {
             $requestTitle = Str::slug($request->title, '-');
             if (Post::whereSlug($requestTitle)->exists()) {
                 $post->slug = $requestTitle . '-' . dechex(time());

@@ -81,12 +81,20 @@ Tag List
                 @method('PATCH')
                 <!-- form start -->
                 <div class="card-body">
-                  <div class="form-group">
-                    <label for="tag">Edit Tag Name</label>
-                    <input type="text" class="form-control" name="name" placeholder="Add tag name..." value="{{ $tag->name }}">
+                  <div class="col-lg-6 float-left">
+                    <div class="form-group">
+                      <label for="tag">Tag Name</label>
+                      <input type="text" class="form-control" name="name" placeholder="Add tag name..." value="{{ $tag->name }}">
+                    </div>
                   </div>
-                  <div class="float-right">
-                    <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+                  <div class="col-lg-6 float-right">
+                    <div class="form-group">
+                      <label for="tag">Tag Slug</label>
+                      <input type="text" class="form-control" name="slug" placeholder="same-as-name" value="{{ $tag->slug }}">
+                    </div>
+                    <div class="float-right">
+                      <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+                    </div>
                   </div>
                 </div>
                 <!-- /.card-body -->

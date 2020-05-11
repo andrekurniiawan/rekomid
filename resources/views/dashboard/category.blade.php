@@ -81,12 +81,20 @@ Category List
                 @method('PATCH')
                 <!-- form start -->
                 <div class="card-body">
-                  <div class="form-group">
-                    <label for="category">Edit Category Name</label>
-                    <input type="text" class="form-control" name="name" placeholder="Add category name..." value="{{ $category->name }}">
+                  <div class="col-lg-6 float-left">
+                    <div class="form-group">
+                      <label for="category">Category Name</label>
+                      <input type="text" class="form-control" name="name" placeholder="Add category name..." value="{{ $category->name }}">
+                    </div>
                   </div>
-                  <div class="float-right">
-                    <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+                  <div class="col-lg-6 float-right">
+                    <div class="form-group">
+                      <label for="category">Category Slug</label>
+                      <input type="text" class="form-control" name="slug" placeholder="same-as-name" value="{{ $category->slug }}">
+                    </div>
+                    <div class="float-right">
+                      <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+                    </div>
                   </div>
                 </div>
                 <!-- /.card-body -->

@@ -47,7 +47,23 @@ class CategoryController extends Controller
 
         $category = new Category;
         $category->name = $request->name;
-        $category->slug = Str::slug($request->name, '-');
+
+        if (is_null($request->slug) || $request->slug == '') {
+            $requestName = Str::slug($request->name, '-');
+            if (Category::whereSlug($requestName)->exists()) {
+                $category->slug = $requestName . '-' . dechex(time());
+            } else {
+                $category->slug = $requestName;
+            }
+        } else {
+            $requestSlug = Str::slug($request->slug, '-');
+            if (Category::whereSlug($requestSlug)->exists()) {
+                $category->slug = $requestSlug . '-' . dechex(time());
+            } else {
+                $category->slug = $requestSlug;
+            }
+        }
+
         $category->save();
 
         return redirect()->back()->with('success', 'Category created.');
@@ -93,7 +109,21 @@ class CategoryController extends Controller
         ]);
 
         $category->name = $request->name;
-        $category->slug = Str::slug($request->name, '-');
+
+        $requestSlug = Str::slug($request->slug, '-');
+
+        if (is_null($requestSlug) || $requestSlug == '') {
+            $requestSlug = Str::slug($category->name, '-');
+        }
+
+        if ($category->slug != $requestSlug) {
+            if (Category::whereSlug($requestSlug)->exists()) {
+                $category->slug = $requestSlug . '-' . dechex(time());
+            } else {
+                $category->slug = $requestSlug;
+            }
+        }
+
         $category->save();
 
         return redirect()->back()->with('success', 'Category edited.');

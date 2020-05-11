@@ -47,7 +47,7 @@ class PageController extends Controller
 
         $page->title = $request->title;
 
-        if (is_null($request->slug)) {
+        if (is_null($request->slug) || $request->slug == '') {
             $requestTitle = Str::slug($request->title, '-');
             if (Page::whereSlug($requestTitle)->exists()) {
                 $page->slug = $requestTitle . '-' . dechex(time());

@@ -40,14 +40,30 @@ class TagController extends Controller
     public function store(Request $request)
     {
         $this->authorize('create', Tag::class);
-        
+
         $this->validate($request, [
             'name' => 'required|max:32',
         ]);
 
         $tag = new Tag;
         $tag->name = $request->name;
-        $tag->slug = Str::slug($request->name, '-');
+
+        if (is_null($request->slug) || $request->slug == '') {
+            $requestName = Str::slug($request->name, '-');
+            if (Tag::whereSlug($requestName)->exists()) {
+                $tag->slug = $requestName . '-' . dechex(time());
+            } else {
+                $tag->slug = $requestName;
+            }
+        } else {
+            $requestSlug = Str::slug($request->slug, '-');
+            if (Tag::whereSlug($requestSlug)->exists()) {
+                $tag->slug = $requestSlug . '-' . dechex(time());
+            } else {
+                $tag->slug = $requestSlug;
+            }
+        }
+
         $tag->save();
 
         return redirect()->back()->with('success', 'Tag created.');
@@ -93,7 +109,21 @@ class TagController extends Controller
         ]);
 
         $tag->name = $request->name;
-        $tag->slug = Str::slug($request->name, '-');
+
+        $requestSlug = Str::slug($request->slug, '-');
+
+        if (is_null($requestSlug) || $requestSlug == '') {
+            $requestSlug = Str::slug($tag->name, '-');
+        }
+
+        if ($tag->slug != $requestSlug) {
+            if (Tag::whereSlug($requestSlug)->exists()) {
+                $tag->slug = $requestSlug . '-' . dechex(time());
+            } else {
+                $tag->slug = $requestSlug;
+            }
+        }
+
         $tag->save();
 
         return redirect()->back()->with('success', 'Tag edited.');
