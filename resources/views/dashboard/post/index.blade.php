@@ -17,12 +17,12 @@ Post List
 @else
 @can('create', App\Post::class)
 <a href="{{ route('post.create') }}" class="btn btn-primary float-right ml-1">
-  <i class="nav-icon fas fa-edit mr-1"></i>
+  <i class="fas fa-edit mr-1"></i>
   Create Post
 </a>
 @endcan
 <a href="{{ route('post.trash') }}" class="btn btn-danger float-right ml-1">
-  <i class="nav-icon fas fa-trash mr-1"></i>
+  <i class="fas fa-trash mr-1"></i>
   Trashed
 </a>
 @endif

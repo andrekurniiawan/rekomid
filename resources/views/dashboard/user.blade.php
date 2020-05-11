@@ -6,7 +6,10 @@ User List
 
 @section('button')
 @can('create', App\User::class)
-<a href="{{ route('user.create') }}" class="btn btn-primary float-right">Register User</a>
+<a href="{{ route('user.create') }}" class="btn btn-primary float-right">
+  <i class="fas fa-user-edit mr-1"></i>
+  Register User
+</a>
 @endcan
 @endsection
 
