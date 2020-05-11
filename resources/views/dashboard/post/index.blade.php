@@ -36,6 +36,7 @@ Post List
           <th width="1%">Categories</th>
           {{-- <th width="1%">Tags</th> --}}
           <th width="1%">Date</th>
+          <th width="1%">Published</th>
           {{-- <th width="150">Thumbnail</th> --}}
           <th width="1%"></th>
         </tr>
@@ -48,9 +49,6 @@ Post List
             <span class="badge badge-danger">no title</span>
             @else
             {{ $post->title }}
-            @endif
-            @if ($post->publish == null)
-            <span class="badge badge-secondary">draft</span>
             @endif
           </td>
           <td data-label="Slug">
@@ -78,6 +76,13 @@ Post List
           @endforeach
           </td> --}}
           <td data-label="Date">{{ $post->created_at->format('Y/m/d') }}</td>
+          <td data-label="Published">
+            @if ($post->publish == null)
+            <span class="badge badge-danger">no</span>
+            @else
+            <span class="badge badge-primary">yes</span>
+            @endif
+          </td>
           {{-- <td data-label="Thumbnail">
             @empty($post->thumbnail)
             <span class="badge badge-danger">none</span>

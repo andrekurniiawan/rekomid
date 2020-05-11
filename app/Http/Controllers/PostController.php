@@ -124,10 +124,6 @@ class PostController extends Controller
 
         $this->authorize('update', $post);
 
-        $this->validate($request, [
-            'title' => 'required',
-        ]);
-
         $post->title = $request->title;
 
         if ($post->slug != $request->slug) {

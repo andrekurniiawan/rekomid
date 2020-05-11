@@ -40,6 +40,10 @@ Create Page
         <a data-widget="control-sidebar" data-slide="true" href="#" role="button"><i class="fas fa-times-circle"></i></a>
       </div>
       <div class="form-group">
+        <label for="slug">Slug</label>
+        <input type="text" class="form-control" name="slug" id="slug" placeholder="same-as-title" value="@isset($page){{ $page->slug }}@endisset">
+      </div>
+      <div class="form-group">
         <label for="thumbnail">Featured Image</label>
         @isset($page)
         @if ($page->thumbnail != null)
@@ -50,6 +54,10 @@ Create Page
         @endif
         @endisset
         <input type="file" class="form-control-file" name="thumbnail" id="thumbnail" value="@isset($page){{ $page->thumbnail }}@endisset">
+      </div>
+      <div class="form-group">
+        <input type="checkbox" name="publish" id="publish" value="1" @isset($page) @if ($page->publish == 1) checked @endif @endisset>
+        <label for="publish">Publish</label>
       </div>
       <div class="form-group">
         <button class="btn btn-primary btn-block" name="submit" id="submit">Submit</button>
@@ -74,6 +82,15 @@ Create Page
     filebrowserUploadMethod: 'form',
     height: ['100vh']
   });
+
+  // Disable Enter Key
+  $(document).keypress(
+    function(event) {
+      if (event.which == '13') {
+        event.preventDefault();
+      }
+    }
+  );
 
   </script>
   @endsection

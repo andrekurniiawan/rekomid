@@ -33,7 +33,9 @@ Page List
           <th>Title</th>
           <th>Slug</th>
           <th width="1%">Author</th>
-          <th width="150">Thumbnail</th>
+          <th width="1%">Date</th>
+          <th width="1%">Published</th>
+          {{-- <th width="150">Thumbnail</th> --}}
           <th width="1%"></th>
         </tr>
       </thead>
@@ -43,14 +45,22 @@ Page List
           <td data-label="Title">{{ $page->title }}</td>
           <td data-label="Slug">{{ $page->slug }}</td>
           <td data-label="Author">{{ $page->user->name }}</td>
-          <td data-label="Thumbnail">
+          <td data-label="Date">{{ $page->created_at->format('Y/m/d') }}</td>
+          <td data-label="Published">
+            @if ($page->publish == null)
+            <span class="badge badge-danger">no</span>
+            @else
+            <span class="badge badge-primary">yes</span>
+            @endif
+          </td>
+          {{-- <td data-label="Thumbnail">
             @empty($page->thumbnail)
             <span class="badge badge-danger">none</span>
             @endempty
             @if ($page->thumbnail != null)
             <img src="{{ asset('storage/img/' . $page->thumbnail) }}" alt="{{ $page->thumbnail }}" class="img-thumbnail img-fluid" style="max-width:150px;max-height:150px;">
-            @endif
-          </td>
+          @endif
+          </td> --}}
           <td>
             <div class="d-flex flex-row">
               @if (url()->current() == route('page.trash'))

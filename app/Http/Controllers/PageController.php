@@ -43,22 +43,36 @@ class PageController extends Controller
     {
         $this->authorize('create', Page::class);
 
-        $this->validate($request, [
-            'title' => 'required',
-        ]);
-
         $page = new Page;
 
         $page->title = $request->title;
-        $page->slug = Str::slug($request->title, '-');
+
+        if (is_null($request->slug)) {
+            $requestTitle = Str::slug($request->title, '-');
+            if (Page::whereSlug($requestTitle)->exists()) {
+                $page->slug = $requestTitle . '-' . dechex(time());
+            } else {
+                $page->slug = $requestTitle;
+            }
+        } else {
+            $requestSlug = Str::slug($request->slug, '-');
+            if (Page::whereSlug($requestSlug)->exists()) {
+                $page->slug = $requestSlug . '-' . dechex(time());
+            } else {
+                $page->slug = $requestSlug;
+            }
+        }
+
         $page->body = $request->body;
-        $page->user->id = Auth::id();
+        $page->user_id = Auth::id();
 
         if ($request->hasFile('thumbnail')) {
-            $thumbnail = $page->slug . '_' . time() . '.' . $request->thumbnail->getClientOriginalExtension();
+            $thumbnail = $page->slug . '-' . dechex(time()) . '.' . $request->thumbnail->getClientOriginalExtension();
             $request->thumbnail->storeAs('public/img/', $thumbnail);
             $page->thumbnail = $thumbnail;
         }
+
+        $page->publish = $request->publish;
 
         $page->save();
 
@@ -84,7 +98,7 @@ class PageController extends Controller
      */
     public function edit($id)
     {
-        $page = Page::with('categories', 'tags')->findOrFail($id);
+        $page = Page::findOrFail($id);
         $this->authorize('update', $page);
         return view('dashboard.page.create', compact('page'));
     }
@@ -102,12 +116,17 @@ class PageController extends Controller
 
         $this->authorize('update', $page);
 
-        $this->validate($request, [
-            'title' => 'required',
-        ]);
-
         $page->title = $request->title;
-        $page->slug = Str::slug($request->title, '-');
+
+        if ($page->slug != $request->slug) {
+            $requestSlug = Str::slug($request->slug, '-');
+            if (Page::whereSlug($requestSlug)->exists()) {
+                $page->slug = $requestSlug . '-' . dechex(time());
+            } else {
+                $page->slug = $requestSlug;
+            }
+        }
+
         $page->body = $request->body;
 
         if ($request->hasFile('thumbnail')) {
@@ -115,6 +134,8 @@ class PageController extends Controller
             $request->thumbnail->storeAs('public/img/', $thumbnail);
             $page->thumbnail = $thumbnail;
         }
+
+        $page->publish = $request->publish;
 
         $page->save();
 
