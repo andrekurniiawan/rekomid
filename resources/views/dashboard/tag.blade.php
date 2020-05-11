@@ -129,8 +129,12 @@ Tag List
     <form role="form" id="createForm" action="{{ route('tag.store')}}" method="POST">
       @csrf
       <div class="form-group">
-        <label for="tag">Create Tag</label>
+        <label for="name">Create Tag</label>
         <input type="text" class="form-control" id="name" name="name" placeholder="Add tag name...">
+      </div>
+      <div class="form-group">
+        <label for="slug">Tag Slug</label>
+        <input type="text" class="form-control" id="slug" name="slug" placeholder="same-as-name">
       </div>
       <div class="float-right">
         <button type="submit" id="createSubmit" class="btn btn-primary btn-sm">Submit</button>

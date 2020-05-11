@@ -43,6 +43,7 @@ class CategoryController extends Controller
 
         $this->validate($request, [
             'name' => 'required|max:32',
+            'slug' => 'max:32'
         ]);
 
         $category = new Category;
@@ -106,6 +107,7 @@ class CategoryController extends Controller
 
         $this->validate($request, [
             'name' => 'required|max:32',
+            'slug' => 'max:32'
         ]);
 
         $category->name = $request->name;

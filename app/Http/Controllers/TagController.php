@@ -43,6 +43,7 @@ class TagController extends Controller
 
         $this->validate($request, [
             'name' => 'required|max:32',
+            'slug' => 'max:32'
         ]);
 
         $tag = new Tag;
@@ -106,6 +107,7 @@ class TagController extends Controller
 
         $this->validate($request, [
             'name' => 'required|max:32',
+            'slug' => 'max:32'
         ]);
 
         $tag->name = $request->name;

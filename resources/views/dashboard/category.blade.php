@@ -129,8 +129,12 @@ Category List
     <form role="form" id="createForm" action="{{ route('category.store')}}" method="POST">
       @csrf
       <div class="form-group">
-        <label for="category">Create Category</label>
+        <label for="name">Create Category</label>
         <input type="text" class="form-control" id="name" name="name" placeholder="Add category name...">
+      </div>
+      <div class="form-group">
+        <label for="slug">Category Slug</label>
+        <input type="text" class="form-control" id="slug" name="slug" placeholder="same-as-name">
       </div>
       <div class="float-right">
         <button type="submit" id="submit" class="btn btn-primary btn-sm">Submit</button>
