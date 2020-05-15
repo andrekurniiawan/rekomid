@@ -6812,7 +6812,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.btn[data-v-63755b9c],\r\n.btn[data-v-63755b9c]:focus,\r\n.btn[data-v-63755b9c]:active {\r\n  background-color: #343a40;\r\n  border-color: #343a40;\r\n  box-shadow: none;\n}\n.btn[data-v-63755b9c]:hover {\r\n  background-color: #23272b;\r\n  border-color: #1d2124;\n}\r\n", ""]);
+exports.push([module.i, "\n.btn[data-v-63755b9c],\n.btn[data-v-63755b9c]:focus,\n.btn[data-v-63755b9c]:active {\n  background-color: #343a40;\n  border-color: #343a40;\n  box-shadow: none;\n}\n.btn[data-v-63755b9c]:hover {\n  background-color: #23272b;\n  border-color: #1d2124;\n}\n", ""]);
 
 // exports
 
@@ -53993,7 +53993,7 @@ var staticRenderFns = [
             alt: ""
           }
         }),
-        _vm._v("\n        Rekom.id\n      ")
+        _vm._v("\n        Rekomid\n      ")
       ]),
       _vm._v(" "),
       _c(

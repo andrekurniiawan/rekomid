@@ -13,7 +13,7 @@
             class="d-inline-block align-top mr-1"
             alt
           />
-          Rekom.id
+          Rekomid
         </a>
         <button
           class="navbar-toggler"
